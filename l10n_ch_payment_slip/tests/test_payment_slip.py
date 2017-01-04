@@ -5,7 +5,7 @@ import time
 import re
 
 import openerp.tests.common as test_common
-from openerp.report import render_report
+from odoo.report import render_report
 
 
 class TestPaymentSlip(test_common.TransactionCase):
