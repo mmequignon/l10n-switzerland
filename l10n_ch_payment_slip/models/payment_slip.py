@@ -722,8 +722,8 @@ class PaymentSlip(models.Model):
         }
         return PaymentSlipSettings(report_name, **company_settings)
 
-    def _compute_payment_slip(self, a4=False, out_format='PDF', scale=None,
-                              b64=False, report_name=None):
+    def _draw_payment_slip(self, a4=False, out_format='PDF', scale=None,
+                           b64=False, report_name=None):
         """Generate the payment slip image
         :param a4: If set to True will print on slip on a A4 paper format
         :type a4: bool
@@ -852,13 +852,13 @@ class PaymentSlip(models.Model):
                 img_stream = base64.encodestring(img_stream)
             return img_stream
 
-    def _compute_payment_slip_image(self):
+    def _draw_payment_slip_image(self):
         """Draw an us letter format slip in PNG"""
         img = self._draw_payment_slip()
         self.slip_image = base64.encodestring(img)
         return img
 
-    def _compute_a4_report(self):
+    def _draw_a4_report(self):
         """Draw an a4 format slip in PDF"""
         img = self._draw_payment_slip(a4=True, out_format='PDF')
         self.a4_pdf = base64.encodestring(img)
