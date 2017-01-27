@@ -4,7 +4,7 @@
 	branch = 10.0
 [submodule "odoo/external-src/server-tools"]
 	path = odoo/external-src/server-tools
-	url = git@github.com:OCA/server-tools.git
+	url = git@github.com:camptocamp/server-tools.git
 	branch = 10.0
 [submodule "odoo/external-src/partner-contact"]
 	path = odoo/external-src/partner-contact

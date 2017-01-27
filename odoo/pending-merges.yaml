@@ -23,3 +23,12 @@
 #     - oca refs/pull/137/head
 #   target: *default_target
 
+./external-src/server-tools:
+  remotes:
+    oca: git@github.com:OCA/server-tools.git
+    camptocamp: git@github.com:camptocamp/server-tools.git
+  merges:
+    - oca 10.0
+      # migration of mass_editing
+    - oca refs/pull/598/head
+  target: &default_target camptocamp merge-branch-2002-master
