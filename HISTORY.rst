@@ -19,10 +19,16 @@ Release History
 latest (unreleased)
 +++++++++++++++++++
 
-*Features and Improvements*
+**Features and Improvements**
 
-*Bugfixes*
+**Bugfixes**
 
-*Build*
+**Build**
 
-*Documentation*
+**Documentation**
+
+
+10.0.0 (2017-01-27)
++++++++++++++++++++
+
+Initial release

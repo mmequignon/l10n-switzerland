@@ -71,3 +71,4 @@ migration:
           #### camptocamp/cloud-platform
           - cloud_platform
           #### local-src
+    - version: 10.1.0
