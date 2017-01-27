@@ -8,6 +8,10 @@ migration:
         pre:
           - anthem songs.install.pre::main
         post:
+          # We need l10n_de for account.tax and reports
+          # but we want to be sure that l10n_ch is installed first,
+          # so install l10n_de as a 'post-install' here
+          - odoo -i l10n_de,l10n_de_skr04 --stop-after-init --workers=0 --log-level=warn
           - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.accounting::main
           - anthem songs.install.logistics::main
@@ -60,6 +64,7 @@ migration:
           #### OCA/server-tools
           - date_range
           - server_environment
+          - mail_environment
           - mass_editing
           #### OCA/partner-contact
           - partner_firstname

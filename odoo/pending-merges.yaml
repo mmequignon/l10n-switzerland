@@ -31,4 +31,8 @@
     - oca 10.0
       # migration of mass_editing
     - oca refs/pull/598/head
+      # migration of server_environment
+    - oca refs/pull/595/head
+      # migration of mail_environment
+    - oca refs/pull/662/head
   target: &default_target camptocamp merge-branch-2002-master
