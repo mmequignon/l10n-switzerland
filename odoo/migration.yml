@@ -7,7 +7,6 @@ migration:
         pre:
           - anthem songs.install.pre::main
         post:
-          - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.accounting::main
           - anthem songs.install.logistics::main
           - anthem songs.install.data_all::main
@@ -22,9 +21,57 @@ migration:
               - anthem songs.install.data_demo::main
       addons:
         upgrade:
-          - server_environment
           #### core
-          # - sale_stock
-          # - purchase
+          - account
+          - account_accountant
+          - account_cancel
+          - analytic
+          - board
+          - l10n_ch
+          - procurement
+          - procurement_jit
+          - product
+          - purchase
+          - sale
+          - sale_stock
+          - stock
+          - stock_account
+          #### OCA/l10n-switzerland
+          - l10n_ch_bank
+          - l10n_ch_base_bank
+          # - l10n_ch_dta
+          - l10n_ch_states
+          - l10n_ch_zip
+          #### OCA/account-analytic
+          - account_analytic_required
+          #### OCA/account-financial-reporting
+          - account_financial_report_qweb
+          #### OCA/account-financial-tools
+          - account_fiscal_year
+          # - account_move_locking
+          # https://github.com/OCA/account-financial-tools/pull/445
+          # - account_reversal
+          #### OCA/bank-payment
+          - account_payment_order
+          #### OCA/account-invoicing
+          - account_payment_term_extension
+          #### OCA/server-tools
+          - date_range
+          - server_environment
+          - mass_editing
+          #### OCA/partner-contact
+          - partner_firstname
+          # - base_partner_merge
+          #### OCA/operating-unit
+          - operating_unit
+          - account_operating_unit
+          # - stock_operating_unit
+          # - sales_team_operating_unit
+          # - sale_operating_unit
+          # - purchase_operating_unit
+          # - account_bank_statement
+          # - procurement_operating_unit
+          # - sale_stock_operating unit
+          # - stock_account_operating unit
           #### local-src
           # - my_addon

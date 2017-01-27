@@ -1,0 +1,6 @@
+id,code,name
+__setup__.analytic_account_WEU,WEU,Western Europe
+__setup__.analytic_account_EEM,EEM,EEMEA
+__setup__.analytic_account_ASI,ASI,Asia / Pacific
+__setup__.analytic_account_USA,USA,USA
+__setup__.analytic_account_AME,AME,Americas

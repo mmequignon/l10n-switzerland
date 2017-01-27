@@ -1,0 +1,141 @@
+id,name,code,user_type_id/id,reconcile,currency_id/id,tax_ids/id
+__setup__.l10n_ch_coa_original_1021,UBS CH43 0025 5255 1046 6501 N / CHF,10200,account.data_account_type_liquidity,0,,
+__setup__.coa_neom_10250,UBS CH93 0025 5255 1046 6560 D / EUR,10250,account.data_account_type_liquidity,0,base.EUR,
+__setup__.coa_neom_10700,UBS Card,10700,account.data_account_type_liquidity,0,,
+__setup__.coa_neom_10710,UBS - Mastercard Jonas Larsson / CHF,10710,account.data_account_type_liquidity,0,,
+__setup__.coa_neom_10720,UBS - Mastercard Vincent Lefauconnier / CHF,10720,account.data_account_type_liquidity,0,,
+__setup__.l10n_ch_coa_original_1090,Temporary Account,10900,account.data_account_type_current_assets,1,,
+__setup__.l10n_ch_coa_original_1100,Receivables from Foreing Third Parties / CHF,11001,account.data_account_type_receivable,1,,
+__setup__.coa_neom_11002,Receivables from Foreing Third Parties / EUR,11002,account.data_account_type_receivable,1,base.EUR,
+__setup__.coa_neom_11009,Allowance For Credit Losses (aggregate)  ,11009,account.data_account_type_receivable,1,,
+__setup__.coa_neom_11040,Short-term Advances,11040,account.data_account_type_receivable,1,,
+__setup__.l10n_ch_coa_original_1170,VAT Tax Related Receivables - Switzerland,11070,account.data_account_type_current_assets,0,,
+__setup__.l10n_ch_coa_original_1171,VAT Tax Related Receivables Other expenses - Switzerland,11071,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_11072,VAT Tax Related Receivables - Germany,11072,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_11080,Witholding Tax,11080,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_11090,Receivable HE Medical GmbH,11090,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_11092,Advances to suppliers,11092,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_12011,Inventories Medbase Pedicle Screw System,12011,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_12012,Inventories Hospitals Pedicle Screw System,12012,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_12013,Inventories Agents Pedicle Screw System,12013,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_12021,Inventories Medbase Pedicle Cage System,12021,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_12022,Inventories Hospitals Cage System,12022,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_13000,Accrued Assets,13000,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_13001,Other Current Assets  ,13001,account.data_account_type_current_assets,0,,
+__setup__.coa_neom_15000,Machinery and Tools,15000,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_15001,Molds,15001,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_15200,Hardware,15200,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17000,Project Dev. Pedicle Screw System,17000,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17001,Project Dev. Cage System,17001,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17002,Patents,17002,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17003,Brands,17003,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17004,Cad. Lab. Validation,17004,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_17005,Foundation costs,17005,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_18000,Participation Neo Medical SAS  ,18000,account.data_account_type_fixed_assets,0,,l10n_ch.1_vat_80_invest
+__setup__.l10n_ch_coa_original_2000,Suppliers,20000,account.data_account_type_payable,1,,
+__setup__.coa_neom_21400,Short-term loan to shareholders c/Jonas Larsson,21400,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_21401,Short-term loan to shareholders c/Vincent Lefauconnier,21401,account.data_account_type_current_liabilities,0,,
+__setup__.l10n_ch_coa_original_2200,VAT Tax Due – Switzerland,22000,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22001,VAT Tax Due – Germany,22001,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22010,VAT To Pay AFC – Switzerland,22010,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22011,VAT TO Pay – Germany,22011,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22700,"AVS/AI/APG, Unemployment Insurance Creditor Account",22700,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22701,Insurance of Accident Creditor Account (LAA and LAAC),22701,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22702,Pension Insurance Creditor Account,22702,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_22703,Loss of Earnings Insurance Creditor Account,22703,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_23000,Acrrued Liabilities,23000,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_25000,Loan Tecpartner (subordinated),25000,account.data_account_type_current_liabilities,0,,
+__setup__.coa_neom_28400,Ordinary Shares,28400,account.data_account_type_equity,0,,
+__setup__.coa_neom_29010,Additional Paid In Capital  ,29010,account.data_account_type_equity,0,,
+__setup__.coa_neom_29020,Reserves issued from profits,29020,account.data_account_type_equity,0,,
+__setup__.coa_neom_29030,Retained earnigs,29030,account.data_account_type_equity,0,,
+__setup__.coa_neom_29031,Retained Loss ,29031,account.data_account_type_equity,0,,
+__setup__.coa_neom_29032,Profit/Loss of the period,29032,account.data_account_type_equity,0,,
+__setup__.coa_neom_29050,Own shares  ,29050,account.data_account_type_equity,0,,
+__setup__.coa_neom_29051,Non-Controlling Interest  ,29051,account.data_account_type_equity,0,,
+__setup__.l10n_ch_coa_original_3200,Sales of Products PPS,30010,account.data_account_type_revenue,0,,
+__setup__.coa_neom_30020,Sales of Products Cages,30020,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38010,Collection Cash  - PPS,38010,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38020,FX Rates Differences  - PPS,38020,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38030,Frets and Postage  - PPS,38030,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38040,Commissions  - PPS,38040,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38110,Collection Cash - Cages,38110,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38120,FX Rates Differences  - Cages,38120,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38130,Freight and Postage  - Cages,38130,account.data_account_type_revenue,0,,
+__setup__.coa_neom_38140,Commissions  - Cages,38140,account.data_account_type_revenue,0,,
+__setup__.l10n_ch_coa_original_4200,Cost of Goods Sold  PPS,40000,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_purchase
+__setup__.coa_neom_40100,Cost of Goods Sold  Cages,40100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_purchase
+__setup__.coa_neom_44000,Salaries,44000,account.data_account_type_expenses,0,,
+__setup__.coa_neom_44005,Rütschi,44005,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44010,Other Externals,44010,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44015,Prototype Cost,44015,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44020,Zero Serie Products,44020,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44025,Verification Cost,44025,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44030,Validation Cost,44030,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44035,Other Technical Files Cost,44035,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44040,CE Marking Cost,44040,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44045,FDA (Food & Drug Admin.),44045,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44050,Other Retulatory Cost,44050,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44055,Legal Cost,44055,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44060,Clinical Trials,44060,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_44065,Other Development,44065,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45010,Salaries and Social Charges,45010,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45020,Demo Product,45020,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45030,"Advertising Material, Prints",45030,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45040,Advertising Articles and Samples,45040,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45050,Fairs en Exhibitions,45050,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45060,Travel Expenses,45060,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45070,Customer Gifts,45070,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_45080,Representation Expenses,45080,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_50000,Management Salaries,50000,account.data_account_type_expenses,0,,
+__setup__.coa_neom_50010,Salaries of Staff,50010,account.data_account_type_expenses,0,,
+__setup__.coa_neom_51100,"AVS/AI/APG, Unemployment Insurance",51100,account.data_account_type_expenses,0,,
+__setup__.coa_neom_51200,Pension Insurance,51200,account.data_account_type_expenses,0,,
+__setup__.coa_neom_51300,Accident Insurance,51300,account.data_account_type_expenses,0,,
+__setup__.coa_neom_51400,Loss of earnings insurance,51400,account.data_account_type_expenses,0,,
+__setup__.coa_neom_52000,Training costs,52000,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_60000,Rent,60000,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_60100,Rent Ticino (EEMEA),60100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_60400,Maintenance and cleaning,60400,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_61010,Repair and maintenance equipments,61010,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_61020,Repair and maintenance tools and other furnitures,61020,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_62100,Fuel and Parking,62100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_62700,Private Vehicle costs,62700,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_63000,Insurance for damage,63000,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_63100,Liability Insurance,63100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_63600,Other Taxes and Fees  ,63600,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65000,Office Equipment  ,65000,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65010,Printings,65010,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65030,Technical Literature,65030,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65100,Phone,65100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65110,Fax,65110,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65120,Internet,65120,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65130,postages,65130,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65300,Fiduciary Fees,65300,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65310,Advisory Fees,65310,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65320,Legal Fees,65320,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65400,Board of Director Expenses,65400,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65420,Audit Fees,65420,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65730,Licences,65730,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_65735,IT Support,65735,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66100,"Advertising Material, Prints",66100,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66110,Advertising Articles and Samples,66110,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66210,Fairs and Exhibitions,66210,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66400,Travel Expenses,66400,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66420,Customer Gifts,66420,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_66450,Representation Expenses,66450,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68150,"Machinery, Equipment and furnitures ",68150,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68151,Molds ,68151,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68152,Hardware,68152,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68171,Project Dev. Cage System,68171,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68172,Patents,68172,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68173,Brands,68173,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68174,Cad. Lab. Validation,68174,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68175,Foundation costs,68175,account.data_account_type_expenses,0,,l10n_ch.1_vat_80_invest
+__setup__.coa_neom_68180,Amortisation/Impairment Participation Neo Medical SAS  ,68180,account.data_account_type_expenses,0,,
+__setup__.coa_neom_69400,Bank Fees,69400,account.data_account_type_expenses,0,,
+__setup__.l10n_ch_coa_original_3806,Foreign Exchange Gain,69420,account.data_account_type_revenue,0,,
+__setup__.l10n_ch_coa_original_4906,Foreign Exchange Loss,69430,account.data_account_type_expenses,0,,
+__setup__.coa_neom_89000,Income Tax ,89000,account.data_account_type_expenses,0,,
+__setup__.coa_neom_688170,Project Dev. Pedicle Screw System,688170,account.data_account_type_expenses,0,,
+__setup__.l10n_ch_coa_original_999999,Undistributed Profits/Losses,999999,account.data_unaffected_earnings,0,,

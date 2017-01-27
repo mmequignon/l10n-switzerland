@@ -1,0 +1,2 @@
+id,parent_id/id,name,street,street2,city,zip,country_id,website,phone,fax,email,vat,company_registry,currency_id/id,rml_header1
+base.main_company,,Neo Medical SA,Route de Lausanne 157 A,c/o Jonas Larsson,Vilette,1096,Switzerland,www.neo-medical.com,+41 79 444 04 43,,jonas.larsson@neo-medical.com,CHE-250.667.822 MWST,CH-550.1.116.295-4,base.CHF,

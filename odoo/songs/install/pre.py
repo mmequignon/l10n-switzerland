@@ -3,11 +3,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 from base64 import b64encode
-from pkg_resources import resource_string
+from pkg_resources import resource_string, resource_stream
 
 import anthem
 
-from anthem.lyrics.records import create_or_update
+from anthem.lyrics.loaders import load_csv_stream
 
 from ..common import req
 
@@ -19,29 +19,12 @@ def setup_company(ctx):
     company.name = 'NeoMedical'
 
     # load logo on company
-    logo_content = resource_string(req, 'data/images/company_main_logo.png')
+    logo_content = resource_string(req, 'data/images/company_main_logo.jpg')
     b64_logo = b64encode(logo_content)
     company.logo = b64_logo
 
-    with ctx.log(u'Configuring company'):
-        values = {
-            'name': "neomedical",
-            'street': "",
-            'zip': "",
-            'city': "",
-            'country_id': ctx.env.ref('base.ch').id,
-            'phone': "+41 00 000 00 00",
-            'fax': "+41 00 000 00 00",
-            'email': "contact@neomedical.ch",
-            'website': "http://www.neomedical.ch",
-            'vat': "VAT",
-            'parent_id': company.id,
-            'logo': b64_logo,
-            'currency_id': ctx.env.ref('base.CHF').id,
-        }
-        create_or_update(ctx, 'res.company',
-                         'scenario.neomedical_ch',
-                         values)
+    content = resource_stream(req, 'data/install/res.company.csv')
+    load_csv_stream(ctx, 'res.company', content, delimiter=',')
 
 
 @anthem.log
@@ -56,16 +39,7 @@ def setup_language(ctx):
 
 
 @anthem.log
-def set_web_base_url(ctx):
-    """ Configuring web.base.url """
-    url = 'http://localhost:8069'
-    ctx.env['ir.config_parameter'].set_param('web.base.url', url)
-    ctx.env['ir.config_parameter'].set_param('web.base.url.freeze', 'True')
-
-
-@anthem.log
 def main(ctx):
     """ Main: creating demo data """
     setup_company(ctx)
     setup_language(ctx)
-    set_web_base_url(ctx)
