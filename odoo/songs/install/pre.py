@@ -39,7 +39,19 @@ def setup_language(ctx):
 
 
 @anthem.log
+def admin_user_password(ctx):
+    """ Change admin password """
+    # password for the test server,
+    # the password must be changed in production
+    ctx.env.user.password_crypt = (
+        '$pbkdf2-sha512$19000$RwjBWKtVqtU6Z0wpBWDsvQ$58z4KqZPcwa2a9hlP0tdV'
+        'wjbXhyyRINZ5zEWCECs2WdWDZTIZzCH/vuy4rIaD/VuHdL47oAevx.MUcySy6GCDg'
+    )
+
+
+@anthem.log
 def main(ctx):
     """ Main: creating demo data """
     setup_company(ctx)
     setup_language(ctx)
+    admin_user_password(ctx)
