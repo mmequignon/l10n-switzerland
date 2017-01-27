@@ -14,7 +14,6 @@ migration:
           - odoo -i l10n_de,l10n_de_skr04 --stop-after-init --workers=0 --log-level=warn
           - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.accounting::main
-          - anthem songs.install.logistics::main
           - anthem songs.install.data_all::main
       modes:
         full:
