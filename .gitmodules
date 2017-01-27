@@ -38,3 +38,6 @@
 	path = odoo/external-src/l10n-switzerland
 	url = git@github.com:OCA/l10n-switzerland.git
 	branch = 9.0
+[submodule "odoo/external-src/odoo-cloud-platform"]
+	path = odoo/external-src/odoo-cloud-platform
+	url = git@github.com:camptocamp/odoo-cloud-platform.git

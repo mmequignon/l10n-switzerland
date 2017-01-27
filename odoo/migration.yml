@@ -1,12 +1,14 @@
 migration:
   options:
     install_command: odoo
+    install_args: --load=web,web_kanban,attachment_s3,session_redis,logging_json
   versions:
     - version: 10.0.0
       operations:
         pre:
           - anthem songs.install.pre::main
         post:
+          - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.accounting::main
           - anthem songs.install.logistics::main
           - anthem songs.install.data_all::main
@@ -62,16 +64,6 @@ migration:
           #### OCA/partner-contact
           - partner_firstname
           # - base_partner_merge
-          #### OCA/operating-unit
-          - operating_unit
-          - account_operating_unit
-          # - stock_operating_unit
-          # - sales_team_operating_unit
-          # - sale_operating_unit
-          # - purchase_operating_unit
-          # - account_bank_statement
-          # - procurement_operating_unit
-          # - sale_stock_operating unit
-          # - stock_account_operating unit
+          #### camptocamp/cloud-platform
+          - cloud_platform
           #### local-src
-          # - my_addon
