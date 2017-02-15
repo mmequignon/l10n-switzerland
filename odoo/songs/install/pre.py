@@ -21,7 +21,7 @@ def setup_company(ctx):
     company.name = 'EnfinFidu'
 
     # load logo on company
-    logo_content = resource_string(req, 'data/images/company_main_logo.png')
+    logo_content = resource_string(req, 'data/images/company_main_logo.jpg')
     b64_logo = b64encode(logo_content)
     company.logo = b64_logo
 
