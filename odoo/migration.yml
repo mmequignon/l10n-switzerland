@@ -7,10 +7,10 @@ migration:
         pre:
           - anthem songs.install.pre::main
         post:
-          - anthem openerp.addons.cloud_platform.songs::install_exoscale
+          # - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.accounting::main
-          - anthem songs.install.logistics::main
-          - anthem songs.install.data_all::main
+          # - anthem songs.install.logistics::main
+          # - anthem songs.install.data_all::main
       modes:
         full:
           operations:
@@ -31,3 +31,8 @@ migration:
           # - purchase
           #### local-src
           # - my_addon
+          #### OCA/account-financial-reporting
+          - account_financial_report_qweb
+          #### OCA/account-financial-tools
+          - account_fiscal_year
+          # - account_move_locking  # Not ported
