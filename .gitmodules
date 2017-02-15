@@ -14,3 +14,6 @@
 	path = odoo/src
 	url = git@github.com:OCA/OCB.git
 	branch = 10.0
+[submodule "odoo/external-src/odoo-cloud-platform"]
+	path = odoo/external-src/odoo-cloud-platform
+	url = git@github.com:camptocamp/odoo-cloud-platform.git

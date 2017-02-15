@@ -1,6 +1,6 @@
 migration:
   options:
-    install_command: odoo
+    install_args: --load=web,web_kanban,session_redis,attachment_s3,logging_json
   versions:
     - version: 10.0.0
       operations:
@@ -23,6 +23,8 @@ migration:
       addons:
         upgrade:
           - server_environment
+          - base_technical_features
+          - cloud_platform
           - base_technical_features
           #### core
           # - sale_stock

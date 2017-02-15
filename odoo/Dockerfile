@@ -13,9 +13,9 @@ MAINTAINER Camptocamp
 COPY ./requirements.txt /opt/odoo
 RUN cd /opt/odoo && pip install -r requirements.txt
 
-ENV ADDONS_PATH="/opt/odoo/external-src/enterprise, \
-  /opt/odoo/external-src/server-tools, \
+ENV ADDONS_PATH="/opt/odoo/external-src/server-tools, \
   /opt/odoo/src/addons, \
+  /opt/odoo/external-src/odoo-cloud-platform, \
   /opt/odoo/external-src/account-financial-tools, \
   /opt/odoo/external-src/bank-payment, \
   /opt/odoo/external-src/l10n-switzerland, \
