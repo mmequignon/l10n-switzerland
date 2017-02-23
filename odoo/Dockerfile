@@ -13,7 +13,7 @@ MAINTAINER Camptocamp
 COPY ./requirements.txt /opt/odoo
 RUN cd /opt/odoo && pip install -r requirements.txt
 
-ENV ADDONS_PATH="/opt/odoo/src/addons, \
+ENV ADDONS_PATH="/opt/odoo/local-src, \
   /opt/odoo/external-src/account-analytic, \
   /opt/odoo/external-src/account-financial-reporting, \
   /opt/odoo/external-src/account-financial-tools, \
@@ -24,7 +24,8 @@ ENV ADDONS_PATH="/opt/odoo/src/addons, \
   /opt/odoo/external-src/partner-contact, \
   /opt/odoo/external-src/reporting-engine, \
   /opt/odoo/external-src/server-tools, \
-  /opt/odoo/local-src," \
+  /opt/odoo/external-src/enterprise, \
+  /opt/odoo/src/addons" \
   LIMIT_TIME_CPU=86400 \
   LIMIT_TIME_REAL=86400 \
   LIMIT_MEMORY_SOFT=1342177280 \
