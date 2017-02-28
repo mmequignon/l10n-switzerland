@@ -52,7 +52,6 @@ def setup_language(ctx):
 @anthem.log
 def admin_user_password(ctx):
     """ Changing admin password """
-    # TODO default admin password for the test server, must be changed
     # To get an encrypted password:
     # $ docker-compose run --rm odoo python -c \
     # "from passlib.context import CryptContext; \
@@ -61,8 +60,8 @@ def admin_user_password(ctx):
         ctx.log_line('Not changing password for dev RUNNING_ENV')
         return
     ctx.env.user.password_crypt = (
-        '$pbkdf2-sha512$19000$tVYq5dwbI0Tofc85RwiBcA$a1tNyzZ0hxW9kXKIyEwN1'
-        'j84z5gIIi1PQmvtFHuxQ4rNA2RaXSGLjXnEifl6ZQZ/wiBJK6fZkeaGgF3DW9A2Bg'
+        '$pbkdf2-sha512$19000$4fyfE.I8h/A.B8DYe88Zgw$MnoouQnWVOIooBfxAk.k5'
+        'KVC5FCpfu6JjCr7uBicuqEQ5ruBpMjg/Y/zMyGxxTPmPOH/NbCK9wbMcwLpUkUNKQ'
     )
 
 
