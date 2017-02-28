@@ -25,6 +25,8 @@ latest (unreleased)
 
 **Build**
 
+* Fix nginx version for test environment
+
 **Documentation**
 
 
