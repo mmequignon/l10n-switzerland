@@ -72,3 +72,8 @@ migration:
           - cloud_platform
           #### local-src
     - version: 10.1.0
+      addons:
+        upgrade:
+          - l10n_ch_dta
+          - l10n_ch_pain_base
+          - l10n_ch_pain_credit_transfer
