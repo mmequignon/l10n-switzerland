@@ -36,8 +36,7 @@
 	branch = 10.0
 [submodule "odoo/external-src/l10n-switzerland"]
 	path = odoo/external-src/l10n-switzerland
-	url = git@github.com:OCA/l10n-switzerland.git
-	branch = 9.0
+	url = git@github.com:camptocamp/l10n-switzerland.git
 [submodule "odoo/external-src/odoo-cloud-platform"]
 	path = odoo/external-src/odoo-cloud-platform
 	url = git@github.com:camptocamp/odoo-cloud-platform.git

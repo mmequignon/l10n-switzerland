@@ -36,3 +36,12 @@
       # migration of mail_environment
     - oca refs/pull/662/head
   target: &default_target camptocamp merge-branch-2002-master
+./external-src/l10n-switzerland:
+  remotes:
+    oca: git@github.com:OCA/l10n-switzerland.git
+    camptocamp: git@github.com:camptocamp/l10n-switzerland.git
+  merges:
+    - oca 10.0
+    # port l10n_ch_pain_credit_transfer
+    - oca refs/pull/307/head
+  target: *default_target
