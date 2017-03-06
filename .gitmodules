@@ -27,3 +27,6 @@
 [submodule "odoo/external-src/account-financial-reporting"]
 	path = odoo/external-src/account-financial-reporting
 	url = git@github.com:OCA/account-financial-reporting.git
+[submodule "odoo/external-src/reporting-engine"]
+	path = odoo/external-src/reporting-engine
+	url = git@github.com:OCA/reporting-engine.git
