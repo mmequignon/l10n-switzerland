@@ -24,3 +24,6 @@
 [submodule "odoo/external-src/partner-contact"]
 	path = odoo/external-src/partner-contact
 	url = git@github.com:OCA/partner-contact.git
+[submodule "odoo/external-src/account-financial-reporting"]
+	path = odoo/external-src/account-financial-reporting
+	url = git@github.com:OCA/account-financial-reporting.git
