@@ -17,8 +17,11 @@ env:
     - ADDONS_DIR=${TRAVIS_BUILD_DIR}/odoo/local-src
     - SONGS_DIR=${TRAVIS_BUILD_DIR}/odoo/songs
     - COMPOSE_PROJECT_NAME=enfinfidu
-    - RANCHER_STACK_NAME=enfinfidu-odoo-test
-    - secure: "gwTwV6KFcUOVOY57xDI8kb4sMynpuBYXfkS4ZJExzlLhXG0nx1f6j06Ns9KGdHezlu7ZZZjAYwdNcJS8cMzIcE1niSmbF0JfoArqVbMegMFZegYoQzqefw3iLnUmI01MtWGbBeDbr0zm6v0Nc4w1MdfMS6spb4Z0CErP8p+dOup/2zEcDc8m180tIHcxR5x12d9EwjnlvL7/8eDhuXHh+yolZ2ca2z1Moucqoh49HsE78Bq2M639knHsq3r+c5NPur9XilpNsWD0qWq5hIfyPQPge9PEtpxIlYXR3/+MyQ4etjP8uEFw+ocfE1QMJMIbo3hAOSkGUKsuJIbG579URTEUDeM9hyqTri+ZKmgs+nPRSB63IkDOYZR7lfajVlEHAYnFP/zS4yyrVuTblY/YtMxFPsJDmpsjSM8Qb+jdH906p6BFXPlWojyzLPIAeVYC8yhxJgyeZzT3r5mlm8Ld+Y9IXfYyBnXoa8SwLmqNeyG0lbe3KM2fXHIBAU5RrTJLh0aB1JYOFoGYJvr7HgNrWmSE2w0NNOqaif6/V3oFA5rK4fms3q6AaMCqGXbU9qU6kV/6kZnW39ZXCavICluRtrse7zqd70KX9XC66OfF6KkwVVyFOTkh4zZW7oWTbCqBycPbKYqrxRCqSWBdVV4J5m0J/uYSBg4ibr73DArgz9o="
+    - GENERATED_IMAGE=${COMPOSE_PROJECT_NAME}_odoo
+    - DOCKER_HUB_REPO=camptocamp/${GENERATED_IMAGE}
+    - RANCHER_MINION_SERVER=https://${COMPOSE_PROJECT_NAME}.odoo-test.camptocamp.ch
+    # rancher minion server token:
+    - secure: "N6ZL7P71p233lRzz45xaGCcOjkD/Dw7CMtnk6St6l8BlowTdQo6dWbebuxVMA8O6otteNVOSVMaT++/jfAjljF367hY1/UfzuC7bN8yTGepSM9FCetTf06B85URyMkS0+c3PUD8rUKW2Cfpo5KxPBxsPLcNAi4rrzSJlfKfIhzUBZHZSI5f3KMiey6uKRMfN7WlWe3HacUDdeoafJ3awSmsxcUEpXWf8HsYGtWuKlRDVQxoR+xVDa1pT1oQAxoxs1M2JvYVbYqxlqcTQ/TrA1b035bu3x4pV74zCvDD+icMC/HbL5yhR3MlIINiWd7hikyERUIR4nSuEz1mje2OB1twq4kPbfxcOH99u70nKyRkG7ZggynQKpUP1vB1Wz3828UrKNVLfd5zf97ctFtsPa/BgXrQBZ+eTfhQmM5bqkdSlT9WfeI8TiS6c/yAGTNubgD1HTWaDa9/O+6pV5fzDCu7vuB/uz2+dxklRsq5JPSoVlcCYBwF22/pzAx0f14Y2m1BpEncO0iy9yg+t4zbIqOdH06GPPeX/tihEOPs2zCsukL2NnJLbWp+ZIqH2HjfiXsRubWWDA2xExyf6t6MafWnvoHQHQPyAoFZyltfzTSzrbo4Ho0vRRi12DwlGeGsKlVC11YksNvSZiOxli2Keh6BvtEnzuTTHWnVjG8O/4w8="
 
 before_install:
   - sudo apt-get update
@@ -30,7 +33,7 @@ before_install:
   - git config --global user.name "TravisCI"
   - git config --global user.email "travis@camptocamp.com"
   - if [ "$LINT_CHECK" == "1" ] ; then pip install --user -q flake8 ; fi
-  - if [ "$LINT_CHECK" == "0" ] ; then pip install --user -q gitpython ; fi
+  - if [ "$LINT_CHECK" == "0" ] ; then pip install --user -q gitpython requests ; fi
 
 install:
   - if [ "$LINT_CHECK" == "0" ] ; then python ./travis/git_submodule_update.py ; fi
