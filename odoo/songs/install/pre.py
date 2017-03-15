@@ -18,7 +18,8 @@ def setup_company(ctx):
     company = ctx.env.ref('base.main_company')
 
     # load logo on company
-    logo_content = resource_string(req, 'data/images/company_main_logo.jpg')
+    logo_content = resource_string(
+        req, 'data/images/company_main_logo.jpg')
     b64_logo = b64encode(logo_content)
     company.logo = b64_logo
 
@@ -42,7 +43,8 @@ def setup_company(ctx):
 def setup_language(ctx):
     """ Installing language and configuring locale formatting """
     for code in ('fr_FR',):
-        ctx.env['base.language.install'].create({'lang': code}).lang_install()
+        ctx.env['base.language.install'].create(
+            {'lang': code}).lang_install()
     ctx.env['res.lang'].search([]).write({
         'grouping': [3, 0],
         'date_format': '%d.%m.%Y',

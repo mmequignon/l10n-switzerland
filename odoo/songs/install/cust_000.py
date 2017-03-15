@@ -5,7 +5,7 @@
 from pkg_resources import resource_stream
 
 import anthem
-from anthem.lyrics.records import create_or_update, add_xmlid
+from anthem.lyrics.records import add_xmlid
 from anthem.lyrics.loaders import load_csv_stream
 
 from ..common import req

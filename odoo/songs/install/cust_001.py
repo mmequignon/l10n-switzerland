@@ -15,6 +15,7 @@ from ..common import req
 
 # BASE
 
+
 @anthem.log
 def setup_company(ctx):
     """ Setup company """
@@ -49,6 +50,7 @@ def import_users(ctx):
     load_csv_stream(ctx, 'res.users', content, delimiter=',')
 
 # SALES
+
 
 @anthem.log
 def set_sales_settings(ctx):

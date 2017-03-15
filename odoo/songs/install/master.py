@@ -74,6 +74,7 @@ def admin_user_password(ctx):
         'j84z5gIIi1PQmvtFHuxQ4rNA2RaXSGLjXnEifl6ZQZ/wiBJK6fZkeaGgF3DW9A2Bg'
     )
 
+
 @anthem.log
 def set_admin_lang(ctx):
     """ change default language """
@@ -82,7 +83,6 @@ def set_admin_lang(ctx):
     }
 
     create_or_update(ctx, 'res.partner', 'base.partner_root', values)
-
 
 
 @anthem.log
