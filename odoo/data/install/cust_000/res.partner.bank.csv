@@ -1,0 +1,2 @@
+"id","partner_id/id","acc_number","bank_id/id","company_id/id","bank_name","currency_id/id"
+"__setup__.res_partner_bank_ubschf","base.main_partner","CH62 0023 0230 7071 3000 0","l10n_ch_bank.bank_271_0000","base.main_company","UBS AG","base.CHF"
