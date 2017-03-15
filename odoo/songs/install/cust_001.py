@@ -2,7 +2,6 @@
 # Copyright 2016 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-import os
 
 from base64 import b64encode
 from pkg_resources import resource_string
