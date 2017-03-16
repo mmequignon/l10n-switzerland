@@ -23,7 +23,6 @@ migration:
           - server_environment
           - base_technical_features
           - cloud_platform
-          - base_technical_features
           # CORE
           - sale
           - account
