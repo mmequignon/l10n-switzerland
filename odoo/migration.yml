@@ -7,6 +7,7 @@ migration:
         pre:
           - anthem songs.install.master::main
         post:
+          - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.base_setup::main
       modes:
         full:
@@ -31,11 +32,14 @@ migration:
           - l10n_ch
           - document
           - hr_expense
+          - hr_payroll
           - account_budget
           # OCA
           - l10n_ch_bank
           - l10n_ch_base_bank
           - l10n_ch_dta
+          - l10n_ch_hr_payroll
+          - l10n_ch_hr_payroll_report
           - l10n_ch_states
           - l10n_ch_zip
           - account_financial_report_qweb
