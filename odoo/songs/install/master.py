@@ -6,9 +6,9 @@ import os
 
 from base64 import b64encode
 from pkg_resources import resource_string
+from anthem.lyrics.records import create_or_update
 
 import anthem
-
 from ..common import req
 
 
@@ -18,12 +18,13 @@ def setup_company(ctx):
     company = ctx.env.ref('base.main_company')
 
     # load logo on company
-    logo_content = resource_string(req, 'data/images/company_main_logo.jpg')
+    logo_content = resource_string(
+        req, 'data/images/company_main_logo.jpg')
     b64_logo = b64encode(logo_content)
     company.logo = b64_logo
 
     values = {
-        'name': u'EnfinFidu',
+        'name': u'Enfin! Consulting Sarl',
         'street': "Ch. de Montéclard 2A",
         'zip': "1066",
         'city': "Epalinges",
@@ -32,7 +33,7 @@ def setup_company(ctx):
         'fax': "+41 00 000 00 00",
         'email': "finance@enfinconsulting.ch",
         'website': "http://www.enfinfidu.ch",
-        'vat': "VAT",
+        'vat': "CHE-260.151.945",
         'currency_id': ctx.env.ref('base.CHF').id,
     }
     company.write(values)
@@ -42,11 +43,19 @@ def setup_company(ctx):
 def setup_language(ctx):
     """ Installing language and configuring locale formatting """
     for code in ('fr_FR',):
-        ctx.env['base.language.install'].create({'lang': code}).lang_install()
+        ctx.env['base.language.install'].create(
+            {'lang': code}).lang_install()
     ctx.env['res.lang'].search([]).write({
         'grouping': [3, 0],
         'date_format': '%d.%m.%Y',
     })
+
+
+@anthem.log
+def activate_chf_currency(ctx):
+    """ Activating CHF currency """
+    chf_currency = ctx.env.ref('base.CHF')
+    chf_currency.active = True
 
 
 @anthem.log
@@ -66,8 +75,20 @@ def admin_user_password(ctx):
 
 
 @anthem.log
+def set_admin_lang(ctx):
+    """ change default language """
+    values = {
+        'lang': "fr_FR"
+    }
+
+    create_or_update(ctx, 'res.partner', 'base.partner_root', values)
+
+
+@anthem.log
 def main(ctx):
     """ Main: creating demo data """
     setup_company(ctx)
     setup_language(ctx)
+    activate_chf_currency(ctx)
     admin_user_password(ctx)
+    set_admin_lang(ctx)

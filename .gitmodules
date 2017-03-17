@@ -21,3 +21,15 @@
 	path = odoo/external-src/server-tools
 	url = git@github.com:OCA/server-tools.git
 	branch = 10.0
+[submodule "odoo/external-src/partner-contact"]
+	path = odoo/external-src/partner-contact
+	url = git@github.com:OCA/partner-contact.git
+[submodule "odoo/external-src/account-financial-reporting"]
+	path = odoo/external-src/account-financial-reporting
+	url = git@github.com:OCA/account-financial-reporting.git
+[submodule "odoo/external-src/reporting-engine"]
+	path = odoo/external-src/reporting-engine
+	url = git@github.com:OCA/reporting-engine.git
+[submodule "odoo/external-src/web"]
+	path = odoo/external-src/web
+	url = git@github.com:OCA/web.git
