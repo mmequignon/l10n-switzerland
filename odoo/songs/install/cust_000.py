@@ -56,3 +56,7 @@ def load_partner_banks(ctx):
 def main(ctx):
     """ Run setup """
     import_users(ctx)
+    # TODO later
+    # load_account_journal(ctx)
+    # activate_analytic(ctx)
+    # load_partner_banks(ctx)

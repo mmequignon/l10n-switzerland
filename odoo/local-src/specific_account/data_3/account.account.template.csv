@@ -1,0 +1,2 @@
+"id","code","name","user_type_id/id","reconcile","chart_template_id/id"
+"transfer_account_id",1090,"Transferts internes","account.data_account_type_current_assets",1,"enfinfidu_chart_template"
