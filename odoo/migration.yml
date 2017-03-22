@@ -48,4 +48,4 @@ migration:
           - account_fiscal_year
           - web_sheet_full_width
           # LOCAL SOURCE
-          - enfin_custom
+          - specific_fct
