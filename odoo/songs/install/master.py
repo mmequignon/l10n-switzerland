@@ -13,6 +13,15 @@ from ..common import req
 
 
 @anthem.log
+def setup_company_minimal(ctx):
+    """ Setup company """
+    company = ctx.env.ref('base.main_company')
+    company.write({
+        'name': u'Enfin! Consulting Sarl',
+    })
+
+
+@anthem.log
 def setup_company(ctx):
     """ Setup company """
     company = ctx.env.ref('base.main_company')
@@ -87,7 +96,7 @@ def set_admin_lang(ctx):
 @anthem.log
 def main(ctx):
     """ Main: creating demo data """
-    setup_company(ctx)
+    setup_company_minimal(ctx)
     setup_language(ctx)
     activate_chf_currency(ctx)
     admin_user_password(ctx)

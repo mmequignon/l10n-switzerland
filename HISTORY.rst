@@ -21,8 +21,10 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* Rename enfin_custom module to specific_fct module
 * BSFIN-3: Custom payslip report
 * BSFIN-4: New payslip yearly report
+* BSFIN-6: Add songs for base and accounting configuration
 
 **Bugfixes**
 
