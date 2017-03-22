@@ -12,10 +12,9 @@ migration:
           # Install account without l10n to avoid auto install
           - odoo -i account --stop-after-init --workers=0
           - anthem songs.install.accounting::no_coa_instance_lock
-          - odoo -i l10n_ch --stop-after-init --workers=0
+        post:
           - anthem songs.install.accounting::no_coa_instance_unlock
           - anthem songs.install.master::setup_company
-        post:
           - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.base_setup::main
           - anthem songs.install.cust_001::main
@@ -38,7 +37,6 @@ migration:
           - cloud_platform
           # CORE
           - sale
-          - account
           - account_accountant
           - account_cancel
           - l10n_ch
