@@ -21,11 +21,16 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-3: Custom payslip report
+* BSFIN-4: New payslip yearly report
+
 **Bugfixes**
 
 **Build**
 
 * Fix nginx version for test environment
+* Add PRs (for xxx_environment modules in v10) for server-tools repository
+* Add PR for l10n_ch_hr_payroll migration V10
 
 **Documentation**
 
