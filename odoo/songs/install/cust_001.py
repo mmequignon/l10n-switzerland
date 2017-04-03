@@ -63,9 +63,29 @@ def set_sales_settings(ctx):
 # ACCOUNTING
 
 
+# PROJECT
+
+
+@anthem.log
+def setup_project(ctx):
+    """ Setup project """
+
+    create_or_update(
+        ctx, 'project.project', '__setup__.project_rlbatiment',
+        {
+            'name': u'RL Batiment',
+        })
+    create_or_update(
+        ctx, 'res.company', '__setup__.rlbatiment',
+        {
+            'project_id': ctx.env.ref('__setup__.project_rlbatiment').id,
+        })
+
+
 @anthem.log
 def main(ctx):
     """ Run setup """
     setup_company(ctx)
+    setup_project(ctx)
     import_users(ctx)
     set_sales_settings(ctx)
