@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2017 Julien Coux (Camptocamp)
+# Copyright 2017 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import models, fields, api
@@ -65,6 +65,13 @@ class ProjectProject(models.Model):
     )
 
     @api.multi
+    @api.depends(
+        'task_ids',
+        'task_ids.supplier_invoice_id',
+        'task_ids.expense_id',
+        'task_ids.bank_statement_id',
+        'task_ids.type'
+    )
     def _compute_opened_tasks(self):
         for project in self:
             tasks = project.task_ids
@@ -98,8 +105,10 @@ class ProjectProject(models.Model):
     @api.multi
     def related_expenses(self):
         self.ensure_one()
-        action_ref = 'hr_expense.hr_expense_actions_my_unsubmitted'
+        action_ref = 'hr_expense.hr_expense_actions_all'
         action_data = self.env.ref(action_ref).read()[0]
+        action_data['view_mode'] = 'tree,form'
+        action_data['views'] = [(False, u'tree'), (False, u'form')]
         action_data['domain'] = [
             ('id', 'in', self.expense_ids.ids)
         ]

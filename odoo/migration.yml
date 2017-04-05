@@ -34,6 +34,7 @@ migration:
         upgrade:
           # TECHNICAL MODULES
           - server_environment
+          - mail_environment
           - base_technical_features
           - cloud_platform
           # CORE
@@ -61,6 +62,6 @@ migration:
           - web_sheet_full_width
           - project_task_default_stage
           # LOCAL SOURCE
-          - specific_account
-          - specific_fct
-          - specific_project
+          - enfinfidu_account
+          - enfinfidu_fct
+          - enfinfidu_project

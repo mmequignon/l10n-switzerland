@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2017 Julien Coux (Camptocamp)
+# Copyright 2017 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import models, fields, api
@@ -39,16 +39,19 @@ class ProjectTask(models.Model):
     supplier_invoice_id = fields.Many2one(
         comodel_name='account.invoice',
         string='Supplier invoice',
+        domain=[('type', '=', 'in_invoice'), ('task_ids', '=', False)]
     )
 
     expense_id = fields.Many2one(
         comodel_name='hr.expense',
         string='Expense',
+        domain=[('task_ids', '=', False)]
     )
 
     bank_statement_id = fields.Many2one(
         comodel_name='account.bank.statement',
         string='Bank statement',
+        domain=[('task_ids', '=', False)]
     )
 
     company_id = fields.Many2one(

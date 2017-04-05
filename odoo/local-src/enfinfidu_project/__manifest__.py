@@ -17,7 +17,9 @@
     'website': 'http://www.camptocamp.com',
     'data': [
         # Views
+        'views/account_bank_statement.xml',
         'views/account_invoice.xml',
+        'views/hr_expense.xml',
         'views/project_project.xml',
         'views/project_task.xml',
         'views/res_company.xml',
