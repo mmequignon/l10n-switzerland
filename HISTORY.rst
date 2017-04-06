@@ -21,13 +21,20 @@ latest (unreleased)
 
 **Features and Improvements**
 
-* BSFIN-2: Custom project management
-
 **Bugfixes**
 
 **Build**
 
 **Documentation**
+
+
+10.3.0 (2017-04-06)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* BSFIN-2: Custom project management
+* Install modules account_asset and hr_timesheet
 
 
 10.2.0 (2017-03-22)
