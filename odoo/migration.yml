@@ -39,11 +39,13 @@ migration:
           - cloud_platform
           # CORE
           - account_accountant
+          - account_asset
           - account_budget
           - account_cancel
           - document
           - hr_expense
           - hr_payroll
+          - hr_timesheet
           - l10n_ch
           - project
           - sale
