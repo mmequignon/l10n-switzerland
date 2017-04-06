@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_project_project_specific_form" model="ir.ui.view">
+        <field name="name">project.project.specific.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+
+            <div class="oe_button_box" position="inside">
+                <button class="oe_stat_button"
+                        icon="fa-pencil-square-o"
+                        type="object"
+                        name="related_supplier_invoices">
+                    <field string="Supplier invoices" name="supplier_invoice_count" widget="statinfo"/>
+                </button>
+
+                <button class="oe_stat_button"
+                        type="object"
+                        name="related_expenses">
+                    <field string="Expenses" name="expense_count" widget="statinfo"/>
+                </button>
+
+                <button class="oe_stat_button"
+                        type="object"
+                        name="related_bank_statements">
+                    <field string="Bank statements" name="bank_statement_count" widget="statinfo"/>
+                </button>
+
+                <button class="oe_stat_button"
+                        type="object"
+                        name="related_other_tasks">
+                    <field string="Other tasks" name="other_tasks_count" widget="statinfo"/>
+                </button>
+            </div>
+
+        </field>
+    </record>
+
+    <record id="view_project_project_specific_kanban" model="ir.ui.view">
+        <field name="name">project.project.specific.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+
+            <templates position="before">
+                <field name="supplier_invoice_count"/>
+                <field name="expense_count"/>
+                <field name="bank_statement_count"/>
+                <field name="other_tasks_count"/>
+            </templates>
+
+            <div class="o_kanban_primary_left" position="inside">
+                <br/>
+                <div>
+                    <a type="object" name="related_supplier_invoices">
+                        <span><t t-esc="record.supplier_invoice_count.value"/> Supplier invoices</span>
+                    </a>
+                </div>
+                <div>
+                    <a type="object" name="related_expenses">
+                        <span><t t-esc="record.expense_count.value"/> Expenses</span>
+                    </a>
+                </div>
+                <div>
+                    <a type="object" name="related_bank_statements">
+                        <span><t t-esc="record.bank_statement_count.value"/> Bank statements</span>
+                    </a>
+                </div>
+                <div>
+                    <a type="object" name="related_other_tasks">
+                        <span><t t-esc="record.other_tasks_count.value"/> Other tasks</span>
+                    </a>
+                </div>
+            </div>
+
+        </field>
+    </record>
+
+</odoo>

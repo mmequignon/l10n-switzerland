@@ -32,16 +32,16 @@ def configure_missing_chart_of_account(ctx):
 
     coa_dict = {
         'base.main_company': {
-            'chart_template_id': 'specific_account.enfinfidu_chart_template',
+            'chart_template_id': 'enfinfidu_account.enfinfidu_chart_template',
             'template_transfer_account_id':
-                'specific_account.transfer_account_id',
+                'enfinfidu_account.transfer_account_id',
             # 'sale_tax_id': 'l10n_ch.1_vat_80',
             # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
         },
         '__setup__.rlbatiment': {
-            'chart_template_id': 'specific_account.enfinfidu_chart_template',
+            'chart_template_id': 'enfinfidu_account.enfinfidu_chart_template',
             'template_transfer_account_id':
-                'specific_account.transfer_account_id',
+                'enfinfidu_account.transfer_account_id',
             # 'sale_tax_id': 'l10n_ch.1_vat_80',
             # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
         },

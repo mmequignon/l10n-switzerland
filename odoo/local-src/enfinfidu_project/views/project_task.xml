@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_project_task_specific_form" model="ir.ui.view">
+        <field name="name">project.task.specific.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <field name="user_id" position="after">
+                <field name="id" invisible="True"/>
+                <field name="type"
+                       attrs="{'invisible': [('id', '=', False)]}"/>
+                <field name="supplier_invoice_id"
+                       context="{'default_task_id': active_id, 'default_company_id': company_id, 'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}"
+                       domain="[('type', '=', 'in_invoice'), ('task_ids', '=', False), ('project_id', '=', project_id)]"
+                       attrs="{'invisible': ['|', ('type', '!=', 'supplier_invoice'), ('id', '=', False)], 'required': [('type', '=', 'supplier_invoice')]}"/>
+                <field name="expense_id"
+                       context="{'default_task_id': active_id, 'default_company_id': company_id}"
+                       domain="[('task_ids', '=', False), ('project_id', '=', project_id)]"
+                       attrs="{'invisible': ['|', ('type', '!=', 'expense'), ('id', '=', False)], 'required': [('type', '=', 'expense')]}"/>
+                <field name="bank_statement_id"
+                       context="{'default_task_id': active_id, 'default_company_id': company_id}"
+                       domain="[('task_ids', '=', False), ('project_id', '=', project_id)]"
+                       attrs="{'invisible': ['|', ('type', '!=', 'bank_statement'), ('id', '=', False)], 'required': [('type', '=', 'bank_statement')]}"/>
+            </field>
+
+        </field>
+    </record>
+
+</odoo>

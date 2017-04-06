@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-2: Custom project management
+
 **Bugfixes**
 
 **Build**
