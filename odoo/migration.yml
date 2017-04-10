@@ -66,4 +66,5 @@ migration:
           # LOCAL SOURCE
           - enfinfidu_account
           - enfinfidu_fct
+          - enfinfidu_payroll
           - enfinfidu_project

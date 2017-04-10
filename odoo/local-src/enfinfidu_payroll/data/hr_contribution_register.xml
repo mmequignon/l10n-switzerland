@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record id="hr_register_avs" model="hr.contribution.register">
+      <field name="name">Caisse AVS/AI/APG</field>
+    </record>
+    <record id="hr_register_lpp" model="hr.contribution.register">
+      <field name="name">Caisse LPP</field>
+    </record>
+    <record id="hr_register_laa" model="hr.contribution.register">
+      <field name="name">Caisse LAA</field>
+    </record>
+    <record id="hr_register_ijm" model="hr.contribution.register">
+      <field name="name">Indemnités Jours Maladie (IJM)</field>
+    </record>
+    <record id="hr_register_afc" model="hr.contribution.register">
+      <field name="name">Administration fiscale cantonale (AFC)</field>
+    </record>
+    <record id="hr_register_caf" model="hr.contribution.register">
+      <field name="name">Caisse Allocations Familiales (CAF)</field>
+    </record>
+  </data>
+</odoo>
