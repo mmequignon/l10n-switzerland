@@ -1,45 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <data>
-    <record id="TOT_DED" model="hr.salary.rule.category">
-      <field name="name">Total deductions</field>
-      <field name="code">TOT_DED</field>
-    </record>
-    <record id="PROV" model="hr.salary.rule.category">
-      <field name="name">Provision</field>
-      <field name="code">PROV</field>
-    </record>
-    <record id="IND" model="hr.salary.rule.category">
-      <field name="name">Indemnities</field>
-      <field name="code">IND</field>
-    </record>
-    <record id="TOT_HS" model="hr.salary.rule.category">
-      <field name="name">Total outside salary</field>
-      <field name="code">TOT_HS</field>
-    </record>
-    <record id="HS" model="hr.salary.rule.category">
-      <field name="name">Outside salary</field>
-      <field name="code">HS</field>
-    </record>
-    <record id="OTHER" model="hr.salary.rule.category">
-      <field name="name">Other</field>
-      <field name="code">OTHER</field>
-    </record>
-    <record id="SalAVS" model="hr.salary.rule.category">
-      <field name="name">AVS Salary</field>
-      <field name="code">SalAVS</field>
-    </record>
-    <record id="SalIJM" model="hr.salary.rule.category">
-      <field name="name">IJM Salary</field>
-      <field name="code">SalIJM</field>
-    </record>
-    <record id="SalLAA" model="hr.salary.rule.category">
-      <field name="name">LAA Salary</field>
-      <field name="code">SalLAA</field>
-    </record>
-    <record id="GrossCH" model="hr.salary.rule.category">
-      <field name="name">Gross CH</field>
-      <field name="code">GROSS_CH</field>
-    </record>
-  </data>
+  <record id="TOT_DED" model="hr.salary.rule.category">
+    <field name="name">Total deductions</field>
+    <field name="code">TOT_DED</field>
+  </record>
+  <record id="PROV" model="hr.salary.rule.category">
+    <field name="name">Provision</field>
+    <field name="code">PROV</field>
+  </record>
+  <record id="IND" model="hr.salary.rule.category">
+    <field name="name">Indemnities</field>
+    <field name="code">IND</field>
+  </record>
+  <record id="TOT_HS" model="hr.salary.rule.category">
+    <field name="name">Total outside salary</field>
+    <field name="code">TOT_HS</field>
+  </record>
+  <record id="HS" model="hr.salary.rule.category">
+    <field name="name">Outside salary</field>
+    <field name="code">HS</field>
+  </record>
+  <record id="OTHER" model="hr.salary.rule.category">
+    <field name="name">Other</field>
+    <field name="code">OTHER</field>
+  </record>
+  <record id="SalAVS" model="hr.salary.rule.category">
+    <field name="name">AVS Salary</field>
+    <field name="code">SalAVS</field>
+  </record>
+  <record id="SalIJM" model="hr.salary.rule.category">
+    <field name="name">IJM Salary</field>
+    <field name="code">SalIJM</field>
+  </record>
+  <record id="SalLAA" model="hr.salary.rule.category">
+    <field name="name">LAA Salary</field>
+    <field name="code">SalLAA</field>
+  </record>
+  <record id="GrossCH" model="hr.salary.rule.category">
+    <field name="name">Gross CH</field>
+    <field name="code">GROSS_CH</field>
+  </record>
 </odoo>

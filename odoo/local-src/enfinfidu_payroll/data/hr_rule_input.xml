@@ -1,135 +1,133 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <record id="hr_rule_input_HSal" model="hr.rule.input">
-            <field name="code">NbHours</field>
-            <field name="name">Nombre d'heures salaire horaire</field>
-            <field name="input_id" ref="c2c_salary_rule_HSal"/>
-        </record>
-        <record id="hr_rule_input_h100h" model="hr.rule.input">
-            <field name="code">NbHours100</field>
-            <field name="name">Nombre d'heures supplémentaires 100%</field>
-            <field name="input_id" ref="c2c_salary_rule_h100h"/>
-        </record>
-        <record id="hr_rule_input_h125h" model="hr.rule.input">
-            <field name="code">NbHours125</field>
-            <field name="name">Nombre d'heures supplémentaires 125%</field>
-            <field name="input_id" ref="c2c_salary_rule_h125h"/>
-        </record>
-        <record id="hr_rule_input_h150h" model="hr.rule.input">
-            <field name="code">NbHours150</field>
-            <field name="name">Nombre d'heures supplémentaires 150%</field>
-            <field name="input_id" ref="c2c_salary_rule_h150h"/>
-        </record>
-        <record id="hr_rule_input_h200h" model="hr.rule.input">
-            <field name="code">NbHours200</field>
-            <field name="name">Nombre d'heures supplémentaires 200%</field>
-            <field name="input_id" ref="c2c_salary_rule_h200h"/>
-        </record>
-        <record id="hr_rule_input_h100m" model="hr.rule.input">
-            <field name="code">NbHours100</field>
-            <field name="name">Nombre d'heures supplémentaires 100%</field>
-            <field name="input_id" ref="c2c_salary_rule_h100m"/>
-        </record>
-        <record id="hr_rule_input_h125m" model="hr.rule.input">
-            <field name="code">NbHours125</field>
-            <field name="name">Nombre d'heures supplémentaires 125%</field>
-            <field name="input_id" ref="c2c_salary_rule_h125m"/>
-        </record>
-        <record id="hr_rule_input_h150m" model="hr.rule.input">
-            <field name="code">NbHours150</field>
-            <field name="name">Nombre d'heures supplémentaires 150%</field>
-            <field name="input_id" ref="c2c_salary_rule_h150m"/>
-        </record>
-        <record id="hr_rule_input_h200m" model="hr.rule.input">
-            <field name="code">NbHours200</field>
-            <field name="name">Nombre d'heures supplémentaires 200%</field>
-            <field name="input_id" ref="c2c_salary_rule_h200m"/>
-        </record>
-        <record id="hr_rule_input_13th" model="hr.rule.input">
-            <field name="code">thirteen</field>
-            <field name="name">13ème salaire</field>
-            <field name="input_id" ref="c2c_salary_rule_13th"/>
-        </record>
-        <record id="hr_rule_input_grat" model="hr.rule.input">
-            <field name="code">grat</field>
-            <field name="name">Gratification</field>
-            <field name="input_id" ref="c2c_salary_rule_grat"/>
-        </record>
-        <record id="hr_rule_input_bonus" model="hr.rule.input">
-            <field name="code">bonus</field>
-            <field name="name">Bonus</field>
-            <field name="input_id" ref="c2c_salary_rule_bonus"/>
-        </record>
-        <record id="hr_rule_input_privcar" model="hr.rule.input">
-            <field name="code">privcar</field>
-            <field name="name">Part privée voiture de service</field>
-            <field name="input_id" ref="c2c_salary_rule_privcar"/>
-        </record>
-        <record id="hr_rule_input_allowAPG" model="hr.rule.input">
-            <field name="code">allowAPG</field>
-            <field name="name">Indemnité APG</field>
-            <field name="input_id" ref="c2c_salary_rule_allowAPG"/>
-        </record>
-        <record id="hr_rule_input_allowmili" model="hr.rule.input">
-            <field name="code">allowmili</field>
-            <field name="name">Indemnité assurance militaire</field>
-            <field name="input_id" ref="c2c_salary_rule_allowmili"/>
-        </record>
-        <record id="hr_rule_input_allowacci" model="hr.rule.input">
-            <field name="code">allowacci</field>
-            <field name="name">Indemnité accident</field>
-            <field name="input_id" ref="c2c_salary_rule_allowacci"/>
-        </record>
-        <record id="hr_rule_input_exptrav" model="hr.rule.input">
-            <field name="code">exptrav</field>
-            <field name="name">Frais de voyage</field>
-            <field name="input_id" ref="c2c_salary_rule_exptrav"/>
-        </record>
-        <record id="hr_rule_input_expcar" model="hr.rule.input">
-            <field name="code">expcar</field>
-            <field name="name">Frais de voiture</field>
-            <field name="input_id" ref="c2c_salary_rule_expcar"/>
-        </record>
-        <record id="hr_rule_input_expmeal" model="hr.rule.input">
-            <field name="code">expmeal</field>
-            <field name="name">Frais de repas</field>
-            <field name="input_id" ref="c2c_salary_rule_expmeal"/>
-        </record>
-        <record id="hr_rule_input_expnight" model="hr.rule.input">
-            <field name="code">expnight</field>
-            <field name="name">Frais de nuitées</field>
-            <field name="input_id" ref="c2c_salary_rule_expnight"/>
-        </record>
-        <record id="hr_rule_input_expothers" model="hr.rule.input">
-            <field name="code">expothers</field>
-            <field name="name">Autres frais effectifs</field>
-            <field name="input_id" ref="c2c_salary_rule_expothers"/>
-        </record>
-        <record id="hr_rule_input_exprepr" model="hr.rule.input">
-            <field name="code">exprepr</field>
-            <field name="name">Frais forfaitaires de représentation</field>
-            <field name="input_id" ref="c2c_salary_rule_exprepr"/>
-        </record>
-        <record id="hr_rule_input_expfixca" model="hr.rule.input">
-            <field name="code">expfixca</field>
-            <field name="name">Frais forfaitaires de voiture</field>
-            <field name="input_id" ref="c2c_salary_rule_expfixcar"/>
-        </record>
-        <record id="hr_rule_input_expfxiothers" model="hr.rule.input">
-            <field name="code">expfxiothers</field>
-            <field name="name">Autres frais forfaitaires</field>
-            <field name="input_id" ref="c2c_salary_rule_expfxiothers"/>
-        </record>
-        <record id="hr_rule_input_allowsick" model="hr.rule.input">
-            <field name="code">allowsick</field>
-            <field name="name">Indemnité maladie</field>
-            <field name="input_id" ref="c2c_salary_rule_allowsick"/>
-        </record>
-        <record id="hr_rule_input_allowmat" model="hr.rule.input">
-            <field name="code">allowmat</field>
-            <field name="name">Indemnité maternité</field>
-            <field name="input_id" ref="c2c_salary_rule_allowmat"/>
-        </record>
-    </data>
+    <record id="hr_rule_input_HSal" model="hr.rule.input">
+        <field name="code">NbHours</field>
+        <field name="name">Nombre d'heures salaire horaire</field>
+        <field name="input_id" ref="c2c_salary_rule_HSal"/>
+    </record>
+    <record id="hr_rule_input_h100h" model="hr.rule.input">
+        <field name="code">NbHours100</field>
+        <field name="name">Nombre d'heures supplémentaires 100%</field>
+        <field name="input_id" ref="c2c_salary_rule_h100h"/>
+    </record>
+    <record id="hr_rule_input_h125h" model="hr.rule.input">
+        <field name="code">NbHours125</field>
+        <field name="name">Nombre d'heures supplémentaires 125%</field>
+        <field name="input_id" ref="c2c_salary_rule_h125h"/>
+    </record>
+    <record id="hr_rule_input_h150h" model="hr.rule.input">
+        <field name="code">NbHours150</field>
+        <field name="name">Nombre d'heures supplémentaires 150%</field>
+        <field name="input_id" ref="c2c_salary_rule_h150h"/>
+    </record>
+    <record id="hr_rule_input_h200h" model="hr.rule.input">
+        <field name="code">NbHours200</field>
+        <field name="name">Nombre d'heures supplémentaires 200%</field>
+        <field name="input_id" ref="c2c_salary_rule_h200h"/>
+    </record>
+    <record id="hr_rule_input_h100m" model="hr.rule.input">
+        <field name="code">NbHours100</field>
+        <field name="name">Nombre d'heures supplémentaires 100%</field>
+        <field name="input_id" ref="c2c_salary_rule_h100m"/>
+    </record>
+    <record id="hr_rule_input_h125m" model="hr.rule.input">
+        <field name="code">NbHours125</field>
+        <field name="name">Nombre d'heures supplémentaires 125%</field>
+        <field name="input_id" ref="c2c_salary_rule_h125m"/>
+    </record>
+    <record id="hr_rule_input_h150m" model="hr.rule.input">
+        <field name="code">NbHours150</field>
+        <field name="name">Nombre d'heures supplémentaires 150%</field>
+        <field name="input_id" ref="c2c_salary_rule_h150m"/>
+    </record>
+    <record id="hr_rule_input_h200m" model="hr.rule.input">
+        <field name="code">NbHours200</field>
+        <field name="name">Nombre d'heures supplémentaires 200%</field>
+        <field name="input_id" ref="c2c_salary_rule_h200m"/>
+    </record>
+    <record id="hr_rule_input_13th" model="hr.rule.input">
+        <field name="code">thirteen</field>
+        <field name="name">13ème salaire</field>
+        <field name="input_id" ref="c2c_salary_rule_13th"/>
+    </record>
+    <record id="hr_rule_input_grat" model="hr.rule.input">
+        <field name="code">grat</field>
+        <field name="name">Gratification</field>
+        <field name="input_id" ref="c2c_salary_rule_grat"/>
+    </record>
+    <record id="hr_rule_input_bonus" model="hr.rule.input">
+        <field name="code">bonus</field>
+        <field name="name">Bonus</field>
+        <field name="input_id" ref="c2c_salary_rule_bonus"/>
+    </record>
+    <record id="hr_rule_input_privcar" model="hr.rule.input">
+        <field name="code">privcar</field>
+        <field name="name">Part privée voiture de service</field>
+        <field name="input_id" ref="c2c_salary_rule_privcar"/>
+    </record>
+    <record id="hr_rule_input_allowAPG" model="hr.rule.input">
+        <field name="code">allowAPG</field>
+        <field name="name">Indemnité APG</field>
+        <field name="input_id" ref="c2c_salary_rule_allowAPG"/>
+    </record>
+    <record id="hr_rule_input_allowmili" model="hr.rule.input">
+        <field name="code">allowmili</field>
+        <field name="name">Indemnité assurance militaire</field>
+        <field name="input_id" ref="c2c_salary_rule_allowmili"/>
+    </record>
+    <record id="hr_rule_input_allowacci" model="hr.rule.input">
+        <field name="code">allowacci</field>
+        <field name="name">Indemnité accident</field>
+        <field name="input_id" ref="c2c_salary_rule_allowacci"/>
+    </record>
+    <record id="hr_rule_input_exptrav" model="hr.rule.input">
+        <field name="code">exptrav</field>
+        <field name="name">Frais de voyage</field>
+        <field name="input_id" ref="c2c_salary_rule_exptrav"/>
+    </record>
+    <record id="hr_rule_input_expcar" model="hr.rule.input">
+        <field name="code">expcar</field>
+        <field name="name">Frais de voiture</field>
+        <field name="input_id" ref="c2c_salary_rule_expcar"/>
+    </record>
+    <record id="hr_rule_input_expmeal" model="hr.rule.input">
+        <field name="code">expmeal</field>
+        <field name="name">Frais de repas</field>
+        <field name="input_id" ref="c2c_salary_rule_expmeal"/>
+    </record>
+    <record id="hr_rule_input_expnight" model="hr.rule.input">
+        <field name="code">expnight</field>
+        <field name="name">Frais de nuitées</field>
+        <field name="input_id" ref="c2c_salary_rule_expnight"/>
+    </record>
+    <record id="hr_rule_input_expothers" model="hr.rule.input">
+        <field name="code">expothers</field>
+        <field name="name">Autres frais effectifs</field>
+        <field name="input_id" ref="c2c_salary_rule_expothers"/>
+    </record>
+    <record id="hr_rule_input_exprepr" model="hr.rule.input">
+        <field name="code">exprepr</field>
+        <field name="name">Frais forfaitaires de représentation</field>
+        <field name="input_id" ref="c2c_salary_rule_exprepr"/>
+    </record>
+    <record id="hr_rule_input_expfixca" model="hr.rule.input">
+        <field name="code">expfixca</field>
+        <field name="name">Frais forfaitaires de voiture</field>
+        <field name="input_id" ref="c2c_salary_rule_expfixcar"/>
+    </record>
+    <record id="hr_rule_input_expfxiothers" model="hr.rule.input">
+        <field name="code">expfxiothers</field>
+        <field name="name">Autres frais forfaitaires</field>
+        <field name="input_id" ref="c2c_salary_rule_expfxiothers"/>
+    </record>
+    <record id="hr_rule_input_allowsick" model="hr.rule.input">
+        <field name="code">allowsick</field>
+        <field name="name">Indemnité maladie</field>
+        <field name="input_id" ref="c2c_salary_rule_allowsick"/>
+    </record>
+    <record id="hr_rule_input_allowmat" model="hr.rule.input">
+        <field name="code">allowmat</field>
+        <field name="name">Indemnité maternité</field>
+        <field name="input_id" ref="c2c_salary_rule_allowmat"/>
+    </record>
 </odoo>
