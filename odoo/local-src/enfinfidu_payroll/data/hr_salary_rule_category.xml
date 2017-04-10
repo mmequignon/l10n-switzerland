@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="TOT_DED" model="hr.salary.rule.category">
-    <field name="name">Total deductions</field>
-    <field name="code">TOT_DED</field>
-  </record>
   <record id="PROV" model="hr.salary.rule.category">
     <field name="name">Provision</field>
     <field name="code">PROV</field>
