@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* enfinfidu_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-10 11:50+0000\n"
+"PO-Revision-Date: 2017-04-10 11:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_13th
+msgid "13th salary"
+msgstr "13ème salaire"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_salavs
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.SalAVS
+msgid "AVS Salary"
+msgstr "Salaire AVS"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowacci
+msgid "Accident allowance"
+msgstr "Indemnité accident"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowcorr
+msgid "Allowances corrections"
+msgstr "Correction indemnité de tiers"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_bonus
+msgid "Bonus"
+msgstr "Bonus"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expcar
+msgid "Car expenses"
+msgstr "Frais de voiture"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expfixcar
+msgid "Fix car expenses"
+msgstr "Frais forfaitaires de voiture"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_exprepr
+msgid "Fix representation expenses"
+msgstr "Frais forfaitaires de représentation"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowAPG
+msgid "Gain loss allowance"
+msgstr "Indemnité APG"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_grat
+msgid "Gratification"
+msgstr "Gratification"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_HolAllow
+msgid "Holiday Allowance"
+msgstr "Indemnité vacances"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_HSal
+msgid "Hourly salary"
+msgstr "Salaire horaire"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_hMonth
+msgid "Hours per month"
+msgstr "Heures par mois"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_salijm
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.SalIJM
+msgid "IJM Salary"
+msgstr "Salaire IJM"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.IND
+msgid "Indemnities"
+msgstr "Indemnities"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_sallaa
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.SalLAA
+msgid "LAA Salary"
+msgstr "Salaire LAA"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowmat
+msgid "Maternity allowance"
+msgstr "Indemnité maternité"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expmeal
+msgid "Meal expenses"
+msgstr "Frais de repas"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowmili
+msgid "Military allowance"
+msgstr "Indemnité militaire"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_MSal
+msgid "Monthly salary"
+msgstr "Salaire mensuel"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expnight
+msgid "Night expenses"
+msgstr "Frais de nuitées"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.OTHER
+msgid "Other"
+msgstr "Autre"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expothers
+msgid "Other expenses"
+msgstr "Autres frais effectifs"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expfxiothers
+msgid "Other fix expenses"
+msgstr "Autres frais fixes"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.HS
+msgid "Outside salary"
+msgstr "Hors salaire"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_privcar
+msgid "Private part company car"
+msgstr "Part privée voiture de service"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.PROV
+msgid "Provision"
+msgstr "Provision"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_prov13
+msgid "Provision 13th"
+msgstr "Provision 13ème"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowsick
+msgid "Sickness allowance"
+msgstr "Indemnité maladie"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h100h
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h100m
+msgid "Supplementary hours 100%"
+msgstr "Heures supplémentaires 100%"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h125h
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h125m
+msgid "Supplementary hours 125%"
+msgstr "Heures supplémentaires 125%"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h150h
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h150m
+msgid "Supplementary hours 150%"
+msgstr "Heures supplémentaires 150%"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h200h
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_h200m
+msgid "Supplementary hours 200%"
+msgstr "Heures supplémentaires 200%"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowtot
+msgid "Total allowances"
+msgstr "Total Indemnités"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_totded
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.TOT_DED
+msgid "Total deductions"
+msgstr "Total déductions"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_totoutsal
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.TOT_HS
+msgid "Total outside salary"
+msgstr "Total hors salaire"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_exptrav
+msgid "Travel expenses"
+msgstr "Frais de voyage"
+

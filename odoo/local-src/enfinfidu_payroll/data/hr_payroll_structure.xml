@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record id="hr_payroll.structure_base" model="hr.payroll.structure">
+      <field eval="[(6, 0, [ref('c2c_salary_rule_hMonth'), ref('c2c_salary_rule_13th'), ref('c2c_salary_rule_grat'), ref('c2c_salary_rule_bonus'), ref('c2c_salary_rule_privcar'), ref('c2c_salary_rule_allowAPG'), ref('c2c_salary_rule_allowmili'), ref('c2c_salary_rule_allowacci'), ref('c2c_salary_rule_allowsick'), ref('c2c_salary_rule_allowmat'), ref('c2c_salary_rule_allowtot'), ref('c2c_salary_rule_allowcorr'), ref('c2c_salary_rule_salavs'), ref('c2c_salary_rule_sallaa'), ref('c2c_salary_rule_salijm'), ref('l10n_ch_hr_payroll.AVS'), ref('l10n_ch_hr_payroll.AVS_C'), ref('l10n_ch_hr_payroll.AVS_E'), ref('l10n_ch_hr_payroll.AC'), ref('l10n_ch_hr_payroll.AC_C'), ref('l10n_ch_hr_payroll.AC_E'), ref('l10n_ch_hr_payroll.AC_C_SOL'), ref('l10n_ch_hr_payroll.AC_E_SOL'), ref('l10n_ch_hr_payroll.ALFA_VD'), ref('l10n_ch_hr_payroll.FADMIN'), ref('l10n_ch_hr_payroll.IMP_SRC'), ref('l10n_ch_hr_payroll.LAA'), ref('l10n_ch_hr_payroll.LAA_C'), ref('l10n_ch_hr_payroll.LAA_E'), ref('l10n_ch_hr_payroll.LCA'), ref('l10n_ch_hr_payroll.LCA_C'), ref('l10n_ch_hr_payroll.LCA_E'), ref('l10n_ch_hr_payroll.LPP'), ref('l10n_ch_hr_payroll.LPP_C'), ref('l10n_ch_hr_payroll.LPP_E'), ref('c2c_salary_rule_totded'), ref('c2c_salary_rule_exptrav'), ref('c2c_salary_rule_expcar'), ref('c2c_salary_rule_expmeal'), ref('c2c_salary_rule_expnight'), ref('c2c_salary_rule_expothers'), ref('c2c_salary_rule_exprepr'), ref('c2c_salary_rule_expfixcar'), ref('c2c_salary_rule_expfxiothers'), ref('c2c_salary_rule_totoutsal'), ref('l10n_ch_hr_payroll.BASIC_CH'), ref('l10n_ch_hr_payroll.GROSS_CH'), ref('l10n_ch_hr_payroll.NET_CH'), ref('c2c_salary_rule_prov13')])]" name="rule_ids"/>
+      <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="structure_hourly_salary" model="hr.payroll.structure">
+      <field name="code">HSal</field>
+      <field name="name">Salaire horaire</field>
+      <field eval="[(6, 0, [ref('c2c_salary_rule_HSal'), ref('c2c_salary_rule_HolAllow'), ref('c2c_salary_rule_h100h'), ref('c2c_salary_rule_h125h'), ref('c2c_salary_rule_h150h'), ref('c2c_salary_rule_h200h')])]" name="rule_ids"/>
+      <field name="parent_id" ref="hr_payroll.structure_base"/>
+      <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="structure_monthly_salary" model="hr.payroll.structure">
+      <field name="code">MSal</field>
+      <field name="name">Salaire mensuel</field>
+      <field eval="[(6, 0, [ref('c2c_salary_rule_MSal'), ref('c2c_salary_rule_h100m'), ref('c2c_salary_rule_h125m'), ref('c2c_salary_rule_h150m'), ref('c2c_salary_rule_h200m')])]" name="rule_ids"/>
+      <field name="parent_id" ref="hr_payroll.structure_base"/>
+      <field name="company_id" ref="base.main_company"/>
+    </record>
+  </data>
+</odoo>

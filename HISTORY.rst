@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-12: Add a specific module to custom payroll structure
+
 **Bugfixes**
 
 **Build**
