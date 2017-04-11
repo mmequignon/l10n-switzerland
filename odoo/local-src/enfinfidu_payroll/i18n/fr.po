@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 11:50+0000\n"
-"PO-Revision-Date: 2017-04-10 11:50+0000\n"
+"POT-Creation-Date: 2017-04-11 13:04+0000\n"
+"PO-Revision-Date: 2017-04-11 13:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,11 @@ msgstr "Indemnité APG"
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_grat
 msgid "Gratification"
 msgstr "Gratification"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule.category,name:enfinfidu_payroll.GrossCH
+msgid "Gross CH"
+msgstr "Salaire brut"
 
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_HolAllow
@@ -191,12 +196,6 @@ msgstr "Heures supplémentaires 200%"
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowtot
 msgid "Total allowances"
 msgstr "Total Indemnités"
-
-#. module: enfinfidu_payroll
-#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_totded
-#: model:hr.salary.rule.category,name:enfinfidu_payroll.TOT_DED
-msgid "Total deductions"
-msgstr "Total déductions"
 
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_totoutsal

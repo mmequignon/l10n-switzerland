@@ -21,6 +21,7 @@ migration:
           - anthem songs.install.cust_001::main
           - anthem songs.install.cust_000::main
           - anthem songs.install.accounting::main
+          - anthem songs.install.payroll_cust_000::main
       modes:
         full:
           operations:
@@ -33,10 +34,10 @@ migration:
       addons:
         upgrade:
           # TECHNICAL MODULES
-          - server_environment
-          - mail_environment
           - base_technical_features
           - cloud_platform
+          - mail_environment
+          - server_environment
           # CORE
           - account_accountant
           - account_asset
@@ -50,6 +51,9 @@ migration:
           - project
           - sale
           # OCA
+          - account_financial_report_qweb
+          - account_fiscal_year
+          - account_tax_balance
           - l10n_ch_bank
           - l10n_ch_base_bank
           - l10n_ch_dta
@@ -57,12 +61,9 @@ migration:
           - l10n_ch_hr_payroll_report
           - l10n_ch_states
           - l10n_ch_zip
-          - account_financial_report_qweb
           - mis_builder
-          - account_tax_balance
-          - account_fiscal_year
-          - web_sheet_full_width
           - project_task_default_stage
+          - web_sheet_full_width
           # LOCAL SOURCE
           - enfinfidu_account
           - enfinfidu_fct

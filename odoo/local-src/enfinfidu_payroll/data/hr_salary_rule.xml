@@ -39,9 +39,9 @@
     <field name="condition_select">none</field>
     <field name="name">Hourly salary</field>
     <field name="amount_python_compute">per = contract.wage_fulltime;result = round(per*inputs.NbHours.amount/0.05)*0.05</field>
-    <field name="amount_percentage_base">inputs.NbHours.amount</field>
+    <field name="amount_percentage_base">contract.wage_fulltime</field>
     <field name="amount_percentage">0</field>
-    <field name="quantity">1</field>
+    <field name="quantity">inputs.NbHours.amount</field>
     <field name="sequence">1005</field>
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
@@ -55,9 +55,9 @@
     <field name="condition_select">none</field>
     <field name="name">Holiday Allowance</field>
     <field name="amount_python_compute">per = contract.wage_fulltime;perHol = 25 / (260-25);result = round(per*perHol*inputs.NbHours.amount/0.05)*0.05</field>
-    <field name="amount_percentage_base">contract.wage_fulltime*inputs.NbHours.amount</field>
+    <field name="amount_percentage_base">25 / (260-25)</field>
     <field name="amount_percentage">0</field>
-    <field name="quantity">1</field>
+    <field name="quantity">contract.wage_fulltime*inputs.NbHours.amount</field>
     <field name="sequence">1160</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
     <field name="report_is_total_rule">False</field>
@@ -93,7 +93,7 @@
     <field name="quantity">1</field>
     <field name="sequence">1062</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -109,7 +109,7 @@
     <field name="quantity">1</field>
     <field name="sequence">1063</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -125,7 +125,7 @@
     <field name="quantity">1</field>
     <field name="sequence">1064</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -135,13 +135,13 @@
     <field name="code">1061</field>
     <field name="condition_select">none</field>
     <field name="name">Supplementary hours 100%</field>
-    <field name="amount_python_compute">per = 100.00;result = round(contract.wage*per/100*inputs.NbHours100.amount/0.05)*0.05</field>
+    <field name="amount_python_compute">per = 100.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours100.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours100.amount</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
     <field name="sequence">1061</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -151,13 +151,13 @@
     <field name="code">1062</field>
     <field name="condition_select">none</field>
     <field name="name">Supplementary hours 125%</field>
-    <field name="amount_python_compute">per = 125.00;result = round(contract.wage*per/100*inputs.NbHours125.amount/0.05)*0.05</field>
+    <field name="amount_python_compute">per = 125.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours125.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours125.amount</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
     <field name="sequence">1062</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -167,13 +167,13 @@
     <field name="code">1063</field>
     <field name="condition_select">none</field>
     <field name="name">Supplementary hours 150%</field>
-    <field name="amount_python_compute">per = 150.00;result = round(contract.wage*per/100*inputs.NbHours150.amount/0.05)*0.05</field>
+    <field name="amount_python_compute">per = 150.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours150.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours150.amount</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
     <field name="sequence">1063</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -183,13 +183,13 @@
     <field name="code">1064</field>
     <field name="condition_select">none</field>
     <field name="name">Supplementary hours 200%</field>
-    <field name="amount_python_compute">per = 200.00;result = round(contract.wage*per/100*inputs.NbHours200.amount/0.05)*0.05</field>
+    <field name="amount_python_compute">per = 200.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours200.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours200.amount</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
     <field name="sequence">1064</field>
     <field name="report_is_total_rule">False</field>
-    <field name="report_display_details_columns">True</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.BASIC"/>
   </record>
@@ -391,7 +391,7 @@
     <field name="code">5002</field>
     <field name="condition_select">none</field>
     <field name="name">LAA Salary</field>
-    <field name="amount_python_compute">result = categories.BASIC + categories.GROSS + categories.ALW</field>
+    <field name="amount_python_compute">result = categories.BASIC + categories.GROSS + categories.ALW - categories.IND</field>
     <field name="amount_percentage_base">0</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
@@ -458,7 +458,7 @@
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
-    <field name="parent_rule_id " ref="l10n_ch_hr_payroll.AC"/>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_E" model="hr.salary.rule">
     <field name="amount_python_compute">per_in_limit = employee.company_id.ac_per_in_limit / 100;result = round(((categories.SalAVS)*per_in_limit)/0.05)*0.05;</field>
@@ -469,7 +469,7 @@
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
-    <field name="parent_rule_id " ref="l10n_ch_hr_payroll.AC"/>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_C_SOL" model="hr.salary.rule">
     <field name="condition_python">result = (categories.SalAVS) &gt; employee.company_id.ac_limit and (categories.SalAVS) - employee.company_id.ac_limit &gt; 0</field>
@@ -481,7 +481,7 @@
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
-    <field name="parent_rule_id " ref="l10n_ch_hr_payroll.AC"/>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_E_SOL" model="hr.salary.rule">
     <field name="condition_python">result = (categories.SalAVS) &gt; employee.company_id.ac_limit and (categories.SalAVS) - employee.company_id.ac_limit &gt; 0;</field>
@@ -493,7 +493,7 @@
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
-    <field name="parent_rule_id " ref="l10n_ch_hr_payroll.AC"/>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
   </record>
   <record id="l10n_ch_hr_payroll.ALFA_VD" model="hr.salary.rule">
     <field name="sequence">3030</field>
@@ -599,6 +599,7 @@
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LPP"/>
   </record>
   <record id="l10n_ch_hr_payroll.TOTAL_DED" model="hr.salary.rule">
+    <field name="code">5999</field>
     <field name="sequence">5999</field>
     <field name="report_is_total_rule">True</field>
     <field name="report_display_details_columns">False</field>
@@ -671,14 +672,14 @@
   <record id="c2c_salary_rule_expothers" model="hr.salary.rule">
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
-    <field name="code">6030</field>
+    <field name="code">6035</field>
     <field name="condition_select">none</field>
     <field name="name">Other expenses</field>
     <field name="amount_python_compute">result = round(inputs.expothers.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
-    <field name="sequence">6030</field>
+    <field name="sequence">6035</field>
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
@@ -746,7 +747,7 @@
     <field name="report_is_total_rule">True</field>
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
-    <field name="category_id" ref="HS"/>
+    <field name="category_id" ref="l10n_ch_hr_payroll.hr_payroll_INFO"/>
   </record>
   <record id="l10n_ch_hr_payroll.BASIC_CH" model="hr.salary.rule">
     <field name="appears_on_payslip">False</field>
@@ -762,14 +763,16 @@
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="GrossCH"/>
+    <field name="note">Gross CH</field>
   </record>
   <record id="l10n_ch_hr_payroll.NET_CH" model="hr.salary.rule">
-    <field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.GROSS + categories.DED + categories.FALW + categories.TOT_HS;</field>
+    <field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.GROSS + categories.DED + categories.FALW + categories.HS;</field>
     <field name="sequence">6500</field>
     <field name="report_is_total_rule">True</field>
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">True</field>
     <field name="category_id" ref="hr_payroll.NET"/>
+    <field name="note">Net CH</field>
   </record>
   <record id="c2c_salary_rule_prov13" model="hr.salary.rule">
     <field name="amount_select">code</field>
