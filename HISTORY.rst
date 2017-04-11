@@ -21,15 +21,21 @@ latest (unreleased)
 
 **Features and Improvements**
 
-* BSFIN-10: Do not diplay payslip line with a zero total in payslip report
-* BSFIN-12: Add a specific module to custom payroll structure
-* BSFIN-13: Fix custom payslip report after OCA review
-
 **Bugfixes**
 
 **Build**
 
 **Documentation**
+
+
+10.4.0 (2017-04-11)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* BSFIN-10: Do not diplay payslip line with a zero total in payslip report
+* BSFIN-12: Add a specific module to custom payroll structure
+* BSFIN-13: Fix custom payslip report after OCA review
 
 
 10.3.0 (2017-04-06)
