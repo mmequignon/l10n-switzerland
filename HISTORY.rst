@@ -22,6 +22,7 @@ latest (unreleased)
 **Features and Improvements**
 
 * BSFIN-9: Standardization of companies setup
+* Update salary imputation for main company
 
 **Bugfixes**
 
