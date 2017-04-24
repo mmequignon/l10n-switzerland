@@ -1,9 +1,11 @@
-# Odoo Platform
+# Odoo Cloud Platform
 
-Odoo platform is the new platform for deploying Camptocamp Odoo projects.
-This platform is managed on [Rancher](https://caas.camptocamp.net/)
+Odoo Cloud Platform is the new platform for deploying Camptocamp Odoo projects.
 
-So your project should be dockerized and use:
+This platform is managed on [Rancher](https://caas.camptocamp.com/).
+There is also a test platform on [Rancher-dev](https://caas-dev.camptocamp.com/), see this [document](./odoo-test-cloud-platform.md).
+
+Your project should be dockerized and use:
  * [Camptocamp Docker base image for Odoo project](https://github.com/camptocamp/docker-odoo-project)
  * [Odoo cloud platform addons](https://github.com/camptocamp/odoo-cloud-platform)
 
@@ -11,7 +13,7 @@ If you are creating a new project from scratch, you can use the [Camptocamp dock
 
 ## Platform structure
 
-On [Rancher](https://caas.camptocamp.net/), you can find the [odoo-platform environment](https://caas.camptocamp.net/env/1a19171/apps/stacks).
+On [Rancher](https://caas.camptocamp.com/), you can find the [odoo-platform environment](https://caas.camptocamp.com/env/1a233618/apps/stacks).
 
 Currently, this environment is hosted on 6 servers (and a 7th for sysadmin monitoring stacks):
 
@@ -28,43 +30,33 @@ These servers are tagged with Rancher labels (e.g.: application=true), we will s
 
 ## Instances
 
-For a standard Camptocamp Odoo project, we will have 3 Odoo instances:
+For a standard Camptocamp Odoo project, we will have 3 Odoo environments:
 
 ### Test
 
-This instance is for Camptocamp developers and project managers. The goal is to quickly test a merged pull request on master.
-
-This instance will be **automatically recreated from scratch** after every commit on master in your github project.
-For this reason:
-* We will not put the test database on the postgres cluster but in a docker container in your composition.
-* This instance should be populated with a little set of data in order to be quickly created.
-* Assumed this Odoo **can be deleted at every moment** with all the data you have created or modified.
+See the dedicated [document](./odoo-test-cloud-platform.md).
 
 ### Integration
 
 This instance can be used by the client as well as Camptocamp.
-The goal is to test new release, either during project developement or upgrade release when project is in production.
+The goal is to test new release, either during project development or upgrade release when project is in production.
 
 This instance should be populated with all the client data, in order to test full creation process and server performance.
 
-The database should be created on the Postgres cluster with the production randomly generated name suffixed by `_integration`.
+The database should be created on Postgres integration with the production randomly generated name suffixed by `_integration`.
 
 ### Prod
 
-The client production instance, the database is of course also on the Postgres cluster (with randomly generated name).
+The client production instance, the database is on the Postgres cluster (with randomly generated name).
 
 
 ## Rancher stacks
 
-Many stacks are required for our project to run on the platform:
+Different stacks are required for our project to run on the platform.
+All the stacks templates are on the [odoo-cloud-platform-ch-rancher-templates GitHub project](https://github.com/camptocamp/odoo-cloud-platform-ch-rancher-templates).
 
 **Odoo stacks**:
 
-* **enfinfidu-odoo-test**
- * odoo: Your odoo image with latest tag, build from the last commit in master
- * nginx: [Nginx proxy for odoo](https://github.com/camptocamp/docker-odoo-nginx)
- * db: [Postgres database container](https://github.com/camptocamp/docker-postgresql)
- * letsencrypt: [Container managing the certificate for the test domain name](https://github.com/janeczku/rancher-letsencrypt)
 * **enfinfidu-odoo-integration**
  * odoo: Your odoo image with a fixed version (e.g.: 9.1.0) build from a github tag
  * nginx: it's a sidekick of the odoo container [Nginx proxy for odoo](https://github.com/camptocamp/docker-odoo-nginx)
@@ -175,29 +167,6 @@ There is another file, rancher.env.gpg, which is encrypted and contains environm
 
 See [rancher.md](rancher.md#rancher-environment-setup) for more details and encrypt / decrypt command.
 
-#### Test stack configuration
-
-For the test stack, the composition file is [rancher/latest/docker-compose.yml](../rancher/latest/docker-compose.yml)
-
-If you used [Odoo template](https://github.com/camptocamp/odoo-template) to create your project you should already have it.
-Otherwise, you can download it and replace all cookiecutter values.
-
-Then, be sure to check the configuration of the instance (download the files
-from the odoo-template repository if needed) in
-[rancher/latest/rancher.public.env](../rancher/latest/rancher.public.env) and
-[rancher/latest/rancher.env](../rancher/latest/rancher.env).  The second file
-contains the private values and [needs to be
-encrypted](rancher.md#rancher-environment-setup) to `rancher.env.gpg`
-(`rancher.env` is never committed and must be in `.gitignore`).
-
-In `rancher.env` you have to fill:
-* RANCHER_ACCESS_KEY and RANCHER_SECRET_KEY, the keys are in
-  Lastpass' "Rancher API Keys for rancher.env"
-* LETSENCRYPT_AWS_ACCESS_KEY and LETSENCRYPT_AWS_SECRET_KEY the keys are in
-  Lastpass' "Let's Encrypt AWS Keys for rancher.env"
-* DB_PASSWORD and ADMIN_PASSWD with freshly generated passwords. To generate
-  passwords, you can use this command in your terminal `pwgen -n1 -s 20`
-
 #### Integration and production stacks
 
 The files for the integration and production stacks are stored in a project
@@ -243,6 +212,7 @@ Let's talk about the difference with test stack:
      - LIMIT_REQUEST=${LIMIT_REQUEST}
      - LIMIT_TIME_CPU=${LIMIT_TIME_CPU}
      - LIMIT_TIME_REAL=${LIMIT_TIME_REAL}
+     - ODOO_BASE_URL=${ODOO_BASE_URL}
      - MARABUNTA_ALLOW_SERIE=False
      - MARABUNTA_MODE=${MARABUNTA_MODE}
      - AWS_HOST=${AWS_HOST}
@@ -304,6 +274,7 @@ Let's talk about the difference with test stack:
 
  ```
  export DOMAIN_NAME=integration.enfinfidu.odoo.camptocamp.ch
+ export ODOO_BASE_URL="https://${DOMAIN_NAME}"
  
  export DB_USER=
  export DB_NAME=
@@ -376,6 +347,7 @@ Let's talk about the difference with test stack:
      - LIMIT_REQUEST=${LIMIT_REQUEST}
      - LIMIT_TIME_CPU=${LIMIT_TIME_CPU}
      - LIMIT_TIME_REAL=${LIMIT_TIME_REAL}
+     - ODOO_BASE_URL=${ODOO_BASE_URL}
      - MARABUNTA_ALLOW_SERIE=False
      - MARABUNTA_MODE=${MARABUNTA_MODE}
      - AWS_HOST=${AWS_HOST}
@@ -438,6 +410,7 @@ Let's talk about the difference with test stack:
 
  ```
  export DOMAIN_NAME=integration.enfinfidu.odoo.camptocamp.ch
+ export ODOO_BASE_URL="https://${DOMAIN_NAME}"
  
  export DB_USER=
  export DB_NAME=
@@ -504,43 +477,15 @@ pity to be unable to create the certificate the day of the golive. In the platfo
 ./rancher enfinfidu-odoo-prod up -d letsencrypt
 ```
 
-
-### Docker images
-
-Docker images for Odoo are generated and pushed to [Docker Hub](https://hub.docker.com) by Travis when builds are successfull.
-This push is done in [travis/publish.sh](../travis/publish.sh) which is called by [travis.yml](../.travis.yml) in after_succes section.
-
-You can see that this script will tag docker image with:
- * latest: When the build was triggered by a commit on master
- * `git tag name`: When the build was triggered after a new tag is pushed.
-
-So Travis should have access to your project on Docker Hub. If it's not the case, ask someone with access to:
- * Create if needed the [project on Docker Hub](https://hub.docker.com/r/camptocamp/enfinfidu_odoo/)
- * Create access for Travis in this new project and put auth informations in Lastpass
-  * user: c2cbusinessenfinfidutravis
-  * password: Generated password
-  * email: business-deploy+enfinfidu-travis@camptocamp.com (which is aliased on camptocamp@camptocamp.com)
-
-On Travis, in [settings page](https://travis-ci.com/camptocamp/enfinfidu_odoo/settings) , add following environnement variables:
- * DOCKER_USERNAME : c2cbusinessenfinfidutravis
- * DOCKER_PASSWORD : The generated password in previous step, so you can find it in Lastpass
- * DOCKER_EMAIL : business-deploy+enfinfidu-travis@camptocamp.com (which is aliased on camptocamp@camptocamp.com)
-
-**From there, each travis successfull build on master or on tags will build a docker image and push it to Docker Hub**
-
-**And even better, if you followed all the previous steps, the next successfull build on master will automatically create the test stack (enfinfidu-odoo-test) on Rancher**
-
-**See next part to understand how.**
-
 ### Stack Deployment
 
 #### Rancher Compose
 
 To deploy stacks on rancher, we use the Rancher client [rancher-compose](https://github.com/rancher/rancher-compose).
 
-rancher-compose is a Docker compose compatible client that deploys to Rancher.
+`rancher-compose` is a Docker compose compatible client that deploys to Rancher.
 
-rancher-compose need a -p parameter which indicates the name of the stack to work on.
+`rancher-compose` need a -p parameter which indicates the name of the stack to work on.
 
 The access keys and rancher url can be passed with rancher-compose options or with environment variables ($RANCHER_URL, $RANCHER_ACCESS_KEY, $RANCHER_SECRET_KEY)
 
@@ -556,25 +501,10 @@ rancher-compose -p stack_name up -d
 rancher-compose -p stack_name logs --follow odoo
 ```
 
-#### Test deployment
-
-In [travis/publish.sh](../travis/publish.sh), you can see that the deploy function is called when the latest image is generated
-(so after a successfull travis build on master)
-
-This deploy function do the following steps:
- * Download a rancher-compose client
- * Decrypt latest/rancher.env.gpg and source it to read all needed configurations for accessing rancher and configuring the stack.
- * Remove, if exists, the test stack db container on rancher.
- * Create or upgrade the full stack (with the new builded odoo docker image)
- * This upgrade will recreate a database and container and run the installation process.
-
-But Travis need the gpg password in order to decrypt rancher.env.gpg file.
-
-Look at [rancher.md in travis section](rancher.md#travis) to know how to configure travis for that.
 
 #### Integration deployment
 
-The integration stack is manually deployed but the process is quite similar with test
+The integration stack is deployed manually after a release.
 
 * If needed, download [rancher-compose](http://releases.rancher.com/compose/beta/v0.7.2/rancher-compose-linux-amd64-v0.7.2.tar.gz) and untar the executable in a `$PATH`.
 * Go to your locally cloned platform project (https://github.com/camptocamp/odoo-cloud-platform-ch-rancher-templates)
@@ -585,11 +515,6 @@ The integration stack is manually deployed but the process is quite similar with
   ```
 
 ### Upgrade stack
-
-#### Test
-
-As test stack is automatically rebuilt from scratch, there is no need to upgrade
-
 
 #### Integration / Production
 
@@ -624,7 +549,7 @@ Take a look at [releases.md](releases.md) for more details but here is a quick s
  # Don't forget to push master too but note that it will drop/recreate the test stack.
  git push
  ```
- * Travis will run a build on this tag and, if succcessfull, push a docker image (tagged as X.X.X) on Docker Hub.
+ * Travis will run a build on this tag and, if successful, push a docker image (tagged as X.X.X) on Docker Hub.
 
 * Go to your locally cloned platform project (https://github.com/camptocamp/odoo-cloud-platform-ch-rancher-templates)
 * Update the version of the image in the `docker-compose.yml` file of the stack, commit and push

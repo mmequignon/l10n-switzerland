@@ -17,8 +17,7 @@ Be sure to [install Docker and docker-compose](prerequisites.md) before going an
     1. Clone the submodules from scratch
 
     ```bash
-    git submodule init
-    git submodule update
+    git submodule update --init
     ```
 
     If you have an error because a ref cannot be found, it is probably that the

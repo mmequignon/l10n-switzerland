@@ -22,8 +22,8 @@ Be sure to [install Docker and docker-compose](prerequisite.md) before going any
 3. Start the composition
 
         cd enfinfidu
-        docker-compose -f test.yml -f local.yml pull
-        docker-compose -f test.yml -f local.yml up
+        docker-compose -f docker-compose.yml -f test.yml pull
+        docker-compose -f docker-compose.yml -f test.yml up
 
 4. Open a browser on http://localhost (only one odoo instance at a time can be
    started because it uses the port 80, this can be changed in the
@@ -33,4 +33,4 @@ Be sure to [install Docker and docker-compose](prerequisite.md) before going any
 
 5. If you want to drop your database, run:
 
-        docker-compose -f test.yml -f local.yml rm -v
+        docker-compose -f docker-compose.yml -f test.yml rm -v
