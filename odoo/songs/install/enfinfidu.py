@@ -50,10 +50,28 @@ def load_partner_banks(ctx):
 
 
 @anthem.log
+def load_account_journal_fromcsv(ctx):
+    """ Load account journal without add_xmlid """
+    filepath = 'data/install/enfinfidu/account.journal.csv'
+    csv_content = resource_stream(req, filepath)
+    load_csv_stream(ctx, 'account.journal', csv_content)
+
+
+@anthem.log
+def load_account_payment_mode(ctx):
+    """ Load account payment mode """
+    filepath = 'data/install/enfinfidu/account.payment.mode.csv'
+    csv_content = resource_stream(req, filepath)
+    load_csv_stream(ctx, 'account.payment.mode', csv_content)
+
+
+@anthem.log
 def main(ctx):
     """ Run setup """
     import_users(ctx)
     import_salary_rule(ctx)
+    load_account_journal_fromcsv(ctx)
+    load_account_payment_mode(ctx)
     # TODO later
     # load_account_journal(ctx)
     # load_partner_banks(ctx)
