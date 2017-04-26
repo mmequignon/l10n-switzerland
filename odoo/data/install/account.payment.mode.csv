@@ -1,0 +1,3 @@
+id,company_id/id,bank_account_link,name,payment_method_id/id,fixed_journal_id/id,default_payment_mode
+__setup__.account_payment_mode_enfinfidu_salary,base.main_company,Fixed,DTA Salaires,l10n_ch_dta.dta_payment_method,__setup__.enfinfidu_SAL_enfinfidu,Any
+__setup__.account_payment_mode_rlbatiment_salary,__setup__.rlbatiment,Fixed,DTA Salaires,l10n_ch_dta.dta_payment_method,__setup__.enfinfidu_SAL_rlbatiment,Any

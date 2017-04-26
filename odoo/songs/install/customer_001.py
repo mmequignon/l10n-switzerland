@@ -67,6 +67,20 @@ def import_users(ctx):
 
 
 @anthem.log
+def import_account_journals(ctx):
+    """ Import account journals """
+    content = resource_stream(req, 'data/install/customer_001/account.journal.csv')
+    load_csv_stream(ctx, 'account.journal', content, delimiter=',')
+
+
+@anthem.log
+def import_payment_modes(ctx):
+    """ Import payment modes """
+    content = resource_stream(req, 'data/install/customer_001/account.payment.mode.csv')
+    load_csv_stream(ctx, 'account.payment.mode', content, delimiter=',')
+
+
+@anthem.log
 def add_customer_company_to_main_company_users(ctx):
     """ add_customer_company_to_main_company_users """
     for user in ctx.env['res.users'].search([
@@ -103,3 +117,5 @@ def main(ctx):
     setup_project(ctx)
     import_users(ctx)
     add_customer_company_to_main_company_users(ctx)
+    import_account_journals(ctx)
+    import_payment_modes(ctx)
