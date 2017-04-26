@@ -23,6 +23,8 @@ latest (unreleased)
 
 * BSFIN-9: Standardization of companies setup
 
+* BSFIN-16: Create DTA Payment Mode for the salaries
+
 **Bugfixes**
 
 **Build**
