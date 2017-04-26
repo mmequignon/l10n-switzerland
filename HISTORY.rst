@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-9: Standardization of companies setup
+
 **Bugfixes**
 
 **Build**

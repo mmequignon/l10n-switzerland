@@ -2,7 +2,6 @@
 # Copyright 2016 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-
 from base64 import b64encode
 from pkg_resources import resource_string
 from pkg_resources import resource_stream
@@ -11,10 +10,10 @@ from anthem.lyrics.loaders import load_csv_stream
 
 import anthem
 from ..common import req
+from .accounting import configure_missing_chart_of_account
+
 
 # BASE
-
-
 @anthem.log
 def setup_company(ctx):
     """ Setup company """
@@ -37,35 +36,12 @@ def setup_company(ctx):
 
     # load logo on company
     logo_content = resource_string(
-        req, 'data/images/cust_001.png')
+        req, 'data/images/customer_001.png')
     b64_logo = b64encode(logo_content)
     company.logo = b64_logo
 
 
-@anthem.log
-def import_users(ctx):
-    """ Import users """
-    content = resource_stream(req, 'data/install/cust_001/res.users.csv')
-    load_csv_stream(ctx, 'res.users', content, delimiter=',')
-
-# SALES
-
-
-@anthem.log
-def set_sales_settings(ctx):
-    sale_config = ctx.env['sale.config.settings']
-    # Sections in Sale lines
-    sale_config.create({'group_sale_layout': 1}).execute()
-    # UOM in Sale Lines
-    sale_config.create({'group_uom': 1}).execute()
-
-
-# ACCOUNTING
-
-
 # PROJECT
-
-
 @anthem.log
 def setup_project(ctx):
     """ Setup project """
@@ -82,10 +58,48 @@ def setup_project(ctx):
         })
 
 
+# USERS
+@anthem.log
+def import_users(ctx):
+    """ Import users """
+    content = resource_stream(req, 'data/install/customer_001/res.users.csv')
+    load_csv_stream(ctx, 'res.users', content, delimiter=',')
+
+
+@anthem.log
+def add_customer_company_to_main_company_users(ctx):
+    """ add_customer_company_to_main_company_users """
+    for user in ctx.env['res.users'].search([
+        ('company_id', '=', ctx.env.ref('base.main_company').id),
+    ]):
+        user.write({
+            'company_ids': [(4, ctx.env.ref('__setup__.rlbatiment').id)],
+        })
+
+
+# ACCOUNTING
+@anthem.log
+def configure_rl_batiment_chart_of_account(ctx):
+    """Configure Missing COA for RL Batiment"""
+    configure_missing_chart_of_account(
+        ctx,
+        coa_dict={
+            '__setup__.rlbatiment': {
+                'chart_template_id':
+                    'enfinfidu_account.enfinfidu_chart_template',
+                'template_transfer_account_id':
+                    'enfinfidu_account.transfer_account_id',
+                # 'sale_tax_id': 'l10n_ch.1_vat_80',
+                # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
+            },
+        }
+    )
+
+
 @anthem.log
 def main(ctx):
     """ Run setup """
     setup_company(ctx)
     setup_project(ctx)
     import_users(ctx)
-    set_sales_settings(ctx)
+    add_customer_company_to_main_company_users(ctx)

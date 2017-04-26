@@ -1,0 +1,4 @@
+"id","login","name","password","company_ids/id","company_id/id","lang","email","country_id/id","tz","groups_id/id"
+"scenario.res_user_kdbdruart","k.db@enfinconsulting.ch","Kathleen De Baets Druart","c2c","base.main_company","base.main_company","fr_FR","k.db@enfinconsulting.ch","base.ch","Europe/Brussels","account.group_account_manager"
+"scenario.res_user_smelozzi","smelozzi","Silvia Melozzi","c2c","base.main_company","base.main_company","fr_FR","k.db@enfinconsulting.ch","base.ch","Europe/Brussels","account.group_account_manager"
+"scenario.res_user_amarguin","amarguin","Alexia Marguin","c2c","base.main_company","base.main_company","fr_FR","k.db@enfinconsulting.ch","base.ch","Europe/Brussels","account.group_account_manager"

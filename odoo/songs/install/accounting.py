@@ -27,25 +27,20 @@ def no_coa_instance_unlock(ctx):
 
 
 @anthem.log
-def configure_missing_chart_of_account(ctx):
+def configure_missing_chart_of_account(ctx, coa_dict=False):
     """Configure Missing COA for companies"""
 
-    coa_dict = {
-        'base.main_company': {
-            'chart_template_id': 'enfinfidu_account.enfinfidu_chart_template',
-            'template_transfer_account_id':
-                'enfinfidu_account.transfer_account_id',
-            # 'sale_tax_id': 'l10n_ch.1_vat_80',
-            # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
-        },
-        '__setup__.rlbatiment': {
-            'chart_template_id': 'enfinfidu_account.enfinfidu_chart_template',
-            'template_transfer_account_id':
-                'enfinfidu_account.transfer_account_id',
-            # 'sale_tax_id': 'l10n_ch.1_vat_80',
-            # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
-        },
-    }
+    if not coa_dict:
+        coa_dict = {
+            'base.main_company': {
+                'chart_template_id':
+                    'enfinfidu_account.enfinfidu_chart_template',
+                'template_transfer_account_id':
+                    'enfinfidu_account.transfer_account_id',
+                # 'sale_tax_id': 'l10n_ch.1_vat_80',
+                # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
+            },
+        }
     for company_xml_id, values in coa_dict.iteritems():
         company = ctx.env.ref(company_xml_id)
         coa = ctx.env.ref(values['chart_template_id'])
