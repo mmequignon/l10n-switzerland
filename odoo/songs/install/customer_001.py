@@ -103,3 +103,4 @@ def main(ctx):
     setup_project(ctx)
     import_users(ctx)
     add_customer_company_to_main_company_users(ctx)
+    configure_rl_batiment_chart_of_account(ctx)
