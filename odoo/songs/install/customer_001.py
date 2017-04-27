@@ -69,14 +69,16 @@ def import_users(ctx):
 @anthem.log
 def import_account_journals(ctx):
     """ Import account journals """
-    content = resource_stream(req, 'data/install/customer_001/account.journal.csv')
+    fp = 'data/install/customer_001/account.journal.csv'
+    content = resource_stream(req, fp)
     load_csv_stream(ctx, 'account.journal', content, delimiter=',')
 
 
 @anthem.log
 def import_payment_modes(ctx):
     """ Import payment modes """
-    content = resource_stream(req, 'data/install/customer_001/account.payment.mode.csv')
+    fp = 'data/install/customer_001/account.payment.mode.csv'
+    content = resource_stream(req,)
     load_csv_stream(ctx, 'account.payment.mode', content, delimiter=',')
 
 
