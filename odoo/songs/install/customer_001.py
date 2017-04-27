@@ -78,7 +78,7 @@ def import_account_journals(ctx):
 def import_payment_modes(ctx):
     """ Import payment modes """
     fp = 'data/install/customer_001/account.payment.mode.csv'
-    content = resource_stream(req,)
+    content = resource_stream(req, fp)
     load_csv_stream(ctx, 'account.payment.mode', content, delimiter=',')
 
 
