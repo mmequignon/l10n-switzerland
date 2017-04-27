@@ -1,2 +1,2 @@
-id,code,name,company_id/id,type,default_credit_account_id/id,default_debit_account_id/id
-__setup__.enfinfidu_SAL_rlbatiment,SAL,Salaires,__setup__.rlbatiment,Divers,enfinfidu_account.3_account_tmp_5000,enfinfidu_account.3_account_tmp_5000
+id,code,name,company_id/id,type
+__setup__.enfinfidu_SAL_rlbatiment,SAL,Salaires,__setup__.rlbatiment,Divers
