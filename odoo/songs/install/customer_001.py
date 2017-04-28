@@ -67,6 +67,22 @@ def import_users(ctx):
 
 
 @anthem.log
+def import_account_journals(ctx):
+    """ Import account journals """
+    fp = 'data/install/customer_001/account.journal.csv'
+    content = resource_stream(req, fp)
+    load_csv_stream(ctx, 'account.journal', content, delimiter=',')
+
+
+@anthem.log
+def import_payment_modes(ctx):
+    """ Import payment modes """
+    fp = 'data/install/customer_001/account.payment.mode.csv'
+    content = resource_stream(req, fp)
+    load_csv_stream(ctx, 'account.payment.mode', content, delimiter=',')
+
+
+@anthem.log
 def add_customer_company_to_main_company_users(ctx):
     """ add_customer_company_to_main_company_users """
     for user in ctx.env['res.users'].search([
@@ -104,3 +120,5 @@ def main(ctx):
     import_users(ctx)
     add_customer_company_to_main_company_users(ctx)
     configure_rl_batiment_chart_of_account(ctx)
+    import_account_journals(ctx)
+    import_payment_modes(ctx)
