@@ -1,0 +1,22 @@
+"id","name","applicability"
+l10n_ch.vat_tag_200,DEPRECATED Switzerland VAT Form: grid 200,taxes
+l10n_ch.vat_tag_220,DEPRECATED Switzerland VAT Form: grid 220,taxes
+l10n_ch.vat_tag_221,DEPRECATED Switzerland VAT Form: grid 221,taxes
+l10n_ch.vat_tag_225,DEPRECATED Switzerland VAT Form: grid 225,taxes
+l10n_ch.vat_tag_230,DEPRECATED Switzerland VAT Form: grid 230,taxes
+l10n_ch.vat_tag_235,DEPRECATED Switzerland VAT Form: grid 235,taxes
+l10n_ch.vat_tag_280,DEPRECATED Switzerland VAT Form: grid 280,taxes
+l10n_ch.vat_tag_301_a,DEPRECATED Switzerland VAT Form: grid 301 base,taxes
+l10n_ch.vat_tag_311_a,DEPRECATED Switzerland VAT Form: grid 311 base,taxes
+l10n_ch.vat_tag_341_a,DEPRECATED Switzerland VAT Form: grid 341 base,taxes
+l10n_ch.vat_tag_381_a,DEPRECATED Switzerland VAT Form: grid 381 base,taxes
+l10n_ch.vat_tag_301_b,DEPRECATED Switzerland VAT Form: grid 301 tax,taxes
+l10n_ch.vat_tag_311_b,DEPRECATED Switzerland VAT Form: grid 311 tax,taxes
+l10n_ch.vat_tag_341_b,DEPRECATED Switzerland VAT Form: grid 341 tax,taxes
+l10n_ch.vat_tag_381_b,DEPRECATED Switzerland VAT Form: grid 381 tax,taxes
+l10n_ch.vat_tag_400,DEPRECATED Switzerland VAT Form: grid 400,taxes
+l10n_ch.vat_tag_405,DEPRECATED Switzerland VAT Form: grid 405,taxes
+l10n_ch.vat_tag_410,DEPRECATED Switzerland VAT Form: grid 410,taxes
+l10n_ch.vat_tag_415,DEPRECATED Switzerland VAT Form: grid 415,taxes
+l10n_ch.vat_tag_420,DEPRECATED Switzerland VAT Form: grid 420,taxes
+l10n_ch.vat_tag_dedouanement,DEPRECATED Switzerland VAT Form: 100% dédouanement (base in grid 400),taxes

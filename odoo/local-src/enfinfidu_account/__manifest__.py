@@ -20,8 +20,9 @@
         'data_2/account.chart.template.csv',    # 2- Add chart template
         'data_3/account.account.template.csv',  # 3- Complete transfer account
         'data_4/account.account.template.csv',  # 4- Add template accounts
+        'data_4/account.account.tag-override.csv',  # 4- Override l10n_ch tag
         'data_4/account.account.tag.csv',       # 4- Add account tags
-        'data_4/account.tax.template-override.csv',# 4- Override l10n_ch tax template names
+        'data_4/account.tax.template-override.csv',  # 4- Override l10n_ch tax
         'data_4/account.tax.template.csv',      # 4- Add account tax template
         'data_5/account.chart.template.csv',    # 5- Complete chart template
     ],

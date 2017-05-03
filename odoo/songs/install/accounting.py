@@ -68,6 +68,14 @@ def configure_missing_chart_of_account(ctx, coa_dict=False):
 
 
 @anthem.log
+def delete_l10n_ch_tags(ctx):
+    tags = ctx.env['account.account.tag'].search([
+        ('name', '=like', 'DEPRECATED%')])
+    tags.unlink()
+
+
+@anthem.log
 def main(ctx):
     """ Configuring accounting """
     configure_missing_chart_of_account(ctx)
+    delete_l10n_ch_tags(ctx)
