@@ -11,6 +11,7 @@
     'depends': [
         'account',
         'l10n_multilang',
+        'l10n_ch',
     ],
     'website': 'http://www.camptocamp.com',
     'data': [
@@ -20,6 +21,7 @@
         'data_3/account.account.template.csv',  # 3- Complete transfer account
         'data_4/account.account.template.csv',  # 4- Add template accounts
         'data_4/account.account.tag.csv',       # 4- Add account tags
+        'data_4/account.tax.template-override.csv',# 4- Override l10n_ch tax template names
         'data_4/account.tax.template.csv',      # 4- Add account tax template
         'data_5/account.chart.template.csv',    # 5- Complete chart template
     ],

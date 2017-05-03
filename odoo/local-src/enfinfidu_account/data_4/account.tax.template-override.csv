@@ -1,0 +1,23 @@
+id,name,chart_template_id/id
+l10n_ch.vat_25,DEPRECATED TVA due a 2.5% (TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_25_incl,DEPRECATED TVA due à 2.5% (Incl. TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_25_purchase,DEPRECATED TVA 2.5% sur achat B&S (TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_25_purchase_incl,DEPRECATED TVA 2.5% sur achat B&S (Incl. TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_25_invest,DEPRECATED TVA 2.5% sur invest. et autres ch. (TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_25_invest_incl,DEPRECATED TVA 2.5% sur invest. et autres ch. (Incl. TR),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38,DEPRECATED TVA due a 3.8% (TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38_incl,DEPRECATED TVA due à 3.8% (Incl. TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38_purchase,DEPRECATED TVA 3.8% sur achat B&S (TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38_purchase_incl,DEPRECATED TVA 3.8% sur achat B&S (Incl. TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38_invest,DEPRECATED TVA 3.8% sur invest. et autres ch. (TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_38_invest_incl,DEPRECATED TVA 3.8% sur invest. et autres ch. (Incl. TS),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80,DEPRECATED TVA due a 8.0% (TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80_incl,DEPRECATED TVA due à 8.0% (Incl. TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80_purchase,DEPRECATED TVA 8.0% sur achat B&S (TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80_purchase_incl,DEPRECATED TVA 8.0% sur achat B&S (Incl. TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80_invest,DEPRECATED TVA 8.0% sur invest. et autres ch. (TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_80_invest_incl,DEPRECATED TVA 8.0% sur invest. et autres ch. (Incl. TN),l10n_ch.l10nch_chart_template
+l10n_ch.vat_XO,DEPRECATED TVA due a 0% (Exportations),l10n_ch.l10nch_chart_template
+l10n_ch.vat_O_exclude,DEPRECATED TVA 0% exclue,l10n_ch.l10nch_chart_template
+l10n_ch.vat_O_import,DEPRECATED TVA 0% Importations de biens et services,l10n_ch.l10nch_chart_template
+l10n_ch.vat_100_import,DEPRECATED 100% dédouanement TVA,l10n_ch.l10nch_chart_template
