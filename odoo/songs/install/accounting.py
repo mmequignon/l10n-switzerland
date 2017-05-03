@@ -39,6 +39,8 @@ def configure_missing_chart_of_account(ctx, coa_dict=False):
                     'enfinfidu_account.transfer_account_id',
                 # 'sale_tax_id': 'l10n_ch.1_vat_80',
                 # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
+                'sale_tax_id': 'enfinfidu_account.tax_tmp_vat_80',
+                'purchase_tax_id': 'enfinfidu_account.tax_tmp_vat_80_purchase',
             },
         }
     for company_xml_id, values in coa_dict.iteritems():
@@ -47,16 +49,16 @@ def configure_missing_chart_of_account(ctx, coa_dict=False):
         template_transfer_account = ctx.env.ref(
             values['template_transfer_account_id']
         )
-        # sale_tax = ctx.env.ref(values['sale_tax_id'])
-        # purchase_tax = ctx.env.ref(values['purchase_tax_id'])
+        sale_tax = ctx.env.ref(values['sale_tax_id'])
+        purchase_tax = ctx.env.ref(values['purchase_tax_id'])
         if not company.chart_template_id:
             wizard = ctx.env['wizard.multi.charts.accounts'].create({
                 'company_id': company.id,
                 'chart_template_id': coa.id,
                 'transfer_account_id': template_transfer_account.id,
                 'code_digits': coa.code_digits,
-                # 'sale_tax_id': sale_tax.id,
-                # 'purchase_tax_id': purchase_tax.id,
+                'sale_tax_id': sale_tax.id,
+                'purchase_tax_id': purchase_tax.id,
                 'complete_tax_set': coa.complete_tax_set,
                 'currency_id': ctx.env.ref('base.CHF').id,
                 'bank_account_code_prefix': coa.bank_account_code_prefix,
