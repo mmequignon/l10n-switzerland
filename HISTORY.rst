@@ -26,6 +26,8 @@ latest (unreleased)
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
 
+* BSFN-14: Update salary rules and structure
+
 **Bugfixes**
 
 **Build**

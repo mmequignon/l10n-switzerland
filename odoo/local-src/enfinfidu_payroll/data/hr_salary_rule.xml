@@ -1,10 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
   <record id="c2c_salary_rule_hMonth" model="hr.salary.rule">
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">False</field>
     <field name="code">hMonth</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name ="condition_python">result = contract.working_hours.name or False</field>
     <field name="name">Hours per month</field>
     <field name="amount_python_compute">hWeek = int(contract.working_hours.name[:2]);hMonth = hWeek*52/12;result = hMonth</field>
     <field name="amount_percentage_base">0</field>
@@ -36,7 +37,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1005</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours and inputs.NbHours.amount) or False</field>
     <field name="name">Hourly salary</field>
     <field name="amount_python_compute">per = contract.wage_fulltime;result = round(per*inputs.NbHours.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">contract.wage_fulltime</field>
@@ -52,10 +54,11 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1160</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours and inputs.NbHours.amount) or False</field>
     <field name="name">Holiday Allowance</field>
-    <field name="amount_python_compute">per = contract.wage_fulltime;perHol = 25 / (260-25);result = round(per*perHol*inputs.NbHours.amount/0.05)*0.05</field>
-    <field name="amount_percentage_base">25 / (260-25)</field>
+    <field name="amount_python_compute">per = contract.wage_fulltime;perHol = 25.00/(260.00-25.00);result = round(per*perHol*inputs.NbHours.amount/0.05)*0.05;</field>
+    <field name="amount_percentage_base">25.00/(260.00-25.00)</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">contract.wage_fulltime*inputs.NbHours.amount</field>
     <field name="sequence">1160</field>
@@ -63,13 +66,30 @@
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
-    <field name="parent_rule_id" ref="c2c_salary_rule_HSal"/>
+  </record>
+  <record id="c2c_salary_rule_HolAllowInc" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">1160</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours and inputs.NbHours.amount) or False</field>
+    <field name="name">Holiday Allowance included</field>
+    <field name="amount_python_compute">per = contract.wage_fulltime*inputs.NbHours.amount;perHol = 25.00/(260.00-25.00);result = round((per-(per/(1+perHol)))/0.05)*0.05;</field>
+    <field name="amount_percentage_base">25 / (260-25)</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">contract.wage_fulltime*inputs.NbHours.amount</field>
+    <field name="sequence">1160</field>
+    <field name="category_id" ref="l10n_ch_hr_payroll.hr_payroll_INFO"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
   </record>
   <record id="c2c_salary_rule_h100h" model="hr.salary.rule">
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1061</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours100 and inputs.NbHours100.amount) or False</field>
     <field name="name">Supplementary hours 100%</field>
     <field name="amount_python_compute">per = 100.00;result = round(contract.wage*per/100*inputs.NbHours100.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours100.amount</field>
@@ -85,7 +105,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1062</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours125 and inputs.NbHours125.amount) or False</field>
     <field name="name">Supplementary hours 125%</field>
     <field name="amount_python_compute">per = 125.00;result = round(contract.wage*per/100*inputs.NbHours125.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours125.amount</field>
@@ -101,7 +122,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1063</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours150 and inputs.NbHours150.amount) or False</field>
     <field name="name">Supplementary hours 150%</field>
     <field name="amount_python_compute">per = 150.00;result = round(contract.wage*per/100*inputs.NbHours150.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours150.amount</field>
@@ -117,7 +139,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1064</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours200 and inputs.NbHours200.amount) or False</field>
     <field name="name">Supplementary hours 200%</field>
     <field name="amount_python_compute">per = 200.00;result = round(contract.wage*per/100*inputs.NbHours200.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours200.amount</field>
@@ -133,7 +156,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1061</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours100 and inputs.NbHours100.amount) or False</field>
     <field name="name">Supplementary hours 100%</field>
     <field name="amount_python_compute">per = 100.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours100.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours100.amount</field>
@@ -149,7 +173,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1062</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours125 and inputs.NbHours125.amount) or False</field>
     <field name="name">Supplementary hours 125%</field>
     <field name="amount_python_compute">per = 125.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours125.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours125.amount</field>
@@ -165,7 +190,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1063</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours150 and inputs.NbHours150.amount) or False</field>
     <field name="name">Supplementary hours 150%</field>
     <field name="amount_python_compute">per = 150.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours150.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours150.amount</field>
@@ -181,7 +207,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1064</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.NbHours200 and inputs.NbHours200.amount) or False</field>
     <field name="name">Supplementary hours 200%</field>
     <field name="amount_python_compute">per = 200.00;result = round(contract.wage_fulltime/hMonth*per/100*inputs.NbHours200.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">inputs.NbHours200.amount</field>
@@ -197,7 +224,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1200</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.thirteen and inputs.thirteen.amount) or False</field>
     <field name="name">13th salary</field>
     <field name="amount_python_compute">result = round(inputs.thirteen.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -213,7 +241,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1201</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">	result = (inputs and inputs.grat and inputs.grat.amount) or False</field>
     <field name="name">Gratification</field>
     <field name="amount_python_compute">result = round(inputs.grat.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -229,13 +258,14 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1210</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.bonus and inputs.bonus.amount) or False</field>
     <field name="name">Bonus</field>
     <field name="amount_python_compute">result = round(inputs.bonus.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
-    <field name="sequence">1201</field>
+    <field name="sequence">1210</field>
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
@@ -245,7 +275,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">1910</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.privcar and inputs.privcar.amount) or False</field>
     <field name="name">Private part company car</field>
     <field name="amount_python_compute">result = round(inputs.privcar.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -261,7 +292,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2000</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.allowAPG and inputs.allowAPG.amount) or False</field>
     <field name="name">Gain loss allowance</field>
     <field name="amount_python_compute">result = round(inputs.allowAPG.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -277,7 +309,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2020</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.allowmili and inputs.allowmili.amount) or False</field>
     <field name="name">Military allowance</field>
     <field name="amount_python_compute">result = round(inputs.allowmili.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -293,7 +326,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2030</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.allowacci and inputs.allowacci.amount) or False</field>
     <field name="name">Accident allowance</field>
     <field name="amount_python_compute">result = round(inputs.allowacci.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -309,7 +343,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2035</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.allowsick and inputs.allowsick.amount) or False</field>
     <field name="name">Sickness allowance</field>
     <field name="amount_python_compute">result = round(inputs.allowsick.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -325,7 +360,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2040</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.allowmat and inputs.allowmat.amount) or False</field>
     <field name="name">Maternity allowance</field>
     <field name="amount_python_compute">result = round(inputs.allowmat.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -341,7 +377,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">False</field>
     <field name="code">2049</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = categories.IND > 0</field>
     <field name="name">Total allowances</field>
     <field name="amount_python_compute">result = categories.IND</field>
     <field name="amount_percentage_base">0</field>
@@ -357,7 +394,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">2050</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = categories.IND > 0</field>
     <field name="name">Allowances corrections</field>
     <field name="amount_python_compute">result = -categories.IND</field>
     <field name="amount_percentage_base">0</field>
@@ -445,12 +483,50 @@
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AVS"/>
   </record>
+  <record id="c2c_salary_rule_corrAVSE" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5010</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrAVSE and inputs.corrAVSE.amount) or False</field>
+    <field name="name">AVS correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrAVSE.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5010</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AVS"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrAVSC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5010</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrAVSC and inputs.corrAVSC.amount) or False</field>
+    <field name="name">AVS correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrAVSC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5010</field>
+    <field name="register_id" ref="hr_register_avs"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AVS"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
+  </record>
   <record id="l10n_ch_hr_payroll.AC" model="hr.salary.rule">
     <field name="sequence">5020</field>
     <field name="category_id" ref="hr_payroll.DED"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_C" model="hr.salary.rule">
-    <field name="amount_python_compute">per_in_limit = employee.company_id.ac_per_in_limit / 100;result = round(((categories.SalAVS)*per_in_limit)/0.05)*0.05</field>
+    <field name="amount_python_compute">per_in_limit = employee.company_id.ac_per_in_limit / 100;result = round(((min(categories.SalAVS, employee.company_id.ac_limit))*per_in_limit)/0.05)*0.05</field>
     <field name="amount_percentage_base">min(categories.SalAVS, employee.company_id.ac_limit)</field>
     <field name="condition_range">categories.SalAVS</field>
     <field name="sequence">5020</field>
@@ -461,7 +537,7 @@
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_E" model="hr.salary.rule">
-    <field name="amount_python_compute">per_in_limit = employee.company_id.ac_per_in_limit / 100;result = round(((categories.SalAVS)*per_in_limit)/0.05)*0.05;</field>
+    <field name="amount_python_compute">per_in_limit = employee.company_id.ac_per_in_limit / 100;result = round(((min(categories.SalAVS, employee.company_id.ac_limit))*per_in_limit)/0.05)*0.05;</field>
     <field name="amount_percentage_base">min(categories.SalAVS, employee.company_id.ac_limit)</field>
     <field name="condition_range">categories.SalAVS</field>
     <field name="sequence">5020</field>
@@ -470,6 +546,44 @@
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+  </record>
+  <record id="c2c_salary_rule_corrACE" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5020</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrACE and inputs.corrACE.amount) or False</field>
+    <field name="name">AC correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrACE.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5020</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">True</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrACC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5020</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrACC and inputs.corrACC.amount) or False</field>
+    <field name="name">AC correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrACC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5020</field>
+    <field name="register_id" ref="hr_register_avs"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
   </record>
   <record id="l10n_ch_hr_payroll.AC_C_SOL" model="hr.salary.rule">
     <field name="condition_python">result = (categories.SalAVS) &gt; employee.company_id.ac_limit and (categories.SalAVS) - employee.company_id.ac_limit &gt; 0</field>
@@ -494,6 +608,44 @@
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+  </record>
+  <record id="c2c_salary_rule_corrACCE" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5020</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrACCE and inputs.corrACCE.amount) or False</field>
+    <field name="name">ACC correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrACCE.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5020</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrACCC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5020</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrACCC and inputs.corrACCC.amount) or False</field>
+    <field name="name">ACC correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrACCC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5020</field>
+    <field name="register_id" ref="hr_register_avs"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
   </record>
   <record id="l10n_ch_hr_payroll.ALFA_VD" model="hr.salary.rule">
     <field name="sequence">3030</field>
@@ -520,6 +672,24 @@
     <field name="register_id" ref="hr_register_afc"/>
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">True</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrImpSrc" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5060</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrImpSrc and inputs.corrImpSrc.amount) or False</field>
+    <field name="name">Tax source correction</field>
+    <field name="amount_python_compute">result = round(inputs.corrImpSrc.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5060</field>
+    <field name="register_id" ref="hr_register_afc"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="hr_payroll.DED"/>
   </record>
@@ -550,6 +720,44 @@
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LAA"/>
   </record>
+  <record id="c2c_salary_rule_corrLAAE" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5041</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrLAAE and inputs.corrLAAE.amount) or False</field>
+    <field name="name">LAA correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrLAAE.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5041</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LAA"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrLAAC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5041</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrLAAC and inputs.corrLAAC.amount) or False</field>
+    <field name="name">LAA correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrLAAC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5041</field>
+    <field name="register_id" ref="hr_register_laa"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LAA"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
+  </record>
   <record id="l10n_ch_hr_payroll.LCA" model="hr.salary.rule">
     <field name="sequence">5042</field>
     <field name="category_id" ref="hr_payroll.DED"/>
@@ -573,6 +781,44 @@
     <field name="report_display_details_columns">True</field>
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LCA"/>
+  </record>
+  <record id="c2c_salary_rule_corrIJME" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5042</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrIJME and inputs.corrIJME.amount) or False</field>
+    <field name="name">IJM correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrIJME.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5042</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LCA"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrIJMC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5042</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrIJMC and inputs.corrIJMC.amount) or False</field>
+    <field name="name">IJM correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrIJMC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5042</field>
+    <field name="register_id" ref="hr_register_ijm"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LCA"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
   </record>
   <record id="l10n_ch_hr_payroll.LPP" model="hr.salary.rule">
     <field name="sequence">5050</field>
@@ -598,6 +844,44 @@
     <field name="report_is_net_amount">False</field>
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LPP"/>
   </record>
+  <record id="c2c_salary_rule_corrLPPE" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">5050</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrLPPE and inputs.corrLPPE.amount) or False</field>
+    <field name="name">IJM correction employee</field>
+    <field name="amount_python_compute">result = round(inputs.corrLPPE.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5050</field>
+    <field name="register_id" ref="hr_payroll.contrib_register_employees"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LPP"/>
+    <field name="category_id" ref="hr_payroll.DED"/>
+  </record>
+  <record id="c2c_salary_rule_corrLPPC" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">False</field>
+    <field name="code">5050</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.corrLPPC and inputs.corrLPPC.amount) or False</field>
+    <field name="name">IJM correction employer</field>
+    <field name="amount_python_compute">result = round(inputs.corrLPPC.amount/0.05)*0.05</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field> 
+    <field name="sequence">5050</field>
+    <field name="register_id" ref="hr_register_lpp"/>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="parent_rule_id" ref="l10n_ch_hr_payroll.LPP"/>
+    <field name="category_id" ref="hr_payroll.COMP"/>
+  </record>
   <record id="l10n_ch_hr_payroll.TOTAL_DED" model="hr.salary.rule">
     <field name="code">5999</field>
     <field name="sequence">5999</field>
@@ -609,7 +893,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6000</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.exptrav and inputs.exptrav.amount) or False</field>
     <field name="name">Travel expenses</field>
     <field name="amount_python_compute">result = round(inputs.exptrav.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -625,7 +910,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6001</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expcar and inputs.expcar.amount) or False</field>
     <field name="name">Car expenses</field>
     <field name="amount_python_compute">result = round(inputs.expcar.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -641,7 +927,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6002</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expmeal and inputs.expmeal.amount) or False</field>
     <field name="name">Meal expenses</field>
     <field name="amount_python_compute">result = round(inputs.expmeal.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -657,7 +944,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6010</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expnight and inputs.expnight.amount) or False</field>
     <field name="name">Night expenses</field>
     <field name="amount_python_compute">result = round(inputs.expnight.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -673,7 +961,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6035</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expothers and inputs.expothers.amount) or False</field>
     <field name="name">Other expenses</field>
     <field name="amount_python_compute">result = round(inputs.expothers.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -689,7 +978,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6040</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.exprepr and inputs.exprepr.amount) or False</field>
     <field name="name">Fix representation expenses</field>
     <field name="amount_python_compute">result = round(inputs.exprepr.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -705,7 +995,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6050</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expfixca and inputs.expfixca.amount) or False</field>
     <field name="name">Fix car expenses</field>
     <field name="amount_python_compute">result = round(inputs.expfixca.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -721,7 +1012,8 @@
     <field name="amount_select">code</field>
     <field name="appears_on_payslip">True</field>
     <field name="code">6070</field>
-    <field name="condition_select">none</field>
+    <field name="condition_select">python</field>
+    <field name="condition_python">result = (inputs and inputs.expfxiothers and inputs.expfxiothers.amount) or False</field>
     <field name="name">Other fix expenses</field>
     <field name="amount_python_compute">result = round(inputs.expfxiothers.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
@@ -789,5 +1081,59 @@
     <field name="report_display_details_columns">False</field>
     <field name="report_is_net_amount">False</field>
     <field name="category_id" ref="HS"/>
+  </record>
+  <record id="c2c_salary_rule_initHolidays" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">initHolidays</field>
+    <field name="condition_select">none</field>
+    <field name="name">Remaining leaves month before</field>
+    <field name="amount_python_compute">result = 25</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field>
+    <field name="sequence">9990</field>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="category_id" ref="enfinfidu_payroll.OTHER"/>
+  </record>
+  <record id="c2c_salary_rule_consumedHolidays" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">consumedHolidays</field>
+    <field name="condition_select">none</field>
+    <field name="name">Consumed leaves</field>
+    <field name="amount_python_compute">if not (inputs and inputs.consHolidays and inputs.consHolidays.amount) or False:
+  result = 0;
+else:
+  result = -inputs.consHolidays.amount;</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field>
+    <field name="sequence">9991</field>
+    <field name="report_is_total_rule">False</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="category_id" ref="enfinfidu_payroll.OTHER"/>
+  </record>
+  <record id="c2c_salary_rule_remainingHolidays" model="hr.salary.rule">
+    <field name="amount_select">code</field>
+    <field name="appears_on_payslip">True</field>
+    <field name="code">remainingHolidays</field>
+    <field name="condition_select">none</field>
+    <field name="name">Remaining leaves</field>
+    <field name="amount_python_compute">if not (inputs and inputs.consHolidays and inputs.consHolidays.amount) or False:
+  result = Initholidays;
+else:
+  result = Initholidays-inputs.consHolidays.amount;</field>
+    <field name="amount_percentage_base">0</field>
+    <field name="amount_percentage">0</field>
+    <field name="quantity">1</field>
+    <field name="sequence">9992</field>
+    <field name="report_is_total_rule">True</field>
+    <field name="report_display_details_columns">False</field>
+    <field name="report_is_net_amount">False</field>
+    <field name="category_id" ref="enfinfidu_payroll.OTHER"/>
   </record>
 </odoo>
