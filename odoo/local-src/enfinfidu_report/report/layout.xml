@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Change the header format -->
+    <template id="external_layout_header" inherit_id="report.external_layout_header">
+      <xpath expr="//div[@class='header']" position="replace">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2" name="company_address"/>
+      </xpath>
+    </template>
+
+    <!-- Change the default format for European A4 -->
+    <record id="report.paperformat_euro" model="report.paperformat">
+        <field name="name">European A4</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">40</field>
+        <field name="dpi">90</field>
+    </record>
+
+</odoo>

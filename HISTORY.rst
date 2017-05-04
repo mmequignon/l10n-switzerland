@@ -25,8 +25,10 @@ latest (unreleased)
 * Update salary imputation for main company
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
-
 * BSFIN-19: Load products for Expenses from csv
+* BSFIN-69 change-report-header
+
+
 
 **Bugfixes**
 
