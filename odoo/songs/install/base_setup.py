@@ -53,12 +53,22 @@ def activate_analytic(ctx):
 
 
 @anthem.log
+def disable_sharing_partner_product(ctx):
+    """ Disable sharing partners and productst between companies """
+    general_settings = ctx.env['base.config.settings']
+    general_settings.create({
+        'company_share_partner': False,
+        'company_share_product': False
+    }).execute()
+
+
+@anthem.log
 def main(ctx):
     """ Run scenario """
     multi_company(ctx)
     change_address_format(ctx)
     activate_multicurrency(ctx)
     set_sales_settings(ctx)
+    disable_sharing_partner_product(ctx)
 
-    # TODO later
-    # activate_analytic(ctx)
+    # TODO later # activate_analytic(ctx)

@@ -26,6 +26,8 @@ latest (unreleased)
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
 
+* BSFIN-24: Remove sharing of partners and products in multi-company
+
 **Bugfixes**
 
 **Build**
