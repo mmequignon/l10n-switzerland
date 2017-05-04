@@ -26,8 +26,6 @@ latest (unreleased)
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
 
-* BSFIN-17: Leave management on the salary payslip
-
 * BSFIN-19: Load products for Expenses from csv
 
 **Bugfixes**
