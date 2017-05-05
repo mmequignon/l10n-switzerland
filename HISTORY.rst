@@ -25,9 +25,14 @@ latest (unreleased)
 * Update salary imputation for main company
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
+* BSFIN-18: Hide discuss and calendar menu
+            Only enfinfidu users can see project and task specific additions
+            Display menu entry for journal entries for accountants
+            Hide powered by and db manager link on login page
+            Hide powered by in menu
 * BSFIN-19: Load products for Expenses from csv
 * BSFIN-69 change-report-header
-
+* Add icons on project buttons
 
 
 **Bugfixes**

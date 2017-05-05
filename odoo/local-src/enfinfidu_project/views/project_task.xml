@@ -10,19 +10,23 @@
             <field name="user_id" position="after">
                 <field name="id" invisible="True"/>
                 <field name="type"
-                       attrs="{'invisible': [('id', '=', False)]}"/>
+                       attrs="{'invisible': [('id', '=', False)]}"
+                       groups="enfinfidu_security.group_enfinfidu"/>
                 <field name="supplier_invoice_id"
                        context="{'default_task_id': active_id, 'default_company_id': company_id, 'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}"
                        domain="[('type', '=', 'in_invoice'), ('task_ids', '=', False), ('project_id', '=', project_id)]"
-                       attrs="{'invisible': ['|', ('type', '!=', 'supplier_invoice'), ('id', '=', False)], 'required': [('type', '=', 'supplier_invoice')]}"/>
+                       attrs="{'invisible': ['|', ('type', '!=', 'supplier_invoice'), ('id', '=', False)], 'required': [('type', '=', 'supplier_invoice')]}"
+                       groups="enfinfidu_security.group_enfinfidu"/>
                 <field name="expense_id"
                        context="{'default_task_id': active_id, 'default_company_id': company_id}"
                        domain="[('task_ids', '=', False), ('project_id', '=', project_id)]"
-                       attrs="{'invisible': ['|', ('type', '!=', 'expense'), ('id', '=', False)], 'required': [('type', '=', 'expense')]}"/>
+                       attrs="{'invisible': ['|', ('type', '!=', 'expense'), ('id', '=', False)], 'required': [('type', '=', 'expense')]}"
+                       groups="enfinfidu_security.group_enfinfidu"/>
                 <field name="bank_statement_id"
                        context="{'default_task_id': active_id, 'default_company_id': company_id}"
                        domain="[('task_ids', '=', False), ('project_id', '=', project_id)]"
-                       attrs="{'invisible': ['|', ('type', '!=', 'bank_statement'), ('id', '=', False)], 'required': [('type', '=', 'bank_statement')]}"/>
+                       attrs="{'invisible': ['|', ('type', '!=', 'bank_statement'), ('id', '=', False)], 'required': [('type', '=', 'bank_statement')]}"
+                       groups="enfinfidu_security.group_enfinfidu"/>
             </field>
 
         </field>

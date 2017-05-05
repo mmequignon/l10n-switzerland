@@ -65,8 +65,12 @@ migration:
           - mis_builder
           - project_task_default_stage
           - web_sheet_full_width
+          - web_hide_db_manager_link
           # LOCAL SOURCE
+          - account_move_line_view_menu
           - enfinfidu_account
           - enfinfidu_fct
           - enfinfidu_payroll
           - enfinfidu_project
+          - enfinfidu_security
+          - hide_powered_by

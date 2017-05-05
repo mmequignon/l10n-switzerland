@@ -11,25 +11,32 @@
                 <button class="oe_stat_button"
                         icon="fa-pencil-square-o"
                         type="object"
-                        name="related_supplier_invoices">
-                    <field string="Supplier invoices" name="supplier_invoice_count" widget="statinfo"/>
+                        name="related_supplier_invoices"
+                        groups="enfinfidu_security.group_enfinfidu">
+                    <field string="Supplier invoices" name="supplier_invoice_count" widget="statinfo" />
                 </button>
 
                 <button class="oe_stat_button"
+                        icon="fa-credit-card"
                         type="object"
-                        name="related_expenses">
+                        name="related_expenses"
+                        groups="enfinfidu_security.group_enfinfidu">
                     <field string="Expenses" name="expense_count" widget="statinfo"/>
                 </button>
 
                 <button class="oe_stat_button"
+                        icon="fa-bank"
                         type="object"
-                        name="related_bank_statements">
+                        name="related_bank_statements"
+                        groups="enfinfidu_security.group_enfinfidu">
                     <field string="Bank statements" name="bank_statement_count" widget="statinfo"/>
                 </button>
 
                 <button class="oe_stat_button"
+                        icon="fa-tasks"
                         type="object"
-                        name="related_other_tasks">
+                        name="related_other_tasks"
+                        groups="enfinfidu_security.group_enfinfidu">
                     <field string="Other tasks" name="other_tasks_count" widget="statinfo"/>
                 </button>
             </div>
@@ -52,22 +59,22 @@
 
             <div class="o_kanban_primary_left" position="inside">
                 <br/>
-                <div>
+                <div groups="enfinfidu_security.group_enfinfidu">
                     <a type="object" name="related_supplier_invoices">
                         <span><t t-esc="record.supplier_invoice_count.value"/> Supplier invoices</span>
                     </a>
                 </div>
-                <div>
+                <div groups="enfinfidu_security.group_enfinfidu">
                     <a type="object" name="related_expenses">
                         <span><t t-esc="record.expense_count.value"/> Expenses</span>
                     </a>
                 </div>
-                <div>
+                <div groups="enfinfidu_security.group_enfinfidu">
                     <a type="object" name="related_bank_statements">
                         <span><t t-esc="record.bank_statement_count.value"/> Bank statements</span>
                     </a>
                 </div>
-                <div>
+                <div groups="enfinfidu_security.group_enfinfidu">
                     <a type="object" name="related_other_tasks">
                         <span><t t-esc="record.other_tasks_count.value"/> Other tasks</span>
                     </a>
