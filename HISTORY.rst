@@ -35,6 +35,8 @@ latest (unreleased)
 * Add icons on project buttons
 
 
+* BSFIN-15: Set default value on the contract and payslip batch
+
 **Bugfixes**
 
 **Build**
