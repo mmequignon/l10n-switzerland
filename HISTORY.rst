@@ -37,6 +37,8 @@ latest (unreleased)
 
 * BSFIN-15: Set default value on the contract and payslip batch
 
+* BSFN-14: Update salary rules and structure
+
 **Bugfixes**
 
 **Build**
