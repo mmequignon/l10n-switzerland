@@ -39,6 +39,8 @@ latest (unreleased)
 
 * BSFN-14: Update salary rules and structure
 
+* BSFIN-24: Remove sharing of partners and products in multi-company
+
 **Bugfixes**
 
 **Build**
