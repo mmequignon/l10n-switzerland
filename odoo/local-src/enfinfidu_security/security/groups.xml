@@ -1,0 +1,5 @@
+<odoo>
+  <record id="group_enfinfidu" model="res.groups">
+    <field name="name">Enfinfidu users</field>
+  </record>
+</odoo>

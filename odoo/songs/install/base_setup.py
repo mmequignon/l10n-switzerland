@@ -33,8 +33,42 @@ def activate_multicurrency(ctx):
 
 
 @anthem.log
+def set_sales_settings(ctx):
+    sale_config = ctx.env['sale.config.settings']
+    # Sections in Sale lines
+    sale_config.create({'group_sale_layout': 1}).execute()
+    # UOM in Sale Lines
+    sale_config.create({'group_uom': 1}).execute()
+
+
+@anthem.log
+def activate_analytic(ctx):
+    """ Activating analytic """
+    employee_group = ctx.env.ref('base.group_user')
+    employee_group.write({
+        'implied_ids': [
+            (4, ctx.env.ref('analytic.group_analytic_accounting').id)
+        ]
+    })
+
+
+@anthem.log
+def disable_sharing_partner_product(ctx):
+    """ Disable sharing partners and productst between companies """
+    general_settings = ctx.env['base.config.settings']
+    general_settings.create({
+        'company_share_partner': False,
+        'company_share_product': False
+    }).execute()
+
+
+@anthem.log
 def main(ctx):
     """ Run scenario """
     multi_company(ctx)
     change_address_format(ctx)
     activate_multicurrency(ctx)
+    set_sales_settings(ctx)
+    disable_sharing_partner_product(ctx)
+
+    # TODO later # activate_analytic(ctx)

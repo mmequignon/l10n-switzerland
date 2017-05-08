@@ -1,0 +1,22 @@
+"id","name","applicability"
+vat_tag_200,Switzerland VAT Form: grid 200,taxes
+vat_tag_220,Switzerland VAT Form: grid 220,taxes
+vat_tag_221,Switzerland VAT Form: grid 221,taxes
+vat_tag_225,Switzerland VAT Form: grid 225,taxes
+vat_tag_230,Switzerland VAT Form: grid 230,taxes
+vat_tag_235,Switzerland VAT Form: grid 235,taxes
+vat_tag_280,Switzerland VAT Form: grid 280,taxes
+vat_tag_301_a,Switzerland VAT Form: grid 301 base,taxes
+vat_tag_311_a,Switzerland VAT Form: grid 311 base,taxes
+vat_tag_341_a,Switzerland VAT Form: grid 341 base,taxes
+vat_tag_381_a,Switzerland VAT Form: grid 381 base,taxes
+vat_tag_301_b,Switzerland VAT Form: grid 301 tax,taxes
+vat_tag_311_b,Switzerland VAT Form: grid 311 tax,taxes
+vat_tag_341_b,Switzerland VAT Form: grid 341 tax,taxes
+vat_tag_381_b,Switzerland VAT Form: grid 381 tax,taxes
+vat_tag_400,Switzerland VAT Form: grid 400,taxes
+vat_tag_405,Switzerland VAT Form: grid 405,taxes
+vat_tag_410,Switzerland VAT Form: grid 410,taxes
+vat_tag_415,Switzerland VAT Form: grid 415,taxes
+vat_tag_420,Switzerland VAT Form: grid 420,taxes
+vat_tag_dedouanement,Switzerland VAT Form: 100% dédouanement (base in grid 400),taxes

@@ -1,0 +1,23 @@
+id,tag_ids/id,amount,chart_template_id/id,account_id/id,refund_account_id/id,amount_type,name,type_tax_use
+tax_tmp_vat_25,"vat_tag_311_a,vat_tag_311_b",2.5,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due a 2.5% (TR),sale
+tax_tmp_vat_25_incl,"vat_tag_311_a,vat_tag_311_b",2.5,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due à 2.5% (Incl. TR),sale
+tax_tmp_vat_25_purchase,vat_tag_400,2.5,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 2.5% sur achat B&S (TR),purchase
+tax_tmp_vat_25_purchase_incl,vat_tag_400,2.5,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 2.5% sur achat B&S (Incl. TR),purchase
+tax_tmp_vat_25_invest,vat_tag_405,2.5,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 2.5% sur invest. et autres ch. (TR),purchase
+tax_tmp_vat_25_invest_incl,vat_tag_405,2.5,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 2.5% sur invest. et autres ch. (Incl. TR),purchase
+tax_tmp_vat_38,"vat_tag_341_a,vat_tag_341_b",3.8,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due a 3.8% (TS),sale
+tax_tmp_vat_38_incl,"vat_tag_341_a,vat_tag_341_b",3.8,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due à 3.8% (Incl. TS),sale
+tax_tmp_vat_38_purchase,vat_tag_400,3.8,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 3.8% sur achat B&S (TS),purchase
+tax_tmp_vat_38_purchase_incl,vat_tag_400,3.8,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 3.8% sur achat B&S (Incl. TS),purchase
+tax_tmp_vat_38_invest,vat_tag_405,3.8,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 3.8% sur invest. et autres ch. (TS),purchase
+tax_tmp_vat_38_invest_incl,vat_tag_405,3.8,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 3.8% sur invest. et autres ch. (Incl. TS),purchase
+tax_tmp_vat_80,"vat_tag_301_a,vat_tag_301_b",8,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due a 8.0% (TN),sale
+tax_tmp_vat_80_incl,"vat_tag_301_a,vat_tag_301_b",8,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due à 8.0% (Incl. TN),sale
+tax_tmp_vat_80_purchase,vat_tag_400,8,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 8.0% sur achat B&S (TN),purchase
+tax_tmp_vat_80_purchase_incl,vat_tag_400,8,enfinfidu_chart_template,account_tmp_1102,account_tmp_1102,percent,TVA 8.0% sur achat B&S (Incl. TN),purchase
+tax_tmp_vat_80_invest,vat_tag_405,8,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 8.0% sur invest. et autres ch. (TN),purchase
+tax_tmp_vat_80_invest_incl,vat_tag_405,8,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 8.0% sur invest. et autres ch. (Incl. TN),purchase
+tax_tmp_vat_XO,vat_tag_220,0,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA due a 0% (Exportations),sale
+tax_tmp_vat_O_exclude,vat_tag_230,0,enfinfidu_chart_template,account_tmp_2200,account_tmp_2200,percent,TVA 0% exclue,sale
+tax_tmp_vat_O_import,,0,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,TVA 0% Importations de biens et services,purchase
+tax_tmp_vat_100_import,vat_tag_dedouanement,0,enfinfidu_chart_template,account_tmp_1103,account_tmp_1103,percent,100% dédouanement TVA,purchase

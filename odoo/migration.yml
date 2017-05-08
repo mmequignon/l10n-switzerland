@@ -18,10 +18,11 @@ migration:
           - anthem openerp.addons.cloud_platform.songs::install_exoscale
           - anthem songs.install.base_setup::main
           - anthem songs.install.project::main
-          - anthem songs.install.cust_001::main
-          - anthem songs.install.cust_000::main
           - anthem songs.install.accounting::main
-          - anthem songs.install.payroll_cust_000::main
+          - anthem songs.install.enfinfidu::main
+          # customer_001 (RL Batiment) is the first customer for enfinfidu
+          # This songs will be tranformed on customer creation wizard later
+          - anthem songs.install.customer_001::main
       modes:
         full:
           operations:
@@ -64,9 +65,13 @@ migration:
           - mis_builder
           - project_task_default_stage
           - web_sheet_full_width
+          - web_hide_db_manager_link
           # LOCAL SOURCE
+          - account_move_line_view_menu
           - enfinfidu_account
           - enfinfidu_fct
           - enfinfidu_payroll
           - enfinfidu_project
+          - enfinfidu_security
+          - hide_powered_by
     - version: 10.4.1

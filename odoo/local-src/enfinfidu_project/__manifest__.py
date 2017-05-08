@@ -13,6 +13,7 @@
         'hr_expense',
         'project',
         'project_task_default_stage',
+        'enfinfidu_security',
     ],
     'website': 'http://www.camptocamp.com',
     'data': [

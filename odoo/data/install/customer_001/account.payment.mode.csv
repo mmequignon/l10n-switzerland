@@ -1,0 +1,2 @@
+id,name,variable_journal_ids/id,company_id/id,no_debit_before_maturity,fixed_journal_id/id,generate_move,group_lines,default_journal_ids/id,bank_account_link,default_invoice,move_option,note,offsetting_account,payment_method_id/id,default_payment_mode,payment_order_ok,default_target_move,transfer_account_id/id,transfer_journal_id/id,default_date_type
+__setup__.account_payment_mode_rlbatiment_salary,Salary,,__setup__.rlbatiment,False,__setup__.enfinfidu_SAL_rlbatiment,False,False,,Fixed,False,,,,l10n_ch_dta.dta_payment_method,Any,True,All Entries,,,Due

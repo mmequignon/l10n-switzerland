@@ -15,8 +15,16 @@ from ..common import req
 @anthem.log
 def import_users(ctx):
     """ Import users """
-    content = resource_stream(req, 'data/install/cust_000/res.users.csv')
+    content = resource_stream(req, 'data/install/enfinfidu/res.users.csv')
     load_csv_stream(ctx, 'res.users', content, delimiter=',')
+
+
+# HR
+@anthem.log
+def import_salary_rule(ctx):
+    """ Import users """
+    content = resource_stream(req, 'data/install/enfinfidu/hr.salary.rule.csv')
+    load_csv_stream(ctx, 'hr.salary.rule', content, delimiter=',')
 
 
 # ACCOUNTING
@@ -28,35 +36,42 @@ def load_account_journal(ctx):
             add_xmlid(ctx, journal,
                       '__setup__.account_journal_%s' % journal.code)
 
-    filepath = 'data/install/cust_000/account.journal.csv'
+    filepath = 'data/install/enfinfidu/account.journal.csv'
     csv_content = resource_stream(req, filepath)
     load_csv_stream(ctx, 'account.journal', csv_content)
 
 
 @anthem.log
-def activate_analytic(ctx):
-    """ Activating analytic """
-    employee_group = ctx.env.ref('base.group_user')
-    employee_group.write({
-        'implied_ids': [
-            (4, ctx.env.ref('analytic.group_analytic_accounting').id)
-        ]
-    })
+def load_partner_banks(ctx):
+    """ Load Banks """
+    filepath = 'data/install/enfinfidu/res.partner.bank.csv'
+    csv_content = resource_stream(req, filepath)
+    load_csv_stream(ctx, 'res.partner.bank', csv_content)
 
 
 @anthem.log
-def load_partner_banks(ctx):
-    """ Load Banks """
-    filepath = 'data/install/res.partner.bank.csv'
+def load_account_journal_fromcsv(ctx):
+    """ Load account journal without add_xmlid """
+    filepath = 'data/install/enfinfidu/account.journal.csv'
     csv_content = resource_stream(req, filepath)
-    load_csv_stream(ctx, 'res.partner.bank', csv_content)
+    load_csv_stream(ctx, 'account.journal', csv_content)
+
+
+@anthem.log
+def load_account_payment_mode(ctx):
+    """ Load account payment mode """
+    filepath = 'data/install/enfinfidu/account.payment.mode.csv'
+    csv_content = resource_stream(req, filepath)
+    load_csv_stream(ctx, 'account.payment.mode', csv_content)
 
 
 @anthem.log
 def main(ctx):
     """ Run setup """
     import_users(ctx)
+    import_salary_rule(ctx)
+    load_account_journal_fromcsv(ctx)
+    load_account_payment_mode(ctx)
     # TODO later
     # load_account_journal(ctx)
-    # activate_analytic(ctx)
     # load_partner_banks(ctx)

@@ -208,3 +208,69 @@ msgstr "Total hors salaire"
 msgid "Travel expenses"
 msgstr "Frais de voyage"
 
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrAVSE
+msgid "AVS correction employee"
+msgstr "Correction AVS employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrAVSC
+msgid "AVS correction employer"
+msgstr "Correction AVS employeur"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACE
+msgid "AC correction employee"
+msgstr "Correction AC employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACC
+msgid "AC correction employer"
+msgstr "Correction AC employeur"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACCE
+msgid "ACC correction employee"
+msgstr "Correction ACC employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACCC
+msgid "ACC correction employer"
+msgstr "Correction ACC employeur"
+
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrImpSrc
+msgid "Tax source correction"
+msgstr "Correction impôt source"
+
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLAAE
+msgid "LAA correction employee"
+msgstr "Correction LAA employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLAAC
+msgid "LAA correction employer"
+msgstr "Correction LAA employeur"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrIJME
+msgid "IJM correction employee"
+msgstr "Correction IJM employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrIJMC
+msgid "IJM correction employer"
+msgstr "Correction IJM employeur"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLPPE
+msgid "LPP correction employee"
+msgstr "Correction LPP employé"
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLPPC
+msgid "LPP correction employer"
+msgstr "Correction LPP employeur"

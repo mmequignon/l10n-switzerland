@@ -21,6 +21,27 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-9: Standardization of companies setup
+* Update salary imputation for main company
+
+* BSFIN-16: Create DTA Payment Mode for the salaries
+* BSFIN-17: Leave management on the salary payslip
+* BSFIN-18: Hide discuss and calendar menu
+            Only enfinfidu users can see project and task specific additions
+            Display menu entry for journal entries for accountants
+            Hide powered by and db manager link on login page
+            Hide powered by in menu
+* BSFIN-19: Load products for Expenses from csv
+* BSFIN-69 change-report-header
+* Add icons on project buttons
+
+
+* BSFIN-15: Set default value on the contract and payslip batch
+
+* BSFN-14: Update salary rules and structure
+
+* BSFIN-24: Remove sharing of partners and products in multi-company
+
 **Bugfixes**
 
 **Build**
