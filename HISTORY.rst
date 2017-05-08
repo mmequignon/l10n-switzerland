@@ -25,6 +25,7 @@ latest (unreleased)
 * Update salary imputation for main company
 
 * BSFIN-16: Create DTA Payment Mode for the salaries
+* BSFIN-17: Leave management on the salary payslip
 * BSFIN-18: Hide discuss and calendar menu
             Only enfinfidu users can see project and task specific additions
             Display menu entry for journal entries for accountants
