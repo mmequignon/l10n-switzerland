@@ -69,3 +69,4 @@ migration:
           - enfinfidu_fct
           - enfinfidu_payroll
           - enfinfidu_project
+    - version: 10.4.1
