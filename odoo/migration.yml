@@ -23,11 +23,12 @@ migration:
           # customer_001 (RL Batiment) is the first customer for enfinfidu
           # This songs will be tranformed on customer creation wizard later
           - anthem songs.install.customer_001::main
+          - anthem songs.install.data::main
       modes:
         full:
           operations:
             post:
-              - anthem songs.install.data::main
+              - anthem songs.install.data_full::main
         demo:
           operations:
             post:
