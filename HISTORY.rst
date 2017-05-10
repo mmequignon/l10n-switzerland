@@ -21,9 +21,20 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.5.0 (2017-05-10)
++++++++++++++++++++
+
+**Features and Improvements**
+
 * BSFIN-9: Standardization of companies setup
 * Update salary imputation for main company
-
 * BSFIN-16: Create DTA Payment Mode for the salaries
 * BSFIN-17: Leave management on the salary payslip
 * BSFIN-18: Hide discuss and calendar menu
@@ -34,19 +45,9 @@ latest (unreleased)
 * BSFIN-19: Load products for Expenses from csv
 * BSFIN-69 change-report-header
 * Add icons on project buttons
-
-
 * BSFIN-15: Set default value on the contract and payslip batch
-
 * BSFN-14: Update salary rules and structure
-
 * BSFIN-24: Remove sharing of partners and products in multi-company
-
-**Bugfixes**
-
-**Build**
-
-**Documentation**
 
 
 10.4.1 (2017-05-08)
