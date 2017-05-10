@@ -26,5 +26,5 @@ def load_product_template(ctx):
 
 @anthem.log
 def main(ctx):
-    load_product_template(ctx)
     """ Loading data """
+    load_product_template(ctx)
