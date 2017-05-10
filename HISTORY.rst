@@ -23,6 +23,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* Fix failing product template product import
+
 **Build**
 
 **Documentation**
