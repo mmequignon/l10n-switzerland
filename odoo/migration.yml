@@ -77,3 +77,4 @@ migration:
           - hide_powered_by
     - version: 10.4.1
     - version: 10.5.0
+    - version: 10.5.1

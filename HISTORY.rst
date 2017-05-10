@@ -23,11 +23,17 @@ latest (unreleased)
 
 **Bugfixes**
 
-* Fix failing product template product import
-
 **Build**
 
 **Documentation**
+
+
+10.5.1 (2017-05-10)
++++++++++++++++++++
+
+**Bugfixes**
+
+* Fix failing product template product import
 
 
 10.5.0 (2017-05-10)
