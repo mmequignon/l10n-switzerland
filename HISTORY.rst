@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BSFIN-70: configurations for incoming mails for integration and production environments
+
 **Bugfixes**
 
 **Build**
