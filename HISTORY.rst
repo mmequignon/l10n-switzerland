@@ -36,6 +36,7 @@ latest (unreleased)
 * Update docker image to 10.0-2.2.0
 * Load entrypoints
 * Update cloud platform addons to be able to use Redis Sentinel
+* Update Odoo sources to latest commit
 
 **Documentation**
 
