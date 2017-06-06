@@ -1,3 +1,7 @@
+<!--
+This file has been generated with 'invoke project.sync'.
+Do not modify. Any manual change will be lost.
+-->
 # How to run a test server, the short way
 
 This method is mostly for project managers or functional testers because it uses the pre-generated Docker images. Developers will prefer to use [Docker in development mode](docker-dev.md).
@@ -33,4 +37,4 @@ Be sure to [install Docker and docker-compose](prerequisite.md) before going any
 
 5. If you want to drop your database, run:
 
-        docker-compose -f docker-compose.yml -f test.yml rm -v
+        docker-compose -f docker-compose.yml -f test.yml odoo dropdb odoodb
