@@ -36,3 +36,6 @@
 [submodule "odoo/external-src/project"]
 	path = odoo/external-src/project
 	url = git@github.com:OCA/project.git
+[submodule "odoo/external-src/hr"]
+	path = odoo/external-src/hr
+	url = git@github.com:OCA/hr.git

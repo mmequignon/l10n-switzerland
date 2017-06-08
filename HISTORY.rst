@@ -62,7 +62,10 @@ latest (unreleased)
 * BSFIN-15: Set default value on the contract and payslip batch
 * BSFN-14: Update salary rules and structure
 * BSFIN-24: Remove sharing of partners and products in multi-company
-
+* BSFIN-72: added external repository OCA/hr
+            installed module hr_public_holidays
+            installed module hr_holidays_compute_days
+            checked function get_remaining_leaves
 
 10.4.1 (2017-05-08)
 +++++++++++++++++++

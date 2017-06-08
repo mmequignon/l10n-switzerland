@@ -29,6 +29,8 @@ class TestGetRemainingLeaves(TestHrHolidaysBase):
             'name': 'Limited',
             'limit': False,
             'double_validation': True,
+            'exclude_rest_days': False,
+            'exclude_public_holidays': False
         })
 
         # Create leave allocation approve and validate
@@ -67,7 +69,7 @@ class TestGetRemainingLeaves(TestHrHolidaysBase):
         remaining_leaves_during = employee.get_leaves_to_date(
             fields.Datetime.to_string(
                 datetime.today() + relativedelta(days=13)))
-        self.assertEqual(remaining_leaves_during, 17)
+        self.assertEqual(remaining_leaves_during, 16)
 
         # test after vacation 20 - 6 = 14
         remaining_leaves_after = employee.get_leaves_to_date(

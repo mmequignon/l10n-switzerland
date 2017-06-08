@@ -10,6 +10,7 @@
     'category': 'Hr',
     'depends': [
         'hr_payroll',
+        'hr_holidays_compute_days',
         'l10n_ch_hr_payroll',
         'l10n_ch_hr_payroll_report',
     ],

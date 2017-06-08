@@ -56,6 +56,8 @@ migration:
           - account_financial_report_qweb
           - account_fiscal_year
           - account_tax_balance
+          - hr_public_holidays
+          - hr_holidays_compute_days
           - l10n_ch_bank
           - l10n_ch_base_bank
           - l10n_ch_dta
