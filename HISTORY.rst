@@ -29,6 +29,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* BSFIN-21: Bank account missing when salary registered in accounting
+
 **Build**
 
 * Update docker image to 10.0-2.2.0
