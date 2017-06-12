@@ -22,18 +22,6 @@
 #     # port of account_statement_base_import
 #     - oca refs/pull/137/head
 #   target: *default_target
-
-./external-src/server-tools:
-  remotes:
-    oca: git@github.com:OCA/server-tools.git
-    camptocamp: git@github.com:camptocamp/server-tools.git
-  merges:
-    - oca 10.0
-      # migration of server_environment
-    - oca refs/pull/595/head
-      # migration of mail_environment
-    - oca refs/pull/662/head
-  target: &default_target camptocamp merge-branch-2021-master
 ./external-src/l10n-switzerland:
   remotes:
     oca: git@github.com:OCA/l10n-switzerland.git
@@ -44,4 +32,4 @@
     - oca refs/pull/315/head
     # Add new module: "Switzerland - Payroll Reports"
     - oca refs/pull/317/head
-  target: *default_target
+  target: &default_target camptocamp merge-branch-2021-master

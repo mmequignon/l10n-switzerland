@@ -37,6 +37,7 @@ latest (unreleased)
 * Load entrypoints
 * Update cloud platform addons to be able to use Redis Sentinel
 * Update Odoo sources to latest commit
+* Remove pending-merge on OCA/server-tools
 
 **Documentation**
 
