@@ -9,10 +9,11 @@
     'license': 'AGPL-3',
     'category': 'Hr',
     'depends': [
-        'hr_payroll',
+        'hr_payroll_account',
         'hr_holidays_compute_days',
         'l10n_ch_hr_payroll',
         'l10n_ch_hr_payroll_report',
+        'account_payment_order',
     ],
     'website': 'http://www.camptocamp.com',
     'data': [
