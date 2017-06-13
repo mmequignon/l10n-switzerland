@@ -80,3 +80,12 @@ migration:
     - version: 10.4.1
     - version: 10.5.0
     - version: 10.5.1
+    - version: 10.6.0
+      addons:
+        upgrade:
+          # Specific Enfinfidu
+          - server_environment_files
+          - enfinfidu_payroll
+          # OCA
+          - hr_public_holidays
+          - hr_holidays_compute_days

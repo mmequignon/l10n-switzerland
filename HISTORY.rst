@@ -21,6 +21,18 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.6.0 (2017-06-13)
++++++++++++++++++++
+
+**Features and Improvements**
+
 * BSFIN-70: configurations for incoming mails for integration and production environments
 * BSFIN-72: added external repository OCA/hr
             installed module hr_public_holidays
@@ -38,8 +50,6 @@ latest (unreleased)
 * Update cloud platform addons to be able to use Redis Sentinel
 * Update Odoo sources to latest commit
 * Remove pending-merge on OCA/server-tools
-
-**Documentation**
 
 
 10.5.1 (2017-05-10)
