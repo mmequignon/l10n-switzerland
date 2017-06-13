@@ -89,3 +89,9 @@ migration:
           # OCA
           - hr_public_holidays
           - hr_holidays_compute_days
+    - version: 10.6.1
+      addons:
+        upgrade:
+          # OCA
+          - hr_public_holidays
+          - l10n_ch_hr_payroll

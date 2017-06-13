@@ -23,6 +23,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* Fix Internal Server Error on login by updating module l10n_ch_hr_payroll
+
 **Build**
 
 **Documentation**
