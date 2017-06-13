@@ -23,11 +23,17 @@ latest (unreleased)
 
 **Bugfixes**
 
-* Fix Internal Server Error on login by updating module l10n_ch_hr_payroll
-
 **Build**
 
 **Documentation**
+
+
+10.6.1 (2017-06-13)
++++++++++++++++++++
+
+**Bugfixes**
+
+* Fix Internal Server Error on login by updating module l10n_ch_hr_payroll
 
 
 10.6.0 (2017-06-13)
