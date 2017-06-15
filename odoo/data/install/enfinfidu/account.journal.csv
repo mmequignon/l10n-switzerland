@@ -1,2 +1,2 @@
 id,name,type,code,company_id/id,default_credit_account_id/id,default_debit_account_id/id
-__setup__.enfinfidu_SAL_enfinfidu,Salaires,Divers,SAL,base.main_company,enfinfidu_account.1_account_tmp_5000,enfinfidu_account.1_account_tmp_5000
+__setup__.enfinfidu_SAL_enfinfidu,Salaires,Achats,SAL,base.main_company,enfinfidu_account.1_account_tmp_5000,enfinfidu_account.1_account_tmp_5000

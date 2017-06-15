@@ -29,7 +29,7 @@
 "enfinfidu_account.account_tmp_2001",2001,"Acomptes de clients","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_2100",2100,"Dettes financières à court terme","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_2150",2150,"Dettes concernant personnel","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
-"enfinfidu_account.account_tmp_2151",2151,"Salaires à payer","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
+"enfinfidu_account.account_tmp_2151",2151,"Salaires à payer","account.data_account_type_payable",1,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_2152",2152,"AVS,AI, APG, Assurance-chômage à payer","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_2153",2153,"Prévoyance professionelle à payer","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_2154",2154,"Assurance accidents à payer","account.data_account_type_current_liabilities",,"enfinfidu_chart_template"
