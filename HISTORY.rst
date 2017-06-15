@@ -28,6 +28,14 @@ latest (unreleased)
 **Documentation**
 
 
+10.6.2 (2017-06-15)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* Correct journal type and account type
+
+
 10.6.1 (2017-06-13)
 +++++++++++++++++++
 

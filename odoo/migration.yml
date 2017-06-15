@@ -95,3 +95,4 @@ migration:
           # OCA
           - hr_public_holidays
           - l10n_ch_hr_payroll
+    - version: 10.6.2
