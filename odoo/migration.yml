@@ -100,6 +100,9 @@ migration:
       addons:
         upgrade:
           - enfinfidu_account
+          - enfinfidu_fct
+          - enfinfidu_report
       operations:
         post:
           - anthem songs.install.davia::main
+          - anthem songs.upgrade.10_6_3::main
