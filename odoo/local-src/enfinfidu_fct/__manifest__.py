@@ -5,11 +5,13 @@
  'author': 'Camptocamp',
  'license': 'AGPL-3',
  'depends': [
+     'account',
      'mail',
  ],
  'website': 'http://www.camptocamp.com',
  'data': [
-     # views
+     'security/ir.model.access.csv',
+     # viewsv
      'views/mail_channel_views.xml',
 
  ],

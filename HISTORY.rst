@@ -27,6 +27,21 @@ latest (unreleased)
 
 **Documentation**
 
+10.6.3 (2017-07-03)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* Add new company Davia Conseil
+* Change report header + set paper format on all companies
+* Add payment user right to all users + new user right
+
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
 
 10.6.2 (2017-06-15)
 +++++++++++++++++++

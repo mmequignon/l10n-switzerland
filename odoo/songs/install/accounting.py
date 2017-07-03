@@ -52,7 +52,9 @@ def configure_missing_chart_of_account(ctx, coa_dict=False):
         sale_tax = ctx.env.ref(values['sale_tax_id'])
         purchase_tax = ctx.env.ref(values['purchase_tax_id'])
         if not company.chart_template_id:
-            wizard = ctx.env['wizard.multi.charts.accounts'].create({
+            wizard = ctx.env['wizard.multi.charts.accounts'].with_context(
+                    lang='fr_FR'
+            ).create({
                 'company_id': company.id,
                 'chart_template_id': coa.id,
                 'transfer_account_id': template_transfer_account.id,

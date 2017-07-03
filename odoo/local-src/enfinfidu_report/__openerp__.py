@@ -11,7 +11,6 @@
     'images': [],
     'depends': [
         'report',
-        'stock',
     ],
     'data': [
         # Reports

@@ -96,3 +96,13 @@ migration:
           - hr_public_holidays
           - l10n_ch_hr_payroll
     - version: 10.6.2
+    - version: 10.6.3
+      addons:
+        upgrade:
+          - enfinfidu_account
+          - enfinfidu_fct
+          - enfinfidu_report
+      operations:
+        post:
+          - anthem songs.install.davia::main
+          - anthem songs.upgrade.10_6_3::main
