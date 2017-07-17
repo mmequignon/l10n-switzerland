@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Yannick Vaucher
-#    Copyright 2011 Camptocamp SA
+#    Author: Anar Baghirli
+#    Copyright 2017 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,6 +19,4 @@
 #
 ##############################################################################
 
-from . import l10n_ch
 from . import wizard
-from . import account_payment

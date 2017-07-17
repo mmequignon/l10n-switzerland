@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Yannick Vaucher
-#    Copyright 2011 Camptocamp SA
+#    Author: Anar Baghirli
+#    Copyright 2017 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,8 +21,9 @@
 
 {
     "name": "Switzerland - SEPA Electronic Payment File",
-    "summary": "Generate pain.001 Credit Transfert Files for your payments",
-    "version": "1.0",
+    "summary": "Generate pain.001.001.03 Credit "
+               "Transfert Files for your payments",
+    "version": "7.0.1.0.0",
     "category": "Finance",
     "description": """
 Swiss electronic payment (SEPA)
@@ -37,7 +38,8 @@ as the Swiss standards are slightly different.
 It intends to be reusable to accept new definition of specific standards
 by country.
 
-It currently supports the "pain.001" norm for Credit Transfert Initiation.
+It adds support for 'pain.001.001.03.ch.02' norm for Credit Transfer initiation
+
 
 """,
     "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -47,14 +49,10 @@ It currently supports the "pain.001" norm for Credit Transfert Initiation.
         "l10n_ch_base_bank",
         "base_iban",
         "account_payment",
+        "account_banking_sepa_credit_transfer",
     ],
     "data": [
-        "wizard/wiz_pain_001_view.xml",
-        "account_payment.xml"
-    ],
-    "test": [
-        "test/pain001_eu.yml",
-        "test/pain001_ch.yml",
+        "data/payment_type_sepa_sct.xml",
     ],
     "installable": True,
     "active": True,

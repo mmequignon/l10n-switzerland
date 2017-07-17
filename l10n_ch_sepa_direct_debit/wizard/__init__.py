@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Yannick Vaucher
-#    Copyright 2011 Camptocamp SA
+#    SEPA Credit Transfer module for OpenERP
+#    Copyright (C) 2010-2013 Akretion (http://www.akretion.com)
+#    @author: Alexis de Lattre <alexis.delattre@akretion.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,6 +20,4 @@
 #
 ##############################################################################
 
-from . import l10n_ch
-from . import wizard
-from . import account_payment
+from . import export_sdd
