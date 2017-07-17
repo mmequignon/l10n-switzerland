@@ -103,6 +103,8 @@
 "enfinfidu_account.account_tmp_6740",6740,"Honoraires pour conseil","account.data_account_type_expenses",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_6800",6800,"Charges financières","account.data_account_type_expenses",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_6900",6900,"Amortissements","account.data_account_type_expenses",,"enfinfidu_chart_template"
+"enfinfidu_account.account_tmp_6949",6949,"Pertes de change","account.data_account_type_expenses",,"enfinfidu_chart_template"
+"enfinfidu_account.account_tmp_6999",6999,"Gains de change","account.data_account_type_expenses",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_7000",7000,"Resultat des activités annexes","account.data_account_type_expenses",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_7400",7400,"Résultat des placements fianciers (non nécessaires à l'entreprise)","account.data_account_type_expenses",,"enfinfidu_chart_template"
 "enfinfidu_account.account_tmp_7500",7500,"Résultat d'immeubles","account.data_account_type_expenses",,"enfinfidu_chart_template"
