@@ -71,7 +71,7 @@ for sub in submodules:
         try:
             with zipfile.ZipFile(ZIP_PATH) as zf:
                 zf.extractall(DL_DIR)
-        except zf.BadZipfile:
+        except zipfile.BadZipfile:
             # fall back to standard download
             use_archive = False
             with open(ZIP_PATH) as f:
