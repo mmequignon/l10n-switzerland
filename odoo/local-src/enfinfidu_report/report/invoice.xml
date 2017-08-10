@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_enfinfidu"
+              inherit_id="account.report_invoice_document">
+
+      <xpath expr="//p[@t-if='o.fiscal_position_id.note']" position="after">
+        <div t-if="o.company_id.report_partner_bank_id" name="payment_details">
+
+        </div>
+      </xpath>
+
+    </template>
+</odoo>
