@@ -242,7 +242,7 @@
     <field name="appears_on_payslip">True</field>
     <field name="code">1201</field>
     <field name="condition_select">python</field>
-    <field name="condition_python">	result = (inputs and inputs.grat and inputs.grat.amount) or False</field>
+    <field name="condition_python">result = (inputs and inputs.grat and inputs.grat.amount) or False</field>
     <field name="name">Gratification</field>
     <field name="amount_python_compute">result = round(inputs.grat.amount/0.05)*0.05</field>
     <field name="amount_percentage_base">0</field>
