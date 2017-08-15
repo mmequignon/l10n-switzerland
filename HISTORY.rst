@@ -23,6 +23,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* FIX faulty tab in XML definition for salary BIZ-328
+
 **Build**
 
 **Documentation**
