@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_holidays_compute_days.property_rule_contract_manager" model="ir.rule">
+        <field name="name">Employee Contracts Manager</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">['|', ('employee_id.company_id', 'child_of',[user.company_id.id]),  ('employee_id.company_id', '=', False)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="groups" eval="[(4,ref('hr.group_hr_manager'))]"/>
+    </record>
+
+    <record id="hr_holidays_compute_days.property_pay_slip_company" model="ir.rule">
+        <field name="name">Employee Pay Slip company</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="domain_force">['|', '|', ('employee_id.company_id', 'child_of', [user.company_id.id]), ('employee_id.company_id', '=', False), ('employee_id.user_id','=',user.id)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

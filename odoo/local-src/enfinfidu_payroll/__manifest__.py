@@ -23,6 +23,7 @@
         'data/hr_salary_rule.xml',
         'data/hr_rule_input.xml',
         'data/hr_payroll_structure.xml',
+        'data/security.xml',
     ],
     'installable': True,
 }
