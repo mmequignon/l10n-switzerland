@@ -26,6 +26,7 @@ latest (unreleased)
 * FIX faulty tab in XML definition for salary BIZ-328
 * FIX missing payroll and hr contract permission BIZ-348
 
+
 **Build**
 
 **Documentation**
