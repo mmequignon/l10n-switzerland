@@ -23,6 +23,18 @@ latest (unreleased)
 
 **Bugfixes**
 
+**Build**
+
+**Documentation**
+
+
+10.6.4 (2017-08-15)
++++++++++++++++++++
+
+**Features and Improvements**
+
+**Bugfixes**
+
 * FIX faulty tab in XML definition for salary BIZ-328
 * FIX missing payroll and hr contract permission BIZ-348
 
