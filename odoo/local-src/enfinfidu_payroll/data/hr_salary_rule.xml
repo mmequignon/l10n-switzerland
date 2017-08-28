@@ -1124,9 +1124,9 @@ else:
     <field name="condition_select">none</field>
     <field name="name">Remaining leaves</field>
     <field name="amount_python_compute">if not (inputs and inputs.consHolidays and inputs.consHolidays.amount) or False:
-  result = Initholidays;
+  result = inputs.initHolidays;
 else:
-  result = Initholidays-inputs.consHolidays.amount;</field>
+  result = inputs.initHolidays-inputs.consHolidays.amount;</field>
     <field name="amount_percentage_base">0</field>
     <field name="amount_percentage">0</field>
     <field name="quantity">1</field>
