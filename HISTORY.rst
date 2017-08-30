@@ -22,12 +22,20 @@ latest (unreleased)
 **Features and Improvements**
 
 **Bugfixes**
-* Fix Incoming mail configuration
 
 **Build**
 
 **Documentation**
 
+
+10.6.5 (2017-08-30)
++++++++++++++++++++
+
+**Features and Improvements**
+* Improve invoice layout (BIZ-188)
+
+**Bugfixes**
+* Fix Incoming mail configuration
 
 10.6.4 (2017-08-15)
 +++++++++++++++++++
