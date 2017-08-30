@@ -22,6 +22,7 @@ latest (unreleased)
 **Features and Improvements**
 
 **Bugfixes**
+* Fix Incoming mail configuration
 
 **Build**
 

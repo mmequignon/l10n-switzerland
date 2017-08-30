@@ -110,10 +110,10 @@ migration:
       addons:
         upgrade:
           - enfinfidu_payroll
-    - version: 10.7.0
+    - version: 10.6.5
       operations:
         post:
-          - anthem songs.upgrade.upgrade_10_6_4::post
+          - anthem songs.upgrade.upgrade_10_6_5::post
       addons:
         upgrade:
           - enfinfidu_report
