@@ -7,7 +7,7 @@ from anthem.lyrics.records import create_or_update
 
 @anthem.log
 def create_mail_server(ctx):
-    """Prepare no accounting in holding"""
+    """Create mail server"""
     values = {
         'name': "Mail Server",
         }
