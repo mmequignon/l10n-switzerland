@@ -106,8 +106,14 @@ migration:
         post:
           - anthem songs.install.davia::main
           - anthem songs.upgrade.10_6_3::main
-
     - version: 10.6.4
       addons:
         upgrade:
           - enfinfidu_payroll
+    - version: 10.7.0
+      operations:
+        post:
+          - anthem songs.upgrade.upgrade_10_6_4::post
+      addons:
+        upgrade:
+          - enfinfidu_report

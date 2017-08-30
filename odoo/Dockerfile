@@ -1,4 +1,4 @@
-FROM camptocamp/odoo-project:10.0-2.2.0
+FROM camptocamp/odoo-project:10.0-2.3.0
 MAINTAINER Camptocamp
 
 # Install additional debian packages if needed
@@ -23,8 +23,8 @@ ENV ADDONS_PATH="/opt/odoo/external-src/server-tools, \
   /opt/odoo/external-src/odoo-cloud-platform, \
   /opt/odoo/external-src/account-financial-tools, \
   /opt/odoo/external-src/account-financial-reporting, \
-  /opt/odoo/external-src/web, \ 
-  /opt/odoo/external-src/reporting-engine, \ 
+  /opt/odoo/external-src/web, \
+  /opt/odoo/external-src/reporting-engine, \
   /opt/odoo/external-src/bank-payment, \
   /opt/odoo/external-src/l10n-switzerland, \
   /opt/odoo/external-src/partner-contact, \
