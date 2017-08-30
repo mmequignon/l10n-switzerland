@@ -4,6 +4,7 @@
 import anthem
 from anthem.lyrics.records import create_or_update
 
+
 @anthem.log
 def create_mail_server(ctx):
     """Prepare no accounting in holding"""
@@ -12,6 +13,7 @@ def create_mail_server(ctx):
         }
     create_or_update(ctx, 'fetchmail.server',
                      '__setup__.mail_server', values)
+
 
 @anthem.log
 def main(ctx):
