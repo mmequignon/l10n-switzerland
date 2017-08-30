@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
+import anthem
+from anthem.lyrics.records import create_or_update
+from ..common import req
 from base64 import b64encode
 from pkg_resources import resource_string
 
-import anthem
-from ..common import req
+
+@anthem.log
+def create_mail_server(ctx):
+    """Create mail server"""
+    values = {
+        'name': "Mail Server",
+        }
+    create_or_update(ctx, 'fetchmail.server',
+                     '__setup__.mail_server', values)
 
 
 @anthem.log
@@ -30,7 +40,8 @@ def set_reports_logo(ctx):
 
 
 @anthem.log
-def post(ctx):
+def main(ctx):
     """ Run setup """
+    create_mail_server(ctx)
     remove_tagline(ctx)
     set_reports_logo(ctx)
