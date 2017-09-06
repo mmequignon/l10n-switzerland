@@ -117,3 +117,10 @@ migration:
       addons:
         upgrade:
           - enfinfidu_report
+    - version: 10.6.6
+      operations:
+        post:
+          - anthem songs.upgrade.10_6_6::main
+      addons:
+        upgrade:
+          - enfinfidu_report
