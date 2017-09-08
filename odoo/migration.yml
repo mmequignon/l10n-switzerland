@@ -117,3 +117,12 @@ migration:
       addons:
         upgrade:
           - enfinfidu_report
+    - version: 10.6.6
+      operations:
+        pre:
+          - psql -f /opt/odoo/songs/upgrade/10_6_6.sql
+      addons:
+        upgrade:
+          # OCA/l10n-switzerland
+          - l10n_ch_base_bank  # Because repository have been updated
+          - l10n_ch_hr_payroll
