@@ -23,6 +23,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* BSFIN-78: Fix payslip report (fix sorting of payslip lines)
+
 **Build**
 
 **Documentation**
