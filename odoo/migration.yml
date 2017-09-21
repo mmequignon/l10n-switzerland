@@ -126,3 +126,9 @@ migration:
           # OCA/l10n-switzerland
           - l10n_ch_base_bank  # Because repository have been updated
           - l10n_ch_hr_payroll
+
+    - version: 10.7.0
+      operations:
+        post:
+          - anthem songs.install.reliure_des_planches::main
+          - anthem songs.install.reliure_des_planches_sarl::main
