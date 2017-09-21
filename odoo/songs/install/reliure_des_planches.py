@@ -48,7 +48,9 @@ def setup_company(ctx):
 @anthem.log
 def import_users(ctx):
     """ Import users """
-    content = resource_stream(req, 'data/install/reliure_des_planches/res.users.csv')
+    content = resource_stream(
+        req,
+        'data/install/reliure_des_planches/res.users.csv')
     load_csv_stream(ctx, 'res.users', content, delimiter=',')
 
     user = ctx.env.ref('__setup__.res_user_reliure_des_planches_manager')
@@ -89,7 +91,8 @@ def add_customer_company_to_main_company_users(ctx):
         ('company_id', '=', ctx.env.ref('base.main_company').id),
     ]):
         user.write({
-            'company_ids': [(4, ctx.env.ref('__setup__.reliure_des_planches').id)],
+            'company_ids':
+            [(4, ctx.env.ref('__setup__.reliure_des_planches').id)],
         })
 
 
