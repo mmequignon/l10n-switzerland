@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* Add Reliure des Planches and Reliure des Planches SARL companies
+
 **Bugfixes**
 
 * BSFIN-78: Fix payslip report (fix sorting of payslip lines)
