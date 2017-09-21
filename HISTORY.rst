@@ -21,6 +21,18 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.7.0 (2017-09-21)
++++++++++++++++++++
+
+**Features and Improvements**
+
 * Add Reliure des Planches and Reliure des Planches SARL companies
 
 **Bugfixes**
