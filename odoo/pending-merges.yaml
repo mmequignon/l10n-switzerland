@@ -28,8 +28,6 @@
     camptocamp: git@github.com:camptocamp/l10n-switzerland.git
   merges:
     - oca 10.0
-    # Port l10n_ch_hr_payroll
-    - oca refs/pull/315/head
     # Add new module: "Switzerland - Payroll Reports"
     - oca refs/pull/317/head
   target: &default_target camptocamp merge-branch-2021-master

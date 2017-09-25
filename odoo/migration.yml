@@ -119,8 +119,23 @@ migration:
           - enfinfidu_report
     - version: 10.6.6
       operations:
+        pre:
+          - psql -f /opt/odoo/songs/upgrade/10_6_6.sql
+      addons:
+        upgrade:
+          # OCA/l10n-switzerland
+          - l10n_ch_base_bank  # Because repository have been updated
+          - l10n_ch_hr_payroll
+
+    - version: 10.7.0
+      operations:
         post:
-          - anthem songs.upgrade.10_6_6::main
+          - anthem songs.install.reliure_des_planches::main
+          - anthem songs.install.reliure_des_planches_sarl::main
+    - version: 10.7.1
+      operations:
+        post:
+          - anthem songs.upgrade.10_7_1::main
       addons:
         upgrade:
           - enfinfidu_report

@@ -647,7 +647,7 @@
     <field name="parent_rule_id" ref="l10n_ch_hr_payroll.AC"/>
     <field name="category_id" ref="hr_payroll.COMP"/>
   </record>
-  <record id="l10n_ch_hr_payroll.ALFA_VD" model="hr.salary.rule">
+  <record id="l10n_ch_hr_payroll.ALFA" model="hr.salary.rule">
     <field name="sequence">3030</field>
     <field name="report_is_total_rule">False</field>
     <field name="report_display_details_columns">False</field>

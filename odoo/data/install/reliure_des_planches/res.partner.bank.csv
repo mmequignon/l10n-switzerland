@@ -1,0 +1,4 @@
+"id","partner_id/id","acc_number","bank_id/id","company_id/id","bank_name","currency_id/id","ccp"
+"__setup__.res_partner_bank_reliure_des_planches_1","__setup__.reliure_des_planches_partner","CH60 0024 3243 2195 7401 X","l10n_ch_bank.bank_243_0001","__setup__.reliure_des_planches","UBS Switzerland AG","base.CHF",""
+"__setup__.res_partner_bank_reliure_des_planches_2","__setup__.reliure_des_planches_partner","CH33 0078 8000 0503 0006 6","l10n_ch_bank.bank_243_0001","__setup__.reliure_des_planches","UBS Switzerland AG","base.CHF",""
+"__setup__.res_partner_bank_reliure_des_planches_3","__setup__.reliure_des_planches_partner","CH80 0900 0000 9215 0122 8","l10n_ch_bank.bank_243_0001","__setup__.reliure_des_planches","UBS Switzerland AG","base.CHF",""

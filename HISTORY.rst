@@ -28,6 +28,22 @@ latest (unreleased)
 **Documentation**
 
 
+10.7.0 (2017-09-21)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* Add Reliure des Planches and Reliure des Planches SARL companies
+
+**Bugfixes**
+
+* BSFIN-78: Fix payslip report (fix sorting of payslip lines)
+
+**Build**
+
+**Documentation**
+
+
 10.6.5 (2017-08-30)
 +++++++++++++++++++
 
