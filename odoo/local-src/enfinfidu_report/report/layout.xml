@@ -17,8 +17,7 @@
           </div>
           <div class="row" style="margin_top: 20px;">
             <div class="col-xs-6" name="company_address">
-
-              <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}" style="border-bottom: 0px solid black; display:inline-block;"/>
+              <span t-field="company.partner_id" t-field-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': true}" style="border-bottom: 0px solid black; display:inline-block;"/>
             </div>
           </div>
         </div>

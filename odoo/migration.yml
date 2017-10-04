@@ -132,3 +132,10 @@ migration:
         post:
           - anthem songs.install.reliure_des_planches::main
           - anthem songs.install.reliure_des_planches_sarl::main
+    - version: 10.7.1
+      operations:
+        post:
+          - anthem songs.upgrade.10_7_1::main
+      addons:
+        upgrade:
+          - enfinfidu_report
