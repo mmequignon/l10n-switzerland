@@ -28,6 +28,14 @@ latest (unreleased)
 **Documentation**
 
 
+10.7.1 (2017-10-04)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* Update invoice report to use company partner's language + correct display of sale address
+
+
 10.7.0 (2017-09-21)
 +++++++++++++++++++
 
