@@ -21,6 +21,10 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* Installing addons:
+  - crm
+  - survey
+
 **Bugfixes**
 
 **Build**
