@@ -29,7 +29,7 @@ latest (unreleased)
 * BIZ-812: Update account_payment_order with new bugfix
 * Remove access to Settings from non 'Main' company users
 * BIZ-840 Problème de sécurité dans le reporting des salaires
-
+* BIZ-607: Add smtp configuration for production
 **Bugfixes**
 
 **Build**
