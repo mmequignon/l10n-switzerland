@@ -1,5 +1,26 @@
 <odoo>
-  <record id="group_enfinfidu" model="res.groups">
-    <field name="name">Enfinfidu users</field>
-  </record>
+    <record id="group_enfinfidu" model="res.groups">
+        <field name="name">Enfinfidu users</field>
+    </record>
+
+    <record id="group_menu_discuss" model="res.groups">
+        <field name="name">Can see name Discuss</field>
+        <field name="implied_ids" eval="[(4, ref('enfinfidu_security.group_enfinfidu'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="enfinfidu_security.module_menu_discuss"/>
+    </record>
+
+    <record id="group_menu_calendar" model="res.groups">
+        <field name="name">Can see menu Calendar</field>
+        <field name="implied_ids" eval="[(4, ref('enfinfidu_security.group_enfinfidu'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="enfinfidu_security.module_menu_calendar"/>
+    </record>
+
+    <record id="group_menu_settings" model="res.groups">
+        <field name="name">Can see menu Settings</field>
+        <field name="implied_ids" eval="[(4, ref('enfinfidu_security.group_enfinfidu'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="category_id" ref="enfinfidu_security.module_menu_settings"/>
+    </record>
 </odoo>

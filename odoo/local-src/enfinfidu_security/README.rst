@@ -1,4 +1,6 @@
-Security for enfinfidu
+======================
+Security for Enfinfidu
 ======================
 
-Hide menu Discuss and Calendar for all users
+Add groups to control visibility for menu Discuss, Calendar and Settings
+for all users
