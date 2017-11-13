@@ -25,6 +25,7 @@ latest (unreleased)
   - crm
   - survey
 * BIZ-827 Install module account_credit_control
+* Add default company on pricelist
 
 **Bugfixes**
 
