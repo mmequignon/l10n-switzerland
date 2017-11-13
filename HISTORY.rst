@@ -22,6 +22,7 @@ latest (unreleased)
 **Features and Improvements**
 
 * Update project from odoo-template
+* BIZ-827: Installation du module Rappel v2
 
 **Bugfixes**
 
