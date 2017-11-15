@@ -24,6 +24,7 @@ latest (unreleased)
 * Installing addons:
   - crm
   - survey
+* BIZ-827 Install module account_credit_control
 
 **Bugfixes**
 

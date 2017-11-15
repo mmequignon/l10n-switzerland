@@ -144,3 +144,4 @@ migration:
         upgrade:
           - crm
           - survey
+          - account_credit_control
