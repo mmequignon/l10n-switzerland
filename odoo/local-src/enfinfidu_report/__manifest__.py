@@ -12,11 +12,13 @@
     'depends': [
         'report',
         'account',
+        'l10n_ch_hr_payroll_report',
     ],
     'data': [
         # Reports
         'report/layout.xml',
         'report/invoice.xml',
+        'report/payslip.xml',
         'views/company_view.xml',
     ],
     'test': [],

@@ -147,6 +147,7 @@ migration:
           - account_credit_control
           - account_payment_order
           - enfinfidu_security
+          - enfinfidu_report
       operations:
         post:
           - anthem songs.upgrade.10_8_0::main

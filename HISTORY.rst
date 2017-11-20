@@ -28,6 +28,7 @@ latest (unreleased)
 * Add default company on pricelist BIZ-791
 * BIZ-812: Update account_payment_order with new bugfix
 * Remove access to Settings from non 'Main' company users
+* BIZ-840 Problème de sécurité dans le reporting des salaires
 
 **Bugfixes**
 

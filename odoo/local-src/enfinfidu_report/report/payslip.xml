@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Camptocamp
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="hr_payslip_yearly_report_rule" model="ir.rule">
+        <field name="name">hr.payslip.yearly.report</field>
+        <field name="model_id" ref="l10n_ch_hr_payroll_report.model_hr_payslip_yearly_report"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('employee_id.company_id.id', '=', user.company_id.id)]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4,ref('hr.group_hr_user')),(4,ref('base.group_user'))]"/>
+    </record>
+</odoo>
