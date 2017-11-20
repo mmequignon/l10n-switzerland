@@ -145,3 +145,4 @@ migration:
           - crm
           - survey
           - account_credit_control
+          - account_payment_order
