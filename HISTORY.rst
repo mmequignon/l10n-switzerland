@@ -27,6 +27,7 @@ latest (unreleased)
 * BIZ-827 Install module account_credit_control
 * Add default company on pricelist BIZ-791
 * BIZ-812: Update account_payment_order with new bugfix
+* Remove access to Settings from non 'Main' company users
 
 **Bugfixes**
 

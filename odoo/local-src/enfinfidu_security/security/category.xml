@@ -1,0 +1,19 @@
+<odoo>
+    <record id="module_menu_discuss" model="ir.module.category">
+        <field name="name">Menu Discuss</field>
+        <field name="description">If user can see global menu Discuss</field>
+        <field name="sequence">80</field>
+    </record>
+
+    <record id="module_menu_calendar" model="ir.module.category">
+        <field name="name">Menu Calendar</field>
+        <field name="description">If user can see global menu Calendar</field>
+        <field name="sequence">81</field>
+    </record>
+
+    <record id="module_menu_settings" model="ir.module.category">
+        <field name="name">Menu Settings</field>
+        <field name="description">If user can see global menu Settings</field>
+        <field name="sequence">82</field>
+    </record>
+</odoo>

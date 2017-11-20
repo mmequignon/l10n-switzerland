@@ -1,15 +1,18 @@
 <odoo>
-  <!-- Add group on menu entries to hide them -->
+    <!-- Add group on menu entries to hide them -->
 
-  <!-- hide Discuss -->
-  <record id="mail.mail_channel_menu_root_chat" model="ir.ui.menu">
-    <field name="groups_id" eval="[(6, 0, [ref('base.group_no_one')])]"/>
-  </record>
+    <!-- hide Discuss -->
+    <record id="mail.mail_channel_menu_root_chat" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('enfinfidu_security.group_menu_discuss')])]"/>
+    </record>
 
+    <!-- hide Calendar -->
+    <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('enfinfidu_security.group_menu_calendar')])]"/>
+    </record>
 
-  <!-- hide Calendar -->
-  <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
-    <field name="groups_id" eval="[(6, 0, [ref('base.group_no_one')])]"/>
-  </record>
-
+    <!-- hide Settings -->
+    <record id="base.menu_administration" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6, 0, [ref('enfinfidu_security.group_menu_settings')])]"/>
+    </record>
 </odoo>
