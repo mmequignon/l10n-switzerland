@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* Update project from odoo-template
+
 **Bugfixes**
 
 **Build**
