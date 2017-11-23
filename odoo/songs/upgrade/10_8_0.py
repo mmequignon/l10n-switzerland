@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
 import anthem
+from anthem.lyrics.records import create_or_update
 
 
 @anthem.log
@@ -32,6 +33,17 @@ def change_users_rights(ctx):
 
 
 @anthem.log
+def create_smtp_mail_server(ctx):
+    """Create mail server"""
+    values = {
+        'name': "Mail Server",
+    }
+    create_or_update(ctx, 'ir.mail_server',
+                     '__setup__.smtp_mail_server', values)
+
+
+@anthem.log
 def main(ctx):
-    """ Main 10.8.0 """
+    """ Post 10.8.0 """
     change_users_rights(ctx)
+    create_smtp_mail_server(ctx)
