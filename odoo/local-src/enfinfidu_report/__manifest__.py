@@ -19,6 +19,7 @@
         'report/layout.xml',
         'report/invoice.xml',
         'report/payslip.xml',
+        'report/payroll.xml',
         'views/company_view.xml',
     ],
     'test': [],

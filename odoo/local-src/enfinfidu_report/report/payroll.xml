@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Camptocamp
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <template id="report_payslip" inherit_id="l10n_ch_hr_payroll_report.report_payslip">
+        <xpath expr="//h2/following::div" position="attributes">
+            <attribute name="name">today_date</attribute>
+        </xpath>
+
+        <table class="hidden" position="replace"/>
+
+        <thead position="replace">
+            <thead>
+                <tr>
+                    <th name="code">Code</th>
+                    <th name="name">Name</th>
+                    <th name="amount" class="text-right">Amount</th>
+                    <th name="rate" class="text-right">Rate</th>
+                    <th name="total" class="text-right">Total</th>
+                </tr>
+            </thead>
+        </thead>
+    </template>
+
+    <template id="report_payslip_inherit" inherit_id="report_payslip">
+        <xpath expr="//div[@name='today_date']" position="replace"/>
+
+        <xpath expr="//th[@name='code']" position="replace"/>
+        <xpath expr="//th[@name='amount']" position="replace"/>
+
+        <tbody position="replace">
+            <t t-set="line_net_amount" t-value="False"/>
+            <tbody>
+                <t t-foreach="o.line_ids.filtered(lambda line: (line.appears_on_payslip and line.total and line.code != 'initHolidays') or line.code == 'remainingHolidays').sorted(key=lambda line: line.sequence)" t-as="line">
+                    <t t-if="line.salary_rule_id.report_is_total_rule">
+                        <tr>
+                            <td style="padding-top: 20px; padding-bottom: 20px; border: 0px;">
+                                <b>
+                                    <span t-field="line.salary_rule_id.note" t-if="line.salary_rule_id.note"/>
+                                    <span t-field="line.name" t-if="not line.salary_rule_id.note"/>
+                                </b>
+                            </td>
+                            <td class="text-right"
+                                style="padding-top: 20px; padding-bottom: 20px; border: 0px;">
+                                <t t-if="line.salary_rule_id.report_display_details_columns">
+                                    <b>
+                                        <span t-field="line.python_rate"/> %
+                                    </b>
+                                </t>
+                            </td>
+                            <td class="text-right"
+                                style="padding-top: 20px; padding-bottom: 20px; border: 0px;">
+                                <b>
+                                    <t t-if="line.code == 'remainingHolidays'">
+                                        <span t-field="line.total"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="line.total" t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </t>
+                                </b>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="not line.salary_rule_id.report_is_total_rule">
+                        <tr>
+                            <td style="border: 0px;">
+                                <span t-field="line.salary_rule_id.note" t-if="line.salary_rule_id.note"/>
+                                <span t-field="line.name" t-if="not line.salary_rule_id.note"/>
+                            </td>
+                            <td style="border: 0px;" class="text-right">
+                                <t t-if="line.salary_rule_id.report_display_details_columns">
+                                    <span t-field="line.python_rate"/> %
+                                </t>
+                            </td>
+                            <td style="border: 0px;"
+                                class="text-right">
+                            <t t-if="line.code == 'remainingHolidays'">
+                                <span t-field="line.total"/>
+                            </t>
+                            <t t-else="">
+                                <span t-esc="line.total" t-esc-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                            </t>
+                            </td>
+
+                        </tr>
+                    </t>
+                    <t t-if="line.salary_rule_id.report_is_net_amount">
+                        <t t-set="line_net_amount" t-value="line"/>
+                    </t>
+                </t>
+
+                <tr>
+                    <td style="padding-top: 40px; border: 0px;"
+                        colspan="2">
+                        <span t-field="o.employee_id.bank_account_id"/>
+                    </td>
+                    <td style="padding-top: 40px; border: 0px;"
+                        class="text-right">
+                        <t t-if="line_net_amount">
+                            <span t-field="line_net_amount.total"
+                                  t-field-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                        </t>
+                    </td>
+                </tr>
+            </tbody>
+        </tbody>
+    </template>
+</odoo>

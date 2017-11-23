@@ -30,6 +30,8 @@ latest (unreleased)
 * Remove access to Settings from non 'Main' company users
 * BIZ-840 Problème de sécurité dans le reporting des salaires
 * BIZ-607: Add smtp configuration for production
+* BIZ-805 Fwd: Salaires Enfin!
+
 **Bugfixes**
 
 **Build**
