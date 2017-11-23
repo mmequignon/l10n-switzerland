@@ -21,6 +21,18 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.8.0 (2017-11-23)
++++++++++++++++++++
+
+**Features and Improvements**
+
 * Installing addons:
   - crm
   - survey
