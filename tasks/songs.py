@@ -41,7 +41,7 @@ def odoo_login(base_url, login, password, db):
         'Content-type': 'application/json'
     }
 
-    req = Request('POST',url,data=json.dumps(data),headers=headers)
+    req = Request('POST', url, data=json.dumps(data), headers=headers)
     prepped = req.prepare()
     resp = s.send(prepped)
 
@@ -51,7 +51,7 @@ def odoo_login(base_url, login, password, db):
 
 @task(name='rip')
 def rip(ctx, location, login='admin', password='admin',
-                  db='odoodb'):
+        db='odoodb'):
     """ Open or download a zipfile containing songs
 
     Unzip and copy the files into current project path
@@ -86,6 +86,9 @@ def rip(ctx, location, login='admin', password='admin',
     # Unzip file and push files at the right path
     readme_path = None
     for path in zf.namelist():
+        # Ignore dj metadata zip file
+        if path.endswith('zip'):
+            continue
         if 'DEV_README.rst' in path:
             readme_path = path
         else:
