@@ -21,17 +21,25 @@ latest (unreleased)
 
 **Features and Improvements**
 
-* Update project from odoo-template
-* BIZ-827: Installation du module Rappel v2
-* BIZ-854: Payroll setup on every company
-
 **Bugfixes**
 
 **Build**
 
-* Upgrade Dockerimage to 10.0-2.4.1
-
 **Documentation**
+
+
+10.9.0 (2017-12-07)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* Update project from odoo-template
+* BIZ-827: Installation du module Rappel v2
+* BIZ-854: Payroll setup on every company
+
+**Build**
+
+* Upgrade Dockerimage to 10.0-2.4.1
 
 
 10.8.0 (2017-11-23)
