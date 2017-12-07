@@ -23,6 +23,7 @@ latest (unreleased)
 
 * Update project from odoo-template
 * BIZ-827: Installation du module Rappel v2
+* BIZ-854: Payroll setup on every company
 
 **Bugfixes**
 
