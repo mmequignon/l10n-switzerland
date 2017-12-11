@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* Install module web_environment_ribbon
+
 **Bugfixes**
 
 **Build**
