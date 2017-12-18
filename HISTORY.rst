@@ -28,6 +28,15 @@ latest (unreleased)
 **Documentation**
 
 
+10.10.0 (2017-12-18)
++++++++++++++++++++
+
+**Features and Improvements**
+
+* BIZ-987: in wizard hr.payroll.config group name LCA to IJM
+* BIZ-987: add LAANP field on wizard
+
+
 10.9.0 (2017-12-07)
 +++++++++++++++++++
 

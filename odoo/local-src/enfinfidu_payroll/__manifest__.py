@@ -24,6 +24,8 @@
         'data/hr_rule_input.xml',
         'data/hr_payroll_structure.xml',
         'data/security.xml',
+        # Wizard
+        'wizard/hr_payroll_config.xml',
     ],
     'installable': True,
 }
