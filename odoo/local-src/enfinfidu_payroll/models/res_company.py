@@ -14,3 +14,9 @@ class ResCompany(models.Model):
         string="Percentage LAANP (%)",
         digits=dp.get_precision('Payroll Rate'),
         required=False)
+
+    # AMAT(GE)
+    amat_ge_per = fields.Float(
+        string="Maternity insurance (AMAT GE)",
+        digits=dp.get_precision('Payroll Rate'),
+        required=False)

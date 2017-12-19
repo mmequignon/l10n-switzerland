@@ -35,6 +35,7 @@ latest (unreleased)
 
 * BIZ-987: in wizard hr.payroll.config group name LCA to IJM
 * BIZ-987: add LAANP field on wizard
+* BIZ-987: in Cantonal rules add amat_ge_per "Assurance maternité"
 
 
 10.9.0 (2017-12-07)

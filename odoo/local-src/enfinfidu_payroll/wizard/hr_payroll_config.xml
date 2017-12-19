@@ -15,6 +15,11 @@
                 <attribute name="string">IJM</attribute>
             </xpath>
 
+            <field name="pc_f_vd_per" position="after">
+                <field name="amat_ge_per"/>
+            </field>
+
+
         </field>
     </record>
 
