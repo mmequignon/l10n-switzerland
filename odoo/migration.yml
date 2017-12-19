@@ -161,3 +161,7 @@ migration:
         upgrade:
           - account_fiscal_year
           - account_credit_control
+    - version: 10.10.0
+      addons:
+        upgrade:
+            - enfinfidu_payroll
