@@ -28,8 +28,8 @@ latest (unreleased)
 **Documentation**
 
 
-10.10.0 (2017-12-18)
-+++++++++++++++++++
+10.10.0 (2017-12-19)
+++++++++++++++++++++
 
 **Features and Improvements**
 
