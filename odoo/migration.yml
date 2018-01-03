@@ -164,4 +164,9 @@ migration:
     - version: 10.10.0
       addons:
         upgrade:
-            - enfinfidu_payroll
+          # OCA/server-tools
+          - server_environment_ir_config_parameter
+          # OCA/web
+          - web_environment_ribbon
+          # local-src
+          - enfinfidu_payroll
