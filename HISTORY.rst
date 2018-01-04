@@ -25,6 +25,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* BIZ-1067: Define a default paperformat when company is created
+
 **Build**
 
 **Documentation**
