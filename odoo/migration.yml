@@ -170,3 +170,4 @@ migration:
           - web_environment_ribbon
           # local-src
           - enfinfidu_payroll
+          - enfinfidu_security

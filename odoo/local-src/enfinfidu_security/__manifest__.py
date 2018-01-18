@@ -13,6 +13,7 @@
         'base',
         'mail',
         'calendar',
+        'hr',
     ],
     'website': 'www.camptocamp.com',
     'data': [
