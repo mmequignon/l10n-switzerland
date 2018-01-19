@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BIZ-1145: Clients Melioris AG, Melioris SA, Association Gamer Event layout non-conforme
+
 **Bugfixes**
 
 **Build**
