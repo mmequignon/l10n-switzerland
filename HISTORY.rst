@@ -27,6 +27,7 @@ latest (unreleased)
 
 * BIZ-1067: Define a default paperformat when company is created
 * BIZ-1120: Hide employee menu to employee
+* BIZ-1108: Remap account_tax with correct company account_account
 
 **Build**
 

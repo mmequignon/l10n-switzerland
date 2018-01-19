@@ -170,4 +170,10 @@ migration:
           - web_environment_ribbon
           # local-src
           - enfinfidu_payroll
+    - version: 10.11.0
+      operations:
+        pre:
+          - psql -f /opt/odoo/songs/upgrade/10_11_0.sql
+      addons:
+        upgrade:
           - enfinfidu_security
