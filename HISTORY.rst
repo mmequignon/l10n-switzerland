@@ -21,6 +21,18 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.11.0 (2018-01-19)
+++++++++++++++++++++
+
+**Features and Improvements**
+
 * Install module web_environment_ribbon
 
 **Bugfixes**
