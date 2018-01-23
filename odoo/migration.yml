@@ -178,6 +178,11 @@ migration:
         upgrade:
           - enfinfidu_security
     - version: 10.12.0
+      addons:
+        upgrade:
+          - enfinfidu_account
       operations:
         pre:
-          - anthem songs.upgrade.10_12_0::main
+          - anthem songs.upgrade.10_12_0::main_pre
+        post:
+          - anthem songs.upgrade.10_12_0::main_post

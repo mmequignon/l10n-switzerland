@@ -20,3 +20,7 @@ vat_tag_410,Switzerland VAT Form: grid 410,taxes
 vat_tag_415,Switzerland VAT Form: grid 415,taxes
 vat_tag_420,Switzerland VAT Form: grid 420,taxes
 vat_tag_dedouanement,Switzerland VAT Form: 100% dédouanement (base in grid 400),taxes
+vat_tag_302_a,Switzerland VAT Form: grid 302a,taxes
+vat_tag_302_b,Switzerland VAT Form: grid 302b,taxes
+vat_tag_342_a,Switzerland VAT Form: grid 342a,taxes
+vat_tag_342_b,Switzerland VAT Form: grid 342b,taxes
