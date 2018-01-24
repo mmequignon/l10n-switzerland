@@ -22,6 +22,7 @@ latest (unreleased)
 **Features and Improvements**
 
 * BIZ-1145: Clients Melioris AG, Melioris SA, Association Gamer Event layout non-conforme
+* BIZ-843: Re: Odoo VAT 2018
 
 **Bugfixes**
 
