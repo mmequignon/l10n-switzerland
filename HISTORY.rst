@@ -23,6 +23,7 @@ latest (unreleased)
 
 * BIZ-1145: Clients Melioris AG, Melioris SA, Association Gamer Event layout non-conforme
 * BIZ-843: Re: Odoo VAT 2018
+* BIZ-1112: Congés des employees visible dans toutes les sociétés
 
 **Bugfixes**
 

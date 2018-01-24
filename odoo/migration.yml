@@ -181,6 +181,7 @@ migration:
       addons:
         upgrade:
           - enfinfidu_account
+          - enfinfidu_security
       operations:
         pre:
           - anthem songs.upgrade.10_12_0::main_pre
