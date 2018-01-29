@@ -187,3 +187,9 @@ migration:
           - anthem songs.upgrade.10_12_0::main_pre
         post:
           - anthem songs.upgrade.10_12_0::main_post
+    - version: 10.12.1
+      modes:
+        full:
+          operations:
+            post:
+              - anthem songs.upgrade.10_12_1::main
