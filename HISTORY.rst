@@ -20,8 +20,9 @@ latest (unreleased)
 +++++++++++++++++++
 
 **Features and Improvements**
-
+* Script to modify salary structure BIZ-1225
 **Bugfixes**
+
 
 **Build**
 
