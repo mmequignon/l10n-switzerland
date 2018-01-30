@@ -147,7 +147,7 @@ def generate_payroll_structures(ctx, companies, company_rules_dict):
 
 @anthem.log
 def main(ctx):
-    """ Applying update 10.13.0 """
+    """ Applying update 10.12.1 """
     # Apply config for this company only
     # Animed, Valérie et Olivier  Grin 14
     # Association Gamer Event 18
