@@ -23,6 +23,18 @@ latest (unreleased)
 
 **Bugfixes**
 
+**Build**
+
+**Documentation**
+
+
+10.12.2 (2018-01-30)
+++++++++++++++++++++
+
+**Features and Improvements**
+
+**Bugfixes**
+
 * Script to modify salary structure BIZ-1225
 
 **Build**
