@@ -79,6 +79,7 @@ def generate_salary_rules(ctx, companies):
     for comp in companies:
         allready_rules = ctx.env['hr.salary.rule'].search([
             ('company_id', '=', comp.id)])
+
         if allready_rules:
             dat_dict = {}
             for rule in allready_rules:
@@ -98,6 +99,21 @@ def generate_salary_rules(ctx, companies):
             company_rules_dict[comp.id] = rules_dict
 
     return company_rules_dict
+
+
+@anthem.log
+def pre_clean(ctx, companies):
+    for comp in companies:
+        ctx.env.cr.execute("""
+        DELETE FROM hr_structure_salary_rule_rel where
+        (rule_id in (select id from hr_salary_rule  where company_id = %s )
+        and struct_id not in
+         (select id from hr_payroll_structure where company_id = %s ))
+         OR  (rule_id not in
+         (select id from hr_salary_rule  where company_id = %s )
+          and struct_id in
+          (select id from hr_payroll_structure where company_id = %s ))
+         """ % (comp, comp, comp, comp))
 
 
 @anthem.log
@@ -122,7 +138,6 @@ def generate_payroll_structures(ctx, companies, company_rules_dict):
     for comp in companies:
         with ctx.log(u'Generate payroll structures for %s' % comp.name):
 
-            rules_dict = company_rules_dict.get(comp.id)
             structure_dict = {}
 
             for swop in struct_without_parent:
@@ -134,11 +149,19 @@ def generate_payroll_structures(ctx, companies, company_rules_dict):
                                                           parent=new_parent)
 
             # Add rule_ids m2m relation
-            for struct in structures:
-                new_struct = structure_dict.get(struct.id)
+            for struct in structure_dict.keys():
+                new_struct = structure_dict.get(struct)
+                current_template = ctx.env['hr.payroll.structure'].search(
+                    [('company_id', '=', 4), ('code', '=', new_struct.code)])
                 ids_list = []
-                for rule_id in rules_dict.keys():
-                    ids_list.append(rules_dict.get(rule_id).id)
+                for template_rule in current_template.rule_ids:
+                    current_rule = ctx.env['hr.salary.rule'].search(
+                        [('company_id', '=', comp.id),
+                         ('name', '=', template_rule.name),
+                         ('sequence', '=', template_rule.sequence)],
+                        limit=1)
+                    if current_rule:
+                        ids_list.append(current_rule.id)
 
                 new_struct.write({
                     'rule_ids': [(6, False, ids_list)]
@@ -147,7 +170,7 @@ def generate_payroll_structures(ctx, companies, company_rules_dict):
 
 @anthem.log
 def main(ctx):
-    """ Applying update 10.12.1 """
+    """ Applying update 10.12.2 """
     # Apply config for this company only
     # Animed, Valérie et Olivier  Grin 14
     # Association Gamer Event 18
@@ -155,7 +178,8 @@ def main(ctx):
     # Melioris SA 19
     # Melioris Einkaufsberatung AG  17
     # Uni-Architectes Sarl   15
-
+    # We verify that no salary rules are apply on a wrong company
+    pre_clean(ctx, [1, 19, 18, 19, 17, 15])
     companies = ctx.env['res.company'].search([
         ('id', 'in', [1, 14, 18, 19, 17, 15])])
     print str(companies)
