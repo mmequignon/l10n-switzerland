@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BIZ-1234: Base de salaire ne pas adapter à la société courante
+
 **Bugfixes**
 
 **Build**
@@ -35,7 +37,7 @@ latest (unreleased)
 
 **Bugfixes**
 
-* Script to modify salary structure BIZ-1225
+* BIZ-1225: Script to modify salary structure
 
 **Build**
 
