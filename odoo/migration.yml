@@ -198,3 +198,4 @@ migration:
       addons:
         upgrade:
           - enfinfidu_payroll
+          - enfinfidu_report

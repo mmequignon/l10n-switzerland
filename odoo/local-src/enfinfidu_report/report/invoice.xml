@@ -6,14 +6,14 @@
             <div t-if="o.company_id.report_partner_bank_id" name="payment_details"/>
         </xpath>
         <xpath expr="//t[@t-set='o']" position="attributes">
-            <attribute name="t-value">o.with_context({'lang':o.company_id.partner_id.lang})</attribute>
+            <attribute name="t-value">o.with_context({'lang':o.partner_id.lang})</attribute>
         </xpath>
     </template>
 
     <template id="account.report_invoice">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="enfinfidu_report.report_invoice_document_enfinfidu" t-lang="o.company_id.partner_id.lang"/>
+                <t t-call="enfinfidu_report.report_invoice_document_enfinfidu" t-lang="o.partner_id.lang"/>
             </t>
         </t>
     </template>
