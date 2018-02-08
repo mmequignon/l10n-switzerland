@@ -195,6 +195,11 @@ migration:
             post:
               - anthem songs.upgrade.10_12_2::main
     - version: 10.12.3
+      modes:
+        full:
+          operations:
+            post:
+              - anthem songs.upgrade.10_12_3::main
       addons:
         upgrade:
           - enfinfidu_payroll
