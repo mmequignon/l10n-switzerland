@@ -22,3 +22,5 @@ class HrContract(models.Model):
 
     # Set the default value for the journal_id
     journal_id = fields.Many2one(default=_getAccountJournalId)
+    # also added check to hr.payroll.structure on delete
+    struct_id = fields.Many2one(ondelete='restrict')

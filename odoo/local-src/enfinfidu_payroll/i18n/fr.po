@@ -1,15 +1,16 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* enfinfidu_payroll
+# 	* enfinfidu_payroll
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-19 10:24+0000\n"
+"POT-Creation-Date: 2018-02-10 14:11+0000\n"
 "PO-Revision-Date: 2017-12-19 10:24+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -217,6 +218,12 @@ msgid "Night expenses"
 msgstr "Frais de nuitées"
 
 #. module: enfinfidu_payroll
+#: code:addons/enfinfidu_payroll/models/hr_payroll_structure.py:15
+#, python-format
+msgid "One of the selected items used in Contract. Please remove from Contract before deletion."
+msgstr "L'un des éléments sélectionnés utilisés dans le contrat. Veuillez retirer du contrat avant la suppression."
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.OTHER
 msgid "Other"
 msgstr "Autre"
@@ -276,6 +283,11 @@ msgstr "Congés restants"
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_initHolidays
 msgid "Remaining leaves month before"
 msgstr "Congés restants mois précédant"
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_payroll_structure
+msgid "Salary Structure"
+msgstr "Structure salariale"
 
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowsick

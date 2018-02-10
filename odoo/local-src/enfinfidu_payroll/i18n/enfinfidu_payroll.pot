@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-11 13:03+0000\n"
-"PO-Revision-Date: 2017-04-11 13:03+0000\n"
+"POT-Creation-Date: 2018-02-10 14:11+0000\n"
+"PO-Revision-Date: 2018-02-10 14:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,39 @@ msgid "13th salary"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACE
+msgid "AC correction employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACC
+msgid "AC correction employer"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACCE
+msgid "ACC correction employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrACCC
+msgid "ACC correction employer"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_salavs
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.SalAVS
 msgid "AVS Salary"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrAVSE
+msgid "AVS correction employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrAVSC
+msgid "AVS correction employer"
 msgstr ""
 
 #. module: enfinfidu_payroll
@@ -44,6 +74,26 @@ msgstr ""
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_expcar
 msgid "Car expenses"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_consumedHolidays
+msgid "Consumed leaves"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_employee
+msgid "Employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_contract
+msgid "Employee Contract"
 msgstr ""
 
 #. module: enfinfidu_payroll
@@ -77,6 +127,11 @@ msgid "Holiday Allowance"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_HolAllowInc
+msgid "Holiday Allowance included"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_HSal
 msgid "Hourly salary"
 msgstr ""
@@ -87,9 +142,26 @@ msgid "Hours per month"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:ir.ui.view,arch_db:enfinfidu_payroll.view_hr_payroll_config_form
+msgid "IJM"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_salijm
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.SalIJM
 msgid "IJM Salary"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrIJME
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLPPE
+msgid "IJM correction employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrIJMC
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLPPC
+msgid "IJM correction employer"
 msgstr ""
 
 #. module: enfinfidu_payroll
@@ -104,8 +176,24 @@ msgid "LAA Salary"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLAAE
+msgid "LAA correction employee"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrLAAC
+msgid "LAA correction employer"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowmat
 msgid "Maternity allowance"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model.fields,field_description:enfinfidu_payroll.field_hr_payroll_config_amat_ge_per
+#: model:ir.model.fields,field_description:enfinfidu_payroll.field_res_company_amat_ge_per
+msgid "Maternity insurance (AMAT GE)"
 msgstr ""
 
 #. module: enfinfidu_payroll
@@ -129,6 +217,13 @@ msgid "Night expenses"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: code:addons/enfinfidu_payroll/models/hr_payroll_structure.py:15
+#: code:addons/odoo/local-src/enfinfidu_payroll/models/hr_payroll_structure.py:15
+#, python-format
+msgid "One of the selected items used in Contract. Please remove from Contract before deletion."
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.OTHER
 msgid "Other"
 msgstr ""
@@ -149,6 +244,22 @@ msgid "Outside salary"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_payslip
+msgid "Pay Slip"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_payslip_run
+msgid "Payslip Run"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model.fields,field_description:enfinfidu_payroll.field_hr_payroll_config_laanp_per
+#: model:ir.model.fields,field_description:enfinfidu_payroll.field_res_company_laanp_per
+msgid "Percentage LAANP (%)"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_privcar
 msgid "Private part company car"
 msgstr ""
@@ -161,6 +272,21 @@ msgstr ""
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_prov13
 msgid "Provision 13th"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_remainingHolidays
+msgid "Remaining leaves"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_initHolidays
+msgid "Remaining leaves month before"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_payroll_structure
+msgid "Salary Structure"
 msgstr ""
 
 #. module: enfinfidu_payroll
@@ -193,6 +319,11 @@ msgid "Supplementary hours 200%"
 msgstr ""
 
 #. module: enfinfidu_payroll
+#: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_corrImpSrc
+msgid "Tax source correction"
+msgstr ""
+
+#. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_allowtot
 msgid "Total allowances"
 msgstr ""
@@ -206,5 +337,10 @@ msgstr ""
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule,name:enfinfidu_payroll.c2c_salary_rule_exptrav
 msgid "Travel expenses"
+msgstr ""
+
+#. module: enfinfidu_payroll
+#: model:ir.model,name:enfinfidu_payroll.model_hr_payroll_config
+msgid "hr.payroll.config"
 msgstr ""
 
