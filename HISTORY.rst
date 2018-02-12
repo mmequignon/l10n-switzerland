@@ -22,6 +22,7 @@ latest (unreleased)
 **Features and Improvements**
 
 * BIZ-1234: Base de salaire ne pas adapter à la société courante
+* BIZ-1264: Update invoices layout + i18n
 
 **Bugfixes**
 

@@ -28,11 +28,19 @@
       <xpath expr="//ul[@name='financial_infos']" position="replace"/>
       <xpath expr="//ul[@class='list-inline']" position="after">
         <ul t-if="not company.custom_footer" class="list-inline" name="financial_info">
-          <li t-if="company.report_partner_bank_id">VAT no.:<span t-field="company.vat"/></li>
-          <li t-if="company.report_partner_bank_id">Account holder: <span t-field="company.name"/></li>
-          <li t-if="company.report_partner_bank_id">Bank: <span t-field="company.report_partner_bank_id.bank_id.name"/></li>
-          <li t-if="company.report_partner_bank_id">IBAN: <span t-field="company.report_partner_bank_id.acc_number"/></li>
-          <li t-if="company.report_partner_bank_id">BIC: <span t-field="company.report_partner_bank_id.bank_id.bic"/></li>
+            <t t-if="'partner_bank_id' in o.fields_get()">
+              <t t-set="partner_bank_id" t-value="o.partner_bank_id" />
+            </t>
+            <t t-else="">
+              <t t-set="partner_bank_id" t-value="company.report_partner_bank_id" />
+            </t>
+            <t t-if="partner_bank_id">
+              <li>VAT no.:<span t-field="company.vat"/></li>
+              <li>Account holder: <span t-field="company.name"/></li>
+              <li>Bank: <span t-field="partner_bank_id.bank_id.name"/></li>
+              <li>IBAN: <span t-field="partner_bank_id.acc_number"/></li>
+              <li>BIC: <span t-field="partner_bank_id.bank_id.bic"/></li>
+            </t>
         </ul>
       </xpath>
     </template>
