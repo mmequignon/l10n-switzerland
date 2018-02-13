@@ -179,7 +179,7 @@ def main(ctx):
     # Melioris Einkaufsberatung AG  17
     # Uni-Architectes Sarl   15
     # We verify that no salary rules are apply on a wrong company
-    pre_clean(ctx, [1, 19, 18, 19, 17, 15])
+    pre_clean(ctx, [1, 18, 19, 17, 15])
     companies = ctx.env['res.company'].search([
         ('id', 'in', [1, 14, 18, 19, 17, 15])])
     print str(companies)
