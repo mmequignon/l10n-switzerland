@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-10 14:11+0000\n"
+"POT-Creation-Date: 2018-02-13 09:15+0000\n"
 "PO-Revision-Date: 2017-12-19 10:24+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -218,10 +218,16 @@ msgid "Night expenses"
 msgstr "Frais de nuitées"
 
 #. module: enfinfidu_payroll
-#: code:addons/enfinfidu_payroll/models/hr_payroll_structure.py:15
-#, python-format
-msgid "One of the selected items used in Contract. Please remove from Contract before deletion."
-msgstr "L'un des éléments sélectionnés utilisés dans le contrat. Veuillez retirer du contrat avant la suppression."
+#: code:addons/enfinfidu_payroll/models/hr_payroll_structure.py:20
+#, fuzzy, python-format
+msgid ""
+"One of the selected items used in Contract: \n"
+"%s\n"
+"Please remove from Contract before deletion."
+msgstr ""
+"L'un des éléments sélectionnés dans le Contrat: \n"
+"%s\n"
+"Veuillez retirer du contrat avant la suppression."
 
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.OTHER
