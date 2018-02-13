@@ -29,6 +29,8 @@ latest (unreleased)
 
 **Build**
 
+* Update docker nginx to 10.0-1.2.1
+
 **Documentation**
 
 
