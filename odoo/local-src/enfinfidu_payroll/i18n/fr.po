@@ -225,9 +225,9 @@ msgid ""
 "%s\n"
 "Please remove from Contract before deletion."
 msgstr ""
-"L'un des éléments sélectionnés dans le Contrat: \n"
+"L'un des éléments sélectionnés est utilisé dans un contrat : \n"
 "%s\n"
-"Veuillez retirer du contrat avant la suppression."
+"Veuillez retirer l'élement du contrat avant la suppression."
 
 #. module: enfinfidu_payroll
 #: model:hr.salary.rule.category,name:enfinfidu_payroll.OTHER
