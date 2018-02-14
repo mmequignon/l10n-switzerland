@@ -204,3 +204,8 @@ migration:
         upgrade:
           - enfinfidu_payroll
           - enfinfidu_report
+    - version: 10.13.0
+      addons:
+        upgrade:
+          - hr_holidays_notify_employee_manager
+          - hr_public_holidays
