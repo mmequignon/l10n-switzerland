@@ -20,32 +20,35 @@ latest (unreleased)
 +++++++++++++++++++
 
 **Features and Improvements**
+
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.12.3 (2018-02-14)
+++++++++++++++++++++
+
+**Features and Improvements**
+
 * BIZ-1225: Script to clean salary structure set on employee and clean dupplicate structure
 * BIZ-1234: Base de salaire ne pas adapter à la société courante
 * BIZ-1264: Update invoices layout + i18n
 * BIZ-1317: Contrainte sur la structure de salaire
 
-**Bugfixes**
-
 **Build**
 
 * Update docker nginx to 10.0-1.2.1
-
-**Documentation**
 
 
 10.12.2 (2018-01-30)
 ++++++++++++++++++++
 
-**Features and Improvements**
-
 **Bugfixes**
 
 * BIZ-1225: Script to modify salary structure
-
-**Build**
-
-**Documentation**
 
 
 10.12.1 (2018-01-29)
