@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BIZ-1341: Install hr_holidays_notify_employee_manager and update external/hr
+
 **Bugfixes**
 
 **Build**
