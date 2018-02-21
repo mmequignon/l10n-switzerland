@@ -26,6 +26,7 @@ ENV ADDONS_PATH="/opt/odoo/external-src/server-tools, \
   /opt/odoo/external-src/web, \
   /opt/odoo/external-src/reporting-engine, \
   /opt/odoo/external-src/bank-payment, \
+  /opt/odoo/external-src/bank-statement-import, \
   /opt/odoo/external-src/l10n-switzerland, \
   /opt/odoo/external-src/partner-contact, \
   /opt/odoo/external-src/project, \
