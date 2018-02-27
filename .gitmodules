@@ -39,3 +39,7 @@
 [submodule "odoo/external-src/hr"]
 	path = odoo/external-src/hr
 	url = git@github.com:OCA/hr.git
+[submodule "odoo/external-src/bank-statement-import"]
+	path = odoo/external-src/bank-statement-import
+	url = git@github.com:OCA/bank-statement-import.git
+	branch = 10.0
