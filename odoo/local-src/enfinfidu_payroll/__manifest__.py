@@ -26,6 +26,8 @@
         'data/security.xml',
         # Wizard
         'wizard/hr_payroll_config.xml',
+        # View
+        'views/hr_salary_rule_view.xml',
     ],
     'installable': True,
 }

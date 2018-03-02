@@ -24,6 +24,8 @@ latest (unreleased)
 * BIZ-1341: Install hr_holidays_notify_employee_manager and update external/hr
 * BIZ-1333: DTA payment is not spent. Install two modules
   l10n_ch_pain_credit_transfer and account_bank_statement_import_camt
+* BIZ-1397: Fix payslip report structure for i18n and
+  add python field on salary rules to specify which field to use for the deduction rate on the company
 
 **Bugfixes**
 
