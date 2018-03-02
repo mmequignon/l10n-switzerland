@@ -30,6 +30,7 @@ latest (unreleased)
 **Build**
 
 * Update Dockerfile
+* Update project files
 
 **Documentation**
 
