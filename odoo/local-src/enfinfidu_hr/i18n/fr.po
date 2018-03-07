@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* enfinfidu_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-07 14:42+0000\n"
+"PO-Revision-Date: 2018-03-07 14:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: enfinfidu_hr
+#: model:ir.model.fields,field_description:enfinfidu_hr.field_hr_employee_calendar_company_id
+msgid "Calendar company"
+msgstr "Société du temps de travail"
+
+#. module: enfinfidu_hr
+#: model:ir.model,name:enfinfidu_hr.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: enfinfidu_hr
+#: model:ir.model,name:enfinfidu_hr.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrat de l'employé"
+
+#. module: enfinfidu_hr
+#: model:ir.model.fields,field_description:enfinfidu_hr.field_hr_contract_employee_company_id
+msgid "Employee company"
+msgstr "Société de l'employé"
+
+#. module: enfinfidu_hr
+#: model:ir.model.fields,field_description:enfinfidu_hr.field_hr_contract_working_hours_company_id
+msgid "Working hours company"
+msgstr "Société des heures de travail"
+
+#. module: enfinfidu_hr
+#: code:addons/enfinfidu_hr/models/hr_employee.py:29
+#: code:addons/odoo/local-src/enfinfidu_hr/models/hr_employee.py:29
+#, python-format
+msgid "You cannot choose calendar %s for this employee, because employee company is %s and calendar company is %s"
+msgstr "Vous ne pouvez pas choisir le temps de travail %s pour cet employé, car la société de l'employé est %s et la société des heures de travail est %s"
+
+#. module: enfinfidu_hr
+#: code:addons/enfinfidu_hr/models/hr_contract.py:36
+#: code:addons/odoo/local-src/enfinfidu_hr/models/hr_contract.py:36
+#, python-format
+msgid "You cannot choose working schedule %s for this contract, because employee company is %s and working schedule company is %s"
+msgstr "Vous ne pouvez pas choisir les heures de travail %s pour ce contrat, car la société de l'employé est %s et la société des heures de travail est %s"
+

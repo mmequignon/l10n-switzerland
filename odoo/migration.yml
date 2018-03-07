@@ -205,9 +205,16 @@ migration:
           - enfinfidu_payroll
           - enfinfidu_report
     - version: 10.13.0
+      modes:
+        full:
+          operations:
+            pre:
+              - anthem songs.upgrade.10_13_0_full::pre
       addons:
         upgrade:
           - hr_holidays_notify_employee_manager
           - hr_public_holidays
           - account_bank_statement_import_camt
           - l10n_ch_pain_credit_transfer
+          # local-src
+          - enfinfidu_hr
