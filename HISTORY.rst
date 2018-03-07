@@ -27,6 +27,8 @@ latest (unreleased)
 
 **Bugfixes**
 
+* BIZ-1410: Fix working hours on employees/contracts and add constraint
+
 **Build**
 
 * Update Dockerfile
