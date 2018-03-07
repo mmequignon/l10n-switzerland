@@ -8,6 +8,13 @@ import re
 
 @anthem.log
 def set_default_salary_rule_computed_rate(ctx):
+    """ Extract the percentage used to compute the amount of the salary rules.
+        The variable containing the percentage can be anywhere in the provided
+        python code for the computation and its name is among the following:
+            * per
+            * per_in_limit
+            * per_off_limit
+        If it cannot be found, the default value is 100"""
     rules = ctx.env['hr.salary.rule'].search([('amount_select', '=', 'code')])
     re_rate = re.compile(
         r'^(?:.*?;)?per(?:_(?:in|off)_limit)? = (.*?)(?: / 100)?;.*'
@@ -23,6 +30,8 @@ def set_default_salary_rule_computed_rate(ctx):
 
 @anthem.log
 def update_salary_rule_i18n(ctx):
+    """ Remove all translations for the salary rules records
+        and recreate them with the ones loaded from *.po files """
     i18n_obj = ctx.env['ir.translation']
     i18n_rules = i18n_obj.search(
         [('name', '=', 'hr.salary.rule,name'),

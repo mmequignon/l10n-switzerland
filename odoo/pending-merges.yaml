@@ -38,7 +38,6 @@
   remotes:
     oca: git@github.com:OCA/OCB.git
     camptocamp: git@github.com:camptocamp/odoo.git
-    odoo: git@github.com:odoo/odoo.git
   merges:
     # - oca 10.0
     - oca 2af2cfb350194e43ba141e26a481fcf690b896b9

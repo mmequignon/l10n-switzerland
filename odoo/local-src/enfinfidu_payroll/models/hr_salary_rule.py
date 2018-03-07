@@ -10,7 +10,22 @@ class HrSalaryRule(models.Model):
     _inherit = 'hr.salary.rule'
 
     rate_python_compute = fields.Text(
-        'Rate'
+        'Rate', help=""" Rate displayed in the payslip lines
+         Available variables:
+        ----------------------
+         payslip: object containing the payslips
+         employee: hr.employee object
+         contract: hr.contract object
+         rules: object containing the rules code (previously computed)
+         categories: object containing the computed salary rule categories
+         worked_days: object containing the computed worked days.
+         inputs: object containing the computed inputs.
+
+        Note: returned value have to be set in the variable 'rate'
+
+        Example:
+        rate = employee.company_id.custom_rate
+        """
     )
 
     @api.multi
