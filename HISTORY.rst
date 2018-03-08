@@ -28,7 +28,7 @@ latest (unreleased)
 **Documentation**
 
 
-10.13.0 (2018-03-08)
+10.13.1 (2018-03-08)
 ++++++++++++++++++++
 
 **Features and Improvements**
@@ -47,6 +47,12 @@ latest (unreleased)
 
 * Update Dockerfile
 * Update project files
+
+
+10.13.0 (2018-03-08)
+++++++++++++++++++++
+
+**Moved to 10.13.1**
 
 
 10.12.3 (2018-02-14)
