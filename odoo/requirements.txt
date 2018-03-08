@@ -3,3 +3,4 @@ redis==2.10.5
 python-json-logger==0.1.5
 statsd==3.2.1
 unidecode==1.0.22
+wand==0.4.4
