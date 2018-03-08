@@ -21,6 +21,18 @@ latest (unreleased)
 
 **Features and Improvements**
 
+**Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.13.0 (2018-03-08)
+++++++++++++++++++++
+
+**Features and Improvements**
+
 * BIZ-1341: Install hr_holidays_notify_employee_manager and update external/hr
 * BIZ-1333: DTA payment is not spent. Install three modules
   l10n_ch_pain_credit_transfer, account_bank_statement_import_camt and l10n_ch_bank_statement_import_postfinance
@@ -35,8 +47,6 @@ latest (unreleased)
 
 * Update Dockerfile
 * Update project files
-
-**Documentation**
 
 
 10.12.3 (2018-02-14)
