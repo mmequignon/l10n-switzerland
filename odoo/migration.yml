@@ -204,14 +204,12 @@ migration:
         upgrade:
           - enfinfidu_payroll
           - enfinfidu_report
-    - version: 10.13.0
-      modes:
-        full:
-          operations:
-            pre:
-              - anthem songs.upgrade.10_13_0_full::pre
+    - version: 10.13.1
+      # 10.13.0 moved to 10.13.1
       operations:
         pre:
+          - anthem songs.upgrade.10_13_0_full::pre
+          - odoo -u enfinfidu_payroll --stop-after-init --workers=0
           - anthem songs.upgrade.10_13_0::main
       addons:
         upgrade:
@@ -224,5 +222,4 @@ migration:
           - hr_payroll
           - l10n_ch_hr_payroll_report
           - enfinfidu_report
-          - enfinfidu_payroll
           - l10n_ch_bank_statement_import_postfinance
