@@ -3,6 +3,15 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <odoo>
+    <template id="report_payslip_i18n" inherit_id="hr_payroll.report_payslip_main">
+        <xpath expr="//t[@t-call='hr_payroll.report_payslip']" position="attributes">
+            <attribute name="t-lang">o.employee_id.address_home_id.lang</attribute>
+        </xpath>
+        <xpath expr="//t[@t-call='hr_payroll.report_payslip']" position="before">
+            <t t-set="o" t-value="o.with_context({'lang': o.employee_id.address_home_id.lang})" />
+        </xpath>
+    </template>
+
     <template id="report_payslip" inherit_id="l10n_ch_hr_payroll_report.report_payslip">
         <xpath expr="//h2/following::div" position="attributes">
             <attribute name="name">today_date</attribute>
@@ -38,7 +47,7 @@
                             <td style="padding-top: 20px; padding-bottom: 20px; border: 0px;">
                                 <b>
                                     <span t-field="line.salary_rule_id.note" t-if="line.salary_rule_id.note"/>
-                                    <span t-field="line.name" t-if="not line.salary_rule_id.note"/>
+                                    <span t-field="line.salary_rule_id.name" t-if="not line.salary_rule_id.note"/>
                                 </b>
                             </td>
                             <td class="text-right"
@@ -66,7 +75,7 @@
                         <tr>
                             <td style="border: 0px;">
                                 <span t-field="line.salary_rule_id.note" t-if="line.salary_rule_id.note"/>
-                                <span t-field="line.name" t-if="not line.salary_rule_id.note"/>
+                                <span t-field="line.salary_rule_id.name" t-if="not line.salary_rule_id.note"/>
                             </td>
                             <td style="border: 0px;" class="text-right">
                                 <t t-if="line.salary_rule_id.report_display_details_columns">

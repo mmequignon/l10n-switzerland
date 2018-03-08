@@ -27,7 +27,20 @@
     oca: git@github.com:OCA/l10n-switzerland.git
     camptocamp: git@github.com:camptocamp/l10n-switzerland.git
   merges:
-    - oca 10.0
+    # - oca 10.0
+    - oca 8e2f4c3ce98a7e1b213b15877f81508aa90d3cc0
     # Add new module: "Switzerland - Payroll Reports"
     - oca refs/pull/317/head
+    # German i18n for "Switzerland - Payroll Reports"
+    - oca refs/pull/399/head
   target: &default_target camptocamp merge-branch-2021-master
+./src:
+  remotes:
+    oca: git@github.com:OCA/OCB.git
+    camptocamp: git@github.com:camptocamp/odoo.git
+  merges:
+    # - oca 10.0
+    - oca 2af2cfb350194e43ba141e26a481fcf690b896b9
+    # Add multi-company security rule for employees
+    - oca refs/pull/706/head
+  target: *default_target

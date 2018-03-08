@@ -210,6 +210,9 @@ migration:
           operations:
             pre:
               - anthem songs.upgrade.10_13_0_full::pre
+      operations:
+        post:
+          - anthem songs.upgrade.10_13_0::main
       addons:
         upgrade:
           - hr_holidays_notify_employee_manager
@@ -218,3 +221,7 @@ migration:
           - l10n_ch_pain_credit_transfer
           # local-src
           - enfinfidu_hr
+          - hr_payroll
+          - l10n_ch_hr_payroll_report
+          - enfinfidu_report
+          - enfinfidu_payroll
