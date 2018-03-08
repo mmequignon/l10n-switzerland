@@ -204,7 +204,8 @@ migration:
         upgrade:
           - enfinfidu_payroll
           - enfinfidu_report
-    - version: 10.13.0
+    - version: 10.13.1
+      # 10.13.0 moved to 10.13.1
       operations:
         pre:
           - anthem songs.upgrade.10_13_0_full::pre
