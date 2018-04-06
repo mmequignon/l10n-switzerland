@@ -39,8 +39,8 @@ def configure_missing_chart_of_account(ctx, coa_dict=False):
                     'enfinfidu_account.transfer_account_id',
                 # 'sale_tax_id': 'l10n_ch.1_vat_80',
                 # 'purchase_tax_id': 'l10n_ch.1_vat_80_purchase',
-                'sale_tax_id': 'enfinfidu_account.tax_tmp_vat_80',
-                'purchase_tax_id': 'enfinfidu_account.tax_tmp_vat_80_purchase',
+                'sale_tax_id': 'l10n_ch.vat_80',
+                'purchase_tax_id': 'l10n_ch.vat_80_purchase',
             },
         }
     for company_xml_id, values in coa_dict.iteritems():
