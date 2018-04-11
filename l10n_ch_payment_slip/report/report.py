@@ -48,15 +48,18 @@ class Report(models.Model):
         temporary_files = []
 
         for doc in docs:
-            pdfreport_fd, pdfreport_path = tempfile.mkstemp(suffix='.pdf',
-                                                            prefix='report.tmp.')
+            pdfreport_fd, pdfreport_path = tempfile.mkstemp(
+                suffix='.pdf', prefix='report.tmp.')
             temporary_files.append(pdfreport_path)
 
-            if save_in_attachment and save_in_attachment[
-                'loaded_documents'].get(doc.invoice_id.id):
+            if (
+                    save_in_attachment and
+                    save_in_attachment['loaded_documents'].get(
+                        doc.invoice_id.id)
+            ):
                 with closing(os.fdopen(pdfreport_fd, 'w')) as pdfreport:
-                    pdfreport.write(
-                        save_in_attachment['loaded_documents'][doc.invoice_id.id])
+                    pdfreport.write(save_in_attachment['loaded_documents']
+                                    [doc.invoice_id.id])
                 pdfdocuments.append(pdfreport_path)
                 continue
 
@@ -66,12 +69,14 @@ class Report(models.Model):
                                              report_name=report_name)
                 pdfreport.write(pdf)
 
-            if save_in_attachment and save_in_attachment.get(doc.invoice_id.id):
+            if save_in_attachment and save_in_attachment.get(
+                    doc.invoice_id.id):
                 with open(pdfreport_path, 'rb') as pdfreport:
                     attachment = {
                         'name': save_in_attachment.get(doc.invoice_id.id),
                         'datas': base64.encodestring(pdfreport.read()),
-                        'datas_fname': save_in_attachment.get(doc.invoice_id.id),
+                        'datas_fname': save_in_attachment.get(
+                            doc.invoice_id.id),
                         'res_model': save_in_attachment.get('model'),
                         'res_id': doc.invoice_id.id,
                     }
@@ -100,7 +105,8 @@ class Report(models.Model):
         if entire_report_path:
             with open(entire_report_path, 'rb') as pdfdocument:
                 content = pdfdocument.read()
-            temporary_files.append(entire_report_path)
+            if entire_report_path not in temporary_files:
+                temporary_files.append(entire_report_path)
 
         # Manual cleanup of the temporary files
         for temporary_file in temporary_files:
@@ -116,8 +122,12 @@ class Report(models.Model):
     def get_pdf(self, docids, report_name, html=None, data=None):
         if (report_name == 'l10n_ch_payment_slip.'
                            'one_slip_per_page_from_invoice'):
-
-            report = self._get_report_from_name(report_name)
+            report_model = self.env['ir.actions.report.xml']
+            context = self.env['res.users'].context_get()
+            report = report_model.with_context(context).search(
+                [('report_type', '=', 'reportlab-pdf'),
+                 ('report_name', '=', report_name)]
+            )
             save_in_attachment = self._check_attachment_use(
                 docids, report)
 
