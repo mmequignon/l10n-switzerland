@@ -52,6 +52,7 @@ class Report(models.Model):
                 suffix='.pdf', prefix='report.tmp.')
             temporary_files.append(pdfreport_path)
 
+            # Directly load the document if we already have it
             if (
                     save_in_attachment and
                     save_in_attachment['loaded_documents'].get(
@@ -69,6 +70,7 @@ class Report(models.Model):
                                              report_name=report_name)
                 pdfreport.write(pdf)
 
+            # Save the pdf in attachment if marked
             if save_in_attachment and save_in_attachment.get(
                     doc.invoice_id.id):
                 with open(pdfreport_path, 'rb') as pdfreport:
@@ -148,7 +150,6 @@ class Report(models.Model):
                                                data=data)
 
     def merge_pdf_in_memory(self, docs):
-        streams = []
         writer = pyPdf.PdfFileWriter()
         for doc in docs:
             pdfreport = file(doc, 'rb')
@@ -164,11 +165,8 @@ class Report(models.Model):
             raise
         finally:
             buff.close()
-            for stream in streams:
-                stream.close()
 
     def merge_pdf_on_disk(self, docs):
-        streams = []
         writer = pyPdf.PdfFileWriter()
         for doc in docs:
             pdfreport = file(doc, 'rb')
@@ -189,5 +187,3 @@ class Report(models.Model):
             raise
         finally:
             buff.close()
-            for stream in streams:
-                stream.close()
