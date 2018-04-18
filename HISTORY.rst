@@ -25,6 +25,8 @@ latest (unreleased)
 
 **Build**
 
+* Upgrade nginx version to 10.0-1.2.2
+
 **Documentation**
 
 
