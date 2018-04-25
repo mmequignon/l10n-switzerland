@@ -102,8 +102,8 @@ def configure_davia_chart_of_account(ctx):
                     'enfinfidu_account.enfinfidu_chart_template',
                 'template_transfer_account_id':
                     'enfinfidu_account.transfer_account_id',
-                'sale_tax_id': 'enfinfidu_account.tax_tmp_vat_80',
-                'purchase_tax_id': 'enfinfidu_account.tax_tmp_vat_80_purchase',
+                'sale_tax_id': 'l10n_ch.vat_80',
+                'purchase_tax_id': 'l10n_ch.vat_80_purchase',
             },
         }
     )

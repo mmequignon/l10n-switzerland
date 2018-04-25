@@ -223,3 +223,11 @@ migration:
           - l10n_ch_hr_payroll_report
           - enfinfidu_report
           - l10n_ch_bank_statement_import_postfinance
+    - version: 10.14.0
+      addons:
+        upgrade:
+          - base
+      operations:
+        pre:
+          - anthem songs.upgrade.10_14_0::pre
+          - psql -f odoo/songs/upgrade/10_14_0.sql

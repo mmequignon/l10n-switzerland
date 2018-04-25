@@ -7,12 +7,16 @@ l10n_ch.vat_tag_230,DEPRECATED Switzerland VAT Form: grid 230,taxes
 l10n_ch.vat_tag_235,DEPRECATED Switzerland VAT Form: grid 235,taxes
 l10n_ch.vat_tag_280,DEPRECATED Switzerland VAT Form: grid 280,taxes
 l10n_ch.vat_tag_301_a,DEPRECATED Switzerland VAT Form: grid 301 base,taxes
+l10n_ch.vat_tag_302_a,DEPRECATED Switzerland VAT Form: grid 302 base,taxes
 l10n_ch.vat_tag_311_a,DEPRECATED Switzerland VAT Form: grid 311 base,taxes
 l10n_ch.vat_tag_341_a,DEPRECATED Switzerland VAT Form: grid 341 base,taxes
+l10n_ch.vat_tag_342_a,DEPRECATED Switzerland VAT Form: grid 342 base,taxes
 l10n_ch.vat_tag_381_a,DEPRECATED Switzerland VAT Form: grid 381 base,taxes
 l10n_ch.vat_tag_301_b,DEPRECATED Switzerland VAT Form: grid 301 tax,taxes
+l10n_ch.vat_tag_302_b,DEPRECATED Switzerland VAT Form: grid 302 tax,taxes
 l10n_ch.vat_tag_311_b,DEPRECATED Switzerland VAT Form: grid 311 tax,taxes
 l10n_ch.vat_tag_341_b,DEPRECATED Switzerland VAT Form: grid 341 tax,taxes
+l10n_ch.vat_tag_342_b,DEPRECATED Switzerland VAT Form: grid 342 tax,taxes
 l10n_ch.vat_tag_381_b,DEPRECATED Switzerland VAT Form: grid 381 tax,taxes
 l10n_ch.vat_tag_400,DEPRECATED Switzerland VAT Form: grid 400,taxes
 l10n_ch.vat_tag_405,DEPRECATED Switzerland VAT Form: grid 405,taxes
