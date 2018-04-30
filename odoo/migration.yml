@@ -231,3 +231,8 @@ migration:
         pre:
           - anthem songs.upgrade.10_14_0::pre
           - psql -f odoo/songs/upgrade/10_14_0.sql
+      modes:
+        full:
+          operations:
+            post:
+              - anthem songs.upgrade.10_14_0::post
