@@ -230,11 +230,12 @@ def post(ctx):
     clean_structure_new_version(ctx)
 
     # Apply config for:
-    # R-éal        24
-    # Aria snaps   10
+    # R-éal                    24
+    # Aria snaps               23
+    # The Social Partner Sàrl  21
     # We check that no salary rules are applied on a wrong company
     companies = ctx.env['res.company'].search([
-        ('id', 'in', [24, 23])])
+        ('id', 'in', [24, 23, 21])])
     generate_contribution_registers(ctx, companies)
     generate_salary_rule_categories(ctx, companies)
     rules_dict = generate_salary_rules(ctx, companies)
