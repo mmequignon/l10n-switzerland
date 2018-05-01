@@ -25,7 +25,7 @@ latest (unreleased)
 
 **Build**
 
-* Upgrade nginx version to 10.0-1.2.2
+* Downgrade nginx version to 10.0-1.1.0
 * Update odoo-cloud-platform repository
 * BIZ-1482: Update src repository
 
