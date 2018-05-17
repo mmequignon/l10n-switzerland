@@ -21,6 +21,8 @@ latest (unreleased)
 
 **Features and Improvements**
 
+* BIZ-1658: Salary structure for new companies
+
 **Bugfixes**
 
 **Build**

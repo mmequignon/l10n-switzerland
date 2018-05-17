@@ -3,6 +3,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import anthem
+from ..common import (clean_structure_new_version,
+                      generate_contribution_registers,
+                      generate_salary_rule_categories,
+                      generate_salary_rules,
+                      generate_payroll_structures)
 
 
 @anthem.log
@@ -28,3 +33,21 @@ def trick_with_res_id(ctx):
 def pre(ctx):
     """ Pre 10.14.0 """
     trick_with_res_id(ctx)
+
+
+@anthem.log
+def post(ctx):
+    """ Post 10.14.0 """
+    clean_structure_new_version(ctx)
+
+    # Apply config for:
+    # R-éal                    24
+    # Aria snaps               23
+    # The Social Partner Sàrl  21
+    # We check that no salary rules are applied on a wrong company
+    companies = ctx.env['res.company'].search([
+        ('id', 'in', [24, 23, 21])])
+    generate_contribution_registers(ctx, companies)
+    generate_salary_rule_categories(ctx, companies)
+    rules_dict = generate_salary_rules(ctx, companies)
+    generate_payroll_structures(ctx, companies, rules_dict)
