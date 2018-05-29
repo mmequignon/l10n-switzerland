@@ -21,17 +21,25 @@ latest (unreleased)
 
 **Features and Improvements**
 
-* BIZ-1658: Salary structure for new companies
-
 **Bugfixes**
+
+**Build**
+
+**Documentation**
+
+
+10.14.0 (2018-05-29)
+++++++++++++++++++++
+
+**Features and Improvements**
+
+* BIZ-1658: Salary structure for new companies
 
 **Build**
 
 * Downgrade nginx version to 10.0-1.1.0
 * Update odoo-cloud-platform repository
 * BIZ-1482: Update src repository
-
-**Documentation**
 
 
 10.13.1 (2018-03-08)
