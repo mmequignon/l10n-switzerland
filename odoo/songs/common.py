@@ -54,6 +54,7 @@ def generate_salary_rules(ctx, companies):
         ])
         new_debit_account = False
         new_credit_account = False
+        new_register = False
 
         if rule.account_debit:
             new_debit_account = ctx.env['account.account'].search([
@@ -65,12 +66,18 @@ def generate_salary_rules(ctx, companies):
                 ('code', '=', rule.account_credit.code),
                 ('company_id', '=', comp.id)
             ])
+        if rule.register_id:
+            new_register = ctx.env['hr.contribution.register'].search([
+                ('name', '=', rule.register_id.name),
+                ('company_id', '=', comp.id)
+            ])
         return rule.copy({
             'company_id': comp.id,
             'category_id': new_category.id,
             'account_debit': new_debit_account and new_debit_account.id,
             'account_credit': new_credit_account and new_credit_account.id,
             'parent_rule_id': parent and parent.id,
+            'register_id': new_register and new_register.id,
             'child_ids': False,
         })
 

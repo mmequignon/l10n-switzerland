@@ -20,6 +20,7 @@ latest (unreleased)
 +++++++++++++++++++
 
 **Features and Improvements**
+* BIZ-1977: Salary structure for new companies (second batch)
 
 **Bugfixes**
 
