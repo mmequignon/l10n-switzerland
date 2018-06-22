@@ -236,7 +236,6 @@ migration:
           operations:
             post:
               - anthem songs.upgrade.10_14_0::post
-
     - version: 10.15.0
       modes:
         full:

@@ -11,7 +11,7 @@ from ..common import (generate_contribution_registers,
 
 @anthem.log
 def post(ctx):
-    """ Post 10.14.0 """
+    """ Post 10.15.0 """
     # Apply config for:
     # Nicole Kate 28
     # John - David Burdet 30
@@ -19,7 +19,6 @@ def post(ctx):
     # SmartCo 32
     # Bati - bloc Sàrl. 33
     # Assymba Sarl . 29
-    # We check that no salary rules are applied on a wrong company
     companies = ctx.env['res.company'].search([
         ('id', 'in', [28, 29, 30, 31, 32, 33])])
     generate_contribution_registers(ctx, companies)
