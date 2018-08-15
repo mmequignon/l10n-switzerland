@@ -67,7 +67,7 @@ class IrActionsReportReportlab(models.Model):
                 pdfdocuments.append(pdfreport_path)
                 continue
 
-            with closing(os.fdopen(pdfreport_fd, 'w')) as pdfreport:
+            with closing(os.fdopen(pdfreport_fd, 'wb')) as pdfreport:
                 pdf = doc._draw_payment_slip(a4=True, b64=False,
                                              out_format='PDF',
                                              report_name=report_name)
