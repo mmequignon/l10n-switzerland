@@ -141,16 +141,13 @@ class IrActionsReportReportlab(models.Model):
         return pdf_content, 'pdf'
 
     def merge_pdf_in_memory(self, docs):
-        writer = PyPDF2.PdfFileWriter()
+        merger = PyPDF2.PdfFileMerger()
         for doc in docs:
-            with open(doc, 'rb') as pdfreport:
-                reader = PyPDF2.PdfFileReader(pdfreport)
-                for page in range(reader.getNumPages()):
-                    writer.addPage(reader.getPage(page))
+            merger.append(doc)
         buff = io.BytesIO()
         try:
             # The writer close the reader file here
-            writer.write(buff)
+            merger.write(buff)
             return buff.getvalue()
         except IOError:
             raise
@@ -158,12 +155,9 @@ class IrActionsReportReportlab(models.Model):
             buff.close()
 
     def merge_pdf_on_disk(self, docs):
-        writer = PyPDF2.PdfFileWriter()
+        merger = PyPDF2.PdfFileMerger()
         for doc in docs:
-            with open(doc, 'rb') as pdfreport:
-                reader = PyPDF2.PdfFileReader(pdfreport)
-                for page in range(reader.getNumPages()):
-                    writer.addPage(reader.getPage(page))
+            merger.append(doc)
         buff, buff_path = tempfile.mkstemp(
             suffix='.pdf',
             prefix='credit_control_slip_merged')
@@ -171,7 +165,7 @@ class IrActionsReportReportlab(models.Model):
             buff = os.fdopen(buff, 'w+b')
             # The writer close the reader file here
             buff.seek(0)
-            writer.write(buff)
+            merger.write(buff)
             buff.seek(0)
             return buff_path
         except IOError:
