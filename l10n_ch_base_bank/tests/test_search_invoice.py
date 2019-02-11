@@ -7,7 +7,7 @@ from odoo.tests import common
 class TestSearchInvoice(common.TransactionCase):
 
     def setUp(self):
-        super(TestSearchInvoice, self).setUp()
+        super().setUp()
         self.company = self.env.ref('base.main_company')
         bank = self.env['res.bank'].create({
             'name': 'BCV',
@@ -18,9 +18,12 @@ class TestSearchInvoice(common.TransactionCase):
         bank_account = self.env['res.partner.bank'].create({
             'partner_id': self.company.partner_id.id,
             'bank_id': bank.id,
-            'acc_number': 'Bank/CCP 01-1234-1',
+            # 'acc_number': 'Bank/CCP 01-1234-1',
+            # else not recognized as a postal account number:
+            'acc_number': '01-1234-1',
         })
-        self.company.partner_id.bank_ids = bank_account
+        # Commented out because it causes a duplicate entry integrity error:
+        # self.company.partner_id.bank_ids = bank_account
         self.partner = self.env['res.partner'].create(
             {'name': 'Test'}
         )
