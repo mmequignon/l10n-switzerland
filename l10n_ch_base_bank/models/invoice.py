@@ -54,11 +54,11 @@ class AccountInvoice(models.Model):
             domain, offset=offset, limit=limit, order=order, count=count,
             access_rights_uid=access_rights_uid)
 
-#    @api.model
-#    def _get_reference_type(self):
-#        selection = super()._get_reference_type()
-#        selection.append(('isr', _('ISR Reference')))
-#        return selection
+    @api.model
+    def _get_reference_type(self):
+        selection = super()._get_reference_type()
+        selection.append(('isr', _('ISR Reference')))
+        return selection
 
     @api.onchange('reference')
     def onchange_reference(self):
@@ -132,7 +132,15 @@ class AccountInvoice(models.Model):
         type_defined = vals.get('type') or self.env.context.get('type', False)
         if type_defined == 'out_invoice' and not vals.get('partner_bank_id'):
             user = self.env.user
-            bank_ids = user.company_id.partner_id.bank_ids
+
+            # todo temporary solution when creation run it don't care about
+            # acc_type but later we have validation error on it
+            # maybe made acc_type as compute
+            if vals.get('reference_type') and vals['reference_type']:
+                bank_ids = user.company_id.partner_id.bank_ids.filtered(
+                    lambda s: s.acc_type == 'postal')
+            else:
+                bank_ids = user.company_id.partner_id.bank_ids
             if bank_ids:
                 vals['partner_bank_id'] = bank_ids[0].id
         return super().create(vals)
