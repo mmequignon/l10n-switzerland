@@ -1,54 +1,35 @@
 # Copyright 2017 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from odoo.tests import common
+from .base_mixin import BaseInitInvoice
 
 
-class TestSearchInvoice(common.TransactionCase):
+class TestSearchInvoice(BaseInitInvoice):
 
     def setUp(self):
         super().setUp()
-        self.company = self.env.ref('base.main_company')
-        bank = self.env['res.bank'].create({
-            'name': 'BCV',
-            'bic': 'BIC23423',
-            'clearing': '234234',
-            'ccp': '01-1234-1',
-        })
-        bank_account = self.env['res.partner.bank'].create({
-            'partner_id': self.company.partner_id.id,
-            'bank_id': bank.id,
-            # 'acc_number': 'Bank/CCP 01-1234-1',
-            # else not recognized as a postal account number:
-            'acc_number': '01-1234-1',
-        })
-        # Commented out because it causes a duplicate entry integrity error:
-        # self.company.partner_id.bank_ids = bank_account
-        self.partner = self.env['res.partner'].create(
-            {'name': 'Test'}
-        )
 
     def assert_find_ref(self, reference, operator, value):
-        values = {
+        self.inv_values.update({
             'partner_id': self.partner.id,
             'type': 'out_invoice',
             'reference_type': 'isr',
             'reference': reference,
-        }
-        invoice = self.env['account.invoice'].create(values)
+        })
+        invoice = self.env['account.invoice'].create(self.inv_values)
         found = self.env['account.invoice'].search(
             [('reference', operator, value)],
         )
         self.assertEqual(invoice, found)
 
     def assert_not_find_ref(self, reference, operator, value):
-        values = {
+        self.inv_values.update({
             'partner_id': self.partner.id,
             'type': 'out_invoice',
             'reference_type': 'isr',
             'reference': reference,
-        }
-        self.env['account.invoice'].create(values)
+        })
+        self.env['account.invoice'].create(self.inv_values)
         found = self.env['account.invoice'].search(
             [('reference', operator, value)],
         )

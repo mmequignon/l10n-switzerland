@@ -7,7 +7,7 @@ from odoo import exceptions
 class TestCreateInvoice(BaseInitInvoice):
 
     def setUp(self):
-        super(TestCreateInvoice, self).setUp()
+        super().setUp()
 
     def test_emit_invoice_with_isr_reference(self):
         self.inv_values.update({
