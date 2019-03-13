@@ -8,6 +8,9 @@ class TestSearchInvoice(BaseInitInvoice):
 
     def setUp(self):
         super().setUp()
+        self.partner = self.env['res.partner'].create(
+            {'name': 'Test'}
+        )
 
     def assert_find_ref(self, reference, operator, value):
         self.inv_values.update({
@@ -107,10 +110,7 @@ class TestSearchInvoice(BaseInitInvoice):
             'reference': '27 29990 00000 00001 70400 25019',
         }
         invoice = self.env['account.invoice'].create(values)
-        found = self.env['account.invoice'].search(
-            ['|',
-             ('partner_id', '=', False),
-             ('reference', 'like', '2999000000'),
-             ],
-        )
+        found = self.env['account.invoice'].search([
+            ('reference', 'like', '2999000000')
+        ],)
         self.assertEqual(invoice, found)
