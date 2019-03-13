@@ -11,7 +11,6 @@
     "website": "https://github.com/OCA/l10n-switzerland",
     "depends": [
         "l10n_ch_pain_base",
-        "l10n_ch_base_bank",
         "account_banking_sepa_credit_transfer",
     ],
     'installable': True,
