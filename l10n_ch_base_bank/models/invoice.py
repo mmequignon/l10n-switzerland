@@ -76,7 +76,6 @@ class AccountInvoice(models.Model):
         for invoice in self:
             if invoice.reference_type == 'isr':
                 bank_acc = invoice.partner_bank_id
-                import pdb; pdb.set_trace()
                 if not (bank_acc.acc_type == 'postal' or
                         bank_acc.acc_type != 'postal' and
                         (bank_acc.ccp or bank_acc.bank_id.ccp)):
