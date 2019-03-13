@@ -7,7 +7,7 @@ from odoo.tests.common import SavepointCase
 class BaseInitInvoice(SavepointCase):
 
     def setUp(self):
-        super(BaseInitInvoice, self).setUp()
+        super().setUp()
         self.company = self.env.ref('base.main_company')
         self.partner = self.env.ref('base.res_partner_12')
         bank = self.env['res.bank'].create({
