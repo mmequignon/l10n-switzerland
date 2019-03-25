@@ -1,7 +1,6 @@
-# Copyright 2012 Nicolas Bessi (Camptocamp SA)
-# Copyright 2015 Yannick Vaucher (Camptocamp SA)
+# Copyright 2012-2019 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import models, api, _
+from odoo import models, api, fields, _
 from odoo.tools import mod10r
 from odoo import exceptions
 
@@ -9,6 +8,9 @@ from odoo import exceptions
 class AccountInvoice(models.Model):
 
     _inherit = "account.invoice"
+
+    reference_type = fields.Selection(
+        selection_add=[('isr','ISR Reference')])
 
     def _search(self, args, offset=0, limit=None, order=None, count=False,
                 access_rights_uid=None):
@@ -48,13 +50,13 @@ class AccountInvoice(models.Model):
             ids = [t[0] for t in self.env.cr.fetchall()]
             domain.append(('id', 'in', ids))
 
-        return super(AccountInvoice, self)._search(
+        return super()._search(
             domain, offset=offset, limit=limit, order=order, count=count,
             access_rights_uid=access_rights_uid)
 
     @api.model
     def _get_reference_type(self):
-        selection = super(AccountInvoice, self)._get_reference_type()
+        selection = super()._get_reference_type()
         selection.append(('isr', _('ISR Reference')))
         return selection
 
@@ -129,7 +131,15 @@ class AccountInvoice(models.Model):
         type_defined = vals.get('type') or self.env.context.get('type', False)
         if type_defined == 'out_invoice' and not vals.get('partner_bank_id'):
             user = self.env.user
-            bank_ids = user.company_id.partner_id.bank_ids
+
+            # todo temporary solution when creation run it don't care about
+            # acc_type but later we have validation error on it
+            # maybe made acc_type as compute
+            if vals.get('reference_type') and vals['reference_type']:
+                bank_ids = user.company_id.partner_id.bank_ids.filtered(
+                    lambda s: s.acc_type == 'postal')
+            else:
+                bank_ids = user.company_id.partner_id.bank_ids
             if bank_ids:
                 vals['partner_bank_id'] = bank_ids[0].id
-        return super(AccountInvoice, self).create(vals)
+        return super().create(vals)
