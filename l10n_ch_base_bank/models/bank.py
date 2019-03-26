@@ -186,16 +186,17 @@ class ResPartnerBank(models.Model, BankCommon):
         store=True
     )
 
-    @api.depends('acc_number')
-    def _compute_acc_type(self):
-        todo = self.env['res.partner.bank']
-        for rec in self:
-            if (rec.acc_number and
-                    rec.is_swiss_postal_num(rec.acc_number)):
-                rec.acc_type = 'postal'
-                continue
-            todo |= rec
-        super(ResPartnerBank, todo)._compute_acc_type()
+    @api.model
+    def _get_supported_account_types(self):
+        types = super()._get_supported_account_types()
+        types.append(('postal', _('Postal')))
+        return types
+
+    @api.model
+    def retrieve_acc_type(self, acc_number):
+        if acc_number and self.is_swiss_postal_num(acc_number):
+            return 'postal'
+        return super().retrieve_acc_type(acc_number)
 
     @api.multi
     def get_account_number(self):
@@ -239,11 +240,16 @@ class ResPartnerBank(models.Model, BankCommon):
     def _get_acc_name(self):
         """ Return an account name for a bank account
         to use with a ccp for ISR.
-        This method make sure to generate a unique name
+        This method makes sure to generate a unique name
         """
+
         part_name = self.partner_id.name
+        if not part_name and self.env.context.get('default_partner_id'):
+            partner_id = self.env.context.get('default_partner_id')
+            part_name = self.env['res.partner'].browse(partner_id)[0].name
+
         if part_name:
-            acc_name = _("Bank/CCP {}").format(self.partner_id.name)
+            acc_name = _("Bank/CCP {}").format(part_name)
         else:
             acc_name = _("Bank/CCP Undefined")
 

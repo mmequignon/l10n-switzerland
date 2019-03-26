@@ -72,7 +72,6 @@ class TestSCT_CH(AccountingTestCase):
             'pain.001.001.03.ch.02'
         self.chf_currency = self.env.ref('base.CHF')
         self.eur_currency = self.env.ref('base.EUR')
-        self.main_company.currency_id = self.chf_currency.id
         ch_bank2 = self.env['res.bank'].create({
             'name': 'Banque Cantonale Vaudoise',
             'bic': 'BCVLCH2LXXX',
@@ -228,7 +227,6 @@ class TestSCT_CH(AccountingTestCase):
         self.assertEquals(attachment.datas_fname[-4:], '.xml')
         xml_file = base64.b64decode(attachment.datas)
         xml_root = etree.fromstring(xml_file)
-        # print "xml_file=", etree.tostring(xml_root, pretty_print=True)
         namespaces = xml_root.nsmap
         namespaces['p'] = xml_root.nsmap[None]
         namespaces.pop(None)
@@ -279,6 +277,6 @@ class TestSCT_CH(AccountingTestCase):
             'name': 'Great service',
             'account_id': self.account_expense.id,
             })
-        invoice.invoice_validate()
         invoice.action_move_create()
+        invoice.invoice_validate()
         return invoice
