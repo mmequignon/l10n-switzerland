@@ -1,0 +1,2 @@
+# For tests
+vcrpy==2.0.1
