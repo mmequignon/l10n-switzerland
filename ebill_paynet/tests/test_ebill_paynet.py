@@ -35,11 +35,23 @@ class TestEbillPaynet(SingleTransactionCase):
     @recorder.use_cassette
     def test_getShipmentList_service(self):
         """Check get empty list of shipments."""
-        self.dws.client.service.getShipmentList(Authorization=self.dws.authorization())
+        self.dws.client.service.getShipmentList(
+            Authorization=self.dws.authorization()
+        )
 
     # def test_generate_xml(self):
     #     self.paynet_invoice_1.generate_payload()
 
     # @recorder.use_cassette
-    # def test_takeShipment(self):
-    #     self.paynet.take_shipment()
+    def test_takeShipment(self):
+        ch = self.env.ref('base.ch')
+        attachment = self.env['ir.attachment'].search(
+            [['res_model', '=', 'res.country'], ['res_id', '=', ch.id]]
+        )
+        attachment = self.env.ref('mail.msg_discus4_attach1')
+        shipment_id = self.paynet.take_shipment(attachment[0].datas)
+        print('Take Shipment {}'.format(shipment_id))
+        self.paynet.get_shipment_content(shipment_id)
+
+    def test_getShipmentList(self):
+        res = self.paynet.get_shipment_list()

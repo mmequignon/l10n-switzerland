@@ -47,6 +47,12 @@ class PayNetDWS(object):
         auth = {'UserName': self.userid(), 'Password': self.password()}
         return auth
 
+    @staticmethod
+    def handle_fault(fault):
+        print('{}'.format(fault.message.upper()))
+        print('code: {} -> {}'.format(fault.code, fault.subcodes))
+        print('actor: {}'.format(fault.actor))
+        print('detail: {}'.format(fault.detail))
 
     # def post(self, data):
     #     if isinstance(data, unicode):
