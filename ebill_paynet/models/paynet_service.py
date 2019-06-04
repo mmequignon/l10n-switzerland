@@ -22,8 +22,8 @@ class PaynetService(models.Model):
         """Send a shipment via DWS to the Paynet System
         """
         self.ensure_one()
-        dws = PayNetDWS()
-        res = dws.client.service.takeShipment(
+        dws = PayNetDWS(self.url)
+        res = dws.service.takeShipment(
             Authorization=dws.authorization(),
             # ProcessingDate  : Preferred processing date,
             #                   if not provided, processed asap
@@ -36,7 +36,7 @@ class PaynetService(models.Model):
     @api.multi
     def get_shipment_list(self):
         self.ensure_one()
-        dws = PayNetDWS()
+        dws = PayNetDWS(self.url)
         res = dws.client.service.getShipmentList(
             Authorization=dws.authorization(),
             # fromEntry     : Position number as of which shipments should be
@@ -54,7 +54,7 @@ class PaynetService(models.Model):
     @api.multi
     def get_shipment_content(self, shipment_id):
         self.ensure_one()
-        dws = PayNetDWS()
+        dws = PayNetDWS(self.url)
 
         try:
             res = dws.client.service.getShipmentContent(

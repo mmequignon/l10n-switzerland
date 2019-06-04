@@ -1,39 +1,35 @@
-# -*- coding: utf-8 -*-
-import base64
+# import base64
 import os
 
-from odoo import tools
-
 from requests import Session
-from requests.auth import HTTPBasicAuth
 
 from zeep import Client, Settings
 from zeep.transports import Transport
 
 # PENDING_STATES = {'ShipmentState': ['ReadyForSending', 'Submitted']}
 
-TEST_URL = 'https://dws-test.paynet.ch/DWS/DWS/'
 WSDL_DOC = os.path.join(os.path.dirname(__file__), 'wsdl', 'DWSPayNet.wsdl')
-SSL_CERTIFICATE = os.path.join(os.path.dirname(__file__), 'certificats', 'pseudo__System-Services.chain.pem')
+SSL_CERTIFICATE = os.path.join(
+    os.path.dirname(__file__),
+    'certificats',
+    'pseudo__System-Services.chain.pem'
+)
 
-
-# def set_content_encoding(context):
-#     content = context.envelope.childAtPath('Body/ShipmentDeliveryMsg/Content')
-#     if content is not None:
-#         content.set('encoding', 'UTF-8')
 
 class PayNetDWS(object):
     """PayNet DWS web services."""
-    # _hooks = {
-    #     'marshalled': set_content_encoding,
-    # }
 
-    def __init__(self):
-        self.settings = Settings(strict=False, xml_huge_tree=True)
+    def __init__(self, url=None):
+        settings = Settings(xml_huge_tree=True)
         session = Session()
         session.verify = SSL_CERTIFICATE
         transport = Transport(session=session)
-        self.client = Client(WSDL_DOC, transport=transport)
+        self.client = Client(WSDL_DOC, transport=transport, settings=settings)
+        if url:
+            self.service = self.client.create_service(
+                '{http://www.sap.com/DWS}DWSBinding', url)
+        else:
+            self.service = self.client.service
 
     @staticmethod
     def userid():
@@ -53,6 +49,16 @@ class PayNetDWS(object):
         print('code: {} -> {}'.format(fault.code, fault.subcodes))
         print('actor: {}'.format(fault.actor))
         print('detail: {}'.format(fault.detail))
+
+
+# def set_content_encoding(context):
+#     content = context.envelope.childAtPath('Body/ShipmentDeliveryMsg/Content')
+#     if content is not None:
+#         content.set('encoding', 'UTF-8')
+
+    # _hooks = {
+    #     'marshalled': set_content_encoding,
+    # }
 
     # def post(self, data):
     #     if isinstance(data, unicode):

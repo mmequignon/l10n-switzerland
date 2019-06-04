@@ -15,8 +15,6 @@ interactions:
       - '223'
       Content-Type:
       - text/xml; charset=utf-8
-      Cookie:
-      - JSESSIONID=EAE5ADCD8C78DF43BA685B1DF863D662
       SOAPAction:
       - '"urn:#ping"'
       User-Agent:
@@ -28,7 +26,7 @@ interactions:
       string: <env:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><dxpp:PingMsgReply
-        xmlns:dxpp="http://www.sap.com/DXPPTypes"><dxpp:State>OK</dxpp:State><dxpp:Timestamp>2019-06-03T11:43:59.751Z</dxpp:Timestamp><dxpp:Version>Not
+        xmlns:dxpp="http://www.sap.com/DXPPTypes"><dxpp:State>OK</dxpp:State><dxpp:Timestamp>2019-06-04T09:08:19.232Z</dxpp:Timestamp><dxpp:Version>Not
         defined</dxpp:Version></dxpp:PingMsgReply></env:Body></env:Envelope>
     headers:
       Connection:
@@ -36,11 +34,11 @@ interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Date:
-      - Mon, 03 Jun 2019 11:43:59 GMT
+      - Tue, 04 Jun 2019 09:08:19 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=7D01857C0C831EF26FEA72019CFEA2F2;HttpOnly;Secure
+      - JSESSIONID=DF3F45FC6896B69CC213C431EF8928C8;HttpOnly;Secure
       Vary:
       - Accept-Encoding,User-Agent
       content-length:
