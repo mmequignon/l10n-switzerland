@@ -32,6 +32,10 @@ class PaynetInvoiceMessage(models.Model):
     payload = fields.Text('Payload sent')
     response = fields.Text('Response recieved')
 
+    @api.multi
+    def send_to_paynet(self):
+        self.generate_payload()
+        # send it
 
     @api.multi
     def generate_payload(self):
@@ -41,7 +45,7 @@ class PaynetInvoiceMessage(models.Model):
             # pay_cont = self.env['ebill.payment.contract'].search(message.invoice_id.get_payment_contract()
 
             assert message.state == 'draft'
-            assert biller.paynet_billerid
+            # assert biller.paynet_billerid
             # assert pay_cont.ebill_account_number
 
             with message.attachment_id._open() as fobj:

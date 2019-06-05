@@ -22,12 +22,40 @@ class TestEbillPaynet(SingleTransactionCase):
         cls.contract = cls.env['ebill.payment.contract'].create({
             'partner_id': cls.customer.id,
         })
+        cls.account = cls.env['account.account'].search(
+                    [('user_type_id', '=', cls.env.ref(
+                        'account.data_account_type_revenue').id)],
+                    limit=1)
+        cls.at_receivable = cls.env["account.account.type"].create({
+            "name": "Test receivable account",
+            "type": "receivable",
+        })
+        cls.a_receivable = cls.env["account.account"].create({
+            "name": "Test receivable account",
+            "code": "TEST_RA",
+            "user_type_id": cls.at_receivable.id,
+            "reconcile": True,
+        })
+        cls.product = cls.env['product.template'].create({
+            'name': 'Product One',
+            'list_price': 100.00,
+        })
         cls.invoice_1 = cls.env['account.invoice'].create({
-            'partner_id': cls.customer.id,
-        })
-        cls.paynet_invoice_1 = cls.env['paynet.invoice.message'].create({
-            'invoice_id': cls.invoice_1.id
-        })
+           'partner_id': cls.customer.id,
+           'account_id': cls.account.id,
+           'type': 'out_invoice',
+           'transmit_method_id': cls.env.ref(
+               'ebill_paynet.paynet_transmit_method').id,
+           'invoice_line_ids': [
+               (0, 0, {
+                   'account_id': cls.account.id,
+                   'product_id': cls.product.product_variant_ids[:1].id,
+                   'name': 'Product 1',
+                   'quantity': 1.0,
+                   'price_unit': 100.00,
+                   }),
+               ],
+           })
 
     @recorder.use_cassette
     def test_ping_service(self):
@@ -50,5 +78,9 @@ class TestEbillPaynet(SingleTransactionCase):
     def test_getShipmentList(self):
         res = self.paynet.get_shipment_list()
 
+    def test_invoice(self):
+        self.invoice_1.action_invoice_sent()
     # def test_generate_xml(self):
     #     self.paynet_invoice_1.generate_payload()
+
+
