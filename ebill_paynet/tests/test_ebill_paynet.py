@@ -19,6 +19,9 @@ class TestEbillPaynet(SingleTransactionCase):
         cls.customer = cls.env['res.partner'].create({
             'name': 'Customer One', 'customer': True
         })
+        cls.contract = cls.env['ebill.payment.contract'].create({
+            'partner_id': cls.customer.id,
+        })
         cls.invoice_1 = cls.env['account.invoice'].create({
             'partner_id': cls.customer.id,
         })
