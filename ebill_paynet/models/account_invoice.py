@@ -16,6 +16,8 @@ class AccountInvoice(models.Model):
         # Should it be done on open or sent ?
         res = super().action_invoice_sent()
         paynet_method = self.env.ref('ebill_paynet.paynet_transmit_method')
+        # TODO Use the first service but should we have more than one (by company) ?
+        service = self.env['paynet.service'].search([(1, '=', 1)], limit=1)
         for invoice in self:
             if invoice.transmit_method_id != paynet_method:
                 continue
@@ -43,7 +45,9 @@ class AccountInvoice(models.Model):
                 'res_id': invoice.id,
                 'mimetype': 'application/x-pdf',
             })
+
             message = self.env['paynet.invoice.message'].create({
+                'service_id': service.id,
                 'invoice_id': invoice.id,
                 'attachment_id': attachment.id,
                 'ebill_account_number': contract.paynet_account_number,

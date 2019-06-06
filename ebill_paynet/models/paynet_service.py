@@ -16,6 +16,12 @@ class PaynetService(models.Model):
     username = fields.Char()
     password = fields.Char()
     client_pid = fields.Char(string="Paynet ID", size=20)
+    invoice_message_ids = fields.One2many(
+        comodel_name='paynet.invoice.message',
+        inverse_name='service_id',
+        string='Invoice Messages',
+        readonly=True,
+    )
 
     @api.multi
     def take_shipment(self, content):

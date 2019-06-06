@@ -19,13 +19,24 @@ DOCUMENT_TYPE = {
     'out_refund': 'EGS',
 }
 
-jinja_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), autoescape=select_autoescape(['xml']))
+jinja_env = Environment(
+    loader=FileSystemLoader(TEMPLATE_DIR),
+    autoescape=select_autoescape(['xml'])
+)
 template = jinja_env.get_template(INVOICE_TEMPLATE)
+
 
 class PaynetInvoiceMessage(models.Model):
 
     _name = "paynet.invoice.message"
 
+    service_id = fields.Many2one(
+        comodel_name="paynet.service",
+        string="Paynet Service",
+        required=True,
+        ondelete="restrict",
+        readonly=True,
+    )
     invoice_id = fields.Many2one(
         comodel_name="account.invoice",
         ondelete="restrict"
@@ -104,7 +115,7 @@ class PaynetInvoiceMessage(models.Model):
             #                      future_imports=['unicode_literals'])
 
             payload = template.render(
-                clien_account_number=message.ebill_account_number,
+                client_pid=message.service_id.client_pid,
                 invoice=message.invoice_id,
                 invoice_esr='ref esr', #self.pool['account.invoice']._get_ref(message.invoice_id),
                 invoice_esr_bank=bank_account,

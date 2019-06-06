@@ -8,10 +8,14 @@ from odoo.tools import file_open
 from xmlunittest import XmlTestMixin
 
 
-class TestEbillPaynet(SingleTransactionCase, XmlTestMixin):
+class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.paynet = cls.env['paynet.service'].create({
+            'url': 'https://dws-test.paynet.ch/DWS/DWS',
+            'client_pid': 'pid_bill_sender',
+        })
         cls.customer = cls.env['res.partner'].create({
             'name': 'Customer One', 'customer': True
         })

@@ -2,7 +2,7 @@
 <XML-FSCM-INVOICE-2013A>
   <INTERCHANGE>
     <IC-SENDER>
-      <Pid>{{ client_account_number }}</Pid>
+      <Pid>{{ client_pid }}</Pid>
     </IC-SENDER>
     <IC-RECEIVER>
       <Pid>41010106799303734</Pid>
