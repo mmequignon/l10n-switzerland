@@ -4,20 +4,23 @@
 import os
 from datetime import datetime
 # Need Jinja 2.10 
-from mako.template import Template
-# from jinja2 import Environment, select_autoescape
+# from mako.template import Template
+from jinja2 import Environment, select_autoescape, FileSystemLoader
 from odoo import api, fields, models
 from odoo.modules.module import get_module_root
 
-# jinja_env = Environment(autoescape=select_autoescape(['xml']))
 
 MODULE_PATH = get_module_root(os.path.dirname(__file__))
-INVOICE_TEMPLATE = MODULE_PATH + '/messages/invoice-2013A.xml'
+INVOICE_TEMPLATE = 'invoice-2013A.xml'
+TEMPLATE_DIR = MODULE_PATH + '/messages'
 
 DOCUMENT_TYPE = {
     'out_invoice': 'EFD',
     'out_refund': 'EGS',
 }
+
+jinja_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), autoescape=select_autoescape(['xml']))
+template = jinja_env.get_template(INVOICE_TEMPLATE)
 
 class PaynetInvoiceMessage(models.Model):
 
@@ -95,12 +98,12 @@ class PaynetInvoiceMessage(models.Model):
                 # ESR with variable amount
                 payment_type = 'ESP'
 
-            with open(INVOICE_TEMPLATE) as tpl:
-                templ = Template(tpl.read(), input_encoding='utf-8',
-                                 default_filters=['unicode', 'x'],
-                                 future_imports=['unicode_literals'])
+            # with open(INVOICE_TEMPLATE) as tpl:
+            #     templ = Template(tpl.read(), input_encoding='utf-8',
+            #                      default_filters=['unicode', 'x'],
+            #                      future_imports=['unicode_literals'])
 
-            payload = templ.render_unicode(
+            payload = template.render(
                 clien_account_number=message.ebill_account_number,
                 invoice=message.invoice_id,
                 invoice_esr='ref esr', #self.pool['account.invoice']._get_ref(message.invoice_id),
@@ -116,13 +119,14 @@ class PaynetInvoiceMessage(models.Model):
                 pdf_data=b64data,
                 format_date=self.format_date,
             )
+            print('=========================================')
+            print(payload)
+            print('=========================================')
 
-            import pdb;pdb.set_trace()
-            
             message.write({
                 'ic_ref': document_ref,
-                'reference_no': report.invoice_id.number,
-                'ebill_account_number': pay_cont.ebill_account_number,
+                # 'reference_no': report.invoice_id.number,
+                # 'ebill_account_number': pay_cont.ebill_account_number,
                 'payload': payload,
             })
         return True

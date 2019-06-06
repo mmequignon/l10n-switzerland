@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML-FSCM-INVOICE-2013A>
+<INTERCHANGE>
+  <IC-SENDER>
+    <Pid>{{ client_account_number }}</Pid>
+  </IC-SENDER>
+  <IC-RECEIVER>
+    <Pid>41010106799303734</Pid>
+  </IC-RECEIVER>
+  <IC-Ref>{{ document_ref }}</IC-Ref>
+</INTERCHANGE>
+</XML-FSCM-INVOICE-2013A>
