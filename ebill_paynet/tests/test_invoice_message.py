@@ -5,6 +5,7 @@
 from odoo.tests.common import SingleTransactionCase
 from odoo.tools import file_open
 
+from string import Template
 from xmlunittest import XmlTestMixin
 
 
@@ -75,12 +76,17 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
 
     def test_invoice(self):
         self.invoice_1.action_invoice_sent()
+        self.invoice_1.number = 'INV_TEST_01'
+
         m = self.env['paynet.invoice.message'].search([('invoice_id', '=', self.invoice_1.id)], limit=1)
 
         payload = m.payload.encode('utf8')
         self.assertXmlDocument(payload)
 
-        expected = file_open('ebill_paynet/tests/examples/invoice_1.xml').read()
+        expected_tmpl = Template(file_open('ebill_paynet/tests/examples/invoice_1.xml').read())
+        expected = expected_tmpl.substitute(
+            IC_REF=m.ic_ref
+        )
         self.compare_xml_line_by_line(payload, expected.encode('utf8'))
 
         # self.assertXmlEquivalentOutputs(payload, expected)

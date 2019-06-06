@@ -7,16 +7,16 @@
     <IC-RECEIVER>
       <Pid>41010106799303734</Pid>
     </IC-RECEIVER>
-    <IC-Ref>{{ document_ref }}</IC-Ref>
+    <IC-Ref>$IC_REF</IC-Ref>
   </INTERCHANGE>
-  <INVOICE Type="${ document_type }">
+  <INVOICE Type="EFD">
     <HEADER>
       <FUNCTION-FLAGS>
         <Confirmation-Flag />
       </FUNCTION-FLAGS>
       <MESSAGE-REFERENCE>
         <REFERENCE-DATE>
-          <Reference-No>{{ invoice.number }}</Reference-No>
+          <Reference-No>INV_TEST_01</Reference-No>
           <Date>{{ format_date() }}</Date>
         </REFERENCE-DATE>
       </MESSAGE-REFERENCE>
@@ -103,13 +103,13 @@
       {% else %}
       <Rate Category="E">0</Rate>
       {% endif %}
-      <Amount Currency="CHF">${ taxline.amount }</Amount>
+      <Amount Currency="CHF">{{ taxline.amount }}</Amount>
     </TAX>
     {% endfor %}
     {% else %}
     <TAX>
       <TAX-BASIS>
-        <Amount Currency="CHF">${ invoice.amount_untaxed }</Amount>
+        <Amount Currency="CHF">{{ invoice.amount_untaxed }}</Amount>
       </TAX-BASIS>
       <Rate Category="E">0</Rate>
       <Amount Currency="CHF">0</Amount>

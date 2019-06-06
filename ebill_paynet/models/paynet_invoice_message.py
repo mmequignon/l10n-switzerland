@@ -50,12 +50,22 @@ class PaynetInvoiceMessage(models.Model):
         ],
         default='draft'
     )
-    ic_ref = fields.Char('IC Ref', size=14, help="Document reference")
+    ic_ref = fields.Char(
+        string="IC Ref",
+        size=14,
+        compute='_compute_ic_ref',
+        help="Document interchange reference",
+    )
     # Set with invoice_id.number but also with returned data from server ?
     ref = fields.Char('Reference N°', size=35)
     ebill_account_number = fields.Char('Paynet Id', size=20)
     payload = fields.Text('Payload sent')
     response = fields.Text('Response recieved')
+
+    @api.depends()
+    def _compute_ic_ref(self):
+        for message in self:
+            message.ic_ref = 'SA%012d' % message.id
 
     @api.multi
     def send_to_paynet(self):
@@ -92,9 +102,6 @@ class PaynetInvoiceMessage(models.Model):
                 # b64data = base64.b64encode(data).rstrip()
             b64data = message.attachment_id.datas
 
-            # ref: maximum 14 chars
-            document_ref = 'SA%012d' % message.id
-
             bank = message.invoice_id.partner_bank_id
             # bank_account = self.pool['res.partner.bank'].acc_number_digits(cr, uid, bank.id)
             bank_account = bank.sanitized_acc_number
@@ -121,7 +128,7 @@ class PaynetInvoiceMessage(models.Model):
                 invoice_esr_bank=bank_account,
                 biller=biller,
                 customer=customer,
-                document_ref=document_ref,
+                ic_ref=message.ic_ref,
                 document_type=DOCUMENT_TYPE[message.invoice_id.type],
                 payment_type=payment_type,
                 ebill_account_number=message.ebill_account_number, #pay_cont.ebill_account_number,
@@ -130,12 +137,7 @@ class PaynetInvoiceMessage(models.Model):
                 pdf_data=b64data,
                 format_date=self.format_date,
             )
-            print('=========================================')
-            print(payload)
-            print('=========================================')
-
             message.write({
-                'ic_ref': document_ref,
                 # 'reference_no': report.invoice_id.number,
                 # 'ebill_account_number': pay_cont.ebill_account_number,
                 'payload': payload,

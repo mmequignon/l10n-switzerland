@@ -7,9 +7,9 @@
     <IC-RECEIVER>
       <Pid>41010106799303734</Pid>
     </IC-RECEIVER>
-    <IC-Ref>{{ document_ref }}</IC-Ref>
+    <IC-Ref>{{ ic_ref }}</IC-Ref>
   </INTERCHANGE>
-  <INVOICE Type="${ document_type }">
+  <INVOICE Type="{{ document_type }}">
     <HEADER>
       <FUNCTION-FLAGS>
         <Confirmation-Flag />
@@ -103,13 +103,13 @@
       {% else %}
       <Rate Category="E">0</Rate>
       {% endif %}
-      <Amount Currency="CHF">${ taxline.amount }</Amount>
+      <Amount Currency="CHF">{{ taxline.amount }}</Amount>
     </TAX>
     {% endfor %}
     {% else %}
     <TAX>
       <TAX-BASIS>
-        <Amount Currency="CHF">${ invoice.amount_untaxed }</Amount>
+        <Amount Currency="CHF">{{ invoice.amount_untaxed }}</Amount>
       </TAX-BASIS>
       <Rate Category="E">0</Rate>
       <Amount Currency="CHF">0</Amount>
