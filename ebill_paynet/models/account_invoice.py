@@ -49,6 +49,6 @@ class AccountInvoice(models.Model):
                 'ebill_account_number': contract.paynet_account_number,
             })
             # Send the ebill
-            # message.send_to_paynet()
+            message.send_to_paynet()
 
         return res

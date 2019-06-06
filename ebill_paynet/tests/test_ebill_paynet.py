@@ -21,6 +21,7 @@ class TestEbillPaynet(SingleTransactionCase):
         })
         cls.contract = cls.env['ebill.payment.contract'].create({
             'partner_id': cls.customer.id,
+            'paynet_account_number': '123123123',
         })
         cls.account = cls.env['account.account'].search(
                     [('user_type_id', '=', cls.env.ref(

@@ -1,12 +1,23 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import os
+from datetime import datetime
 # Need Jinja 2.10 
+from mako.template import Template
 # from jinja2 import Environment, select_autoescape
 from odoo import api, fields, models
+from odoo.modules.module import get_module_root
 
 # jinja_env = Environment(autoescape=select_autoescape(['xml']))
 
+MODULE_PATH = get_module_root(os.path.dirname(__file__))
+INVOICE_TEMPLATE = MODULE_PATH + '/messages/invoice-2013A.xml'
+
+DOCUMENT_TYPE = {
+    'out_invoice': 'EFD',
+    'out_refund': 'EGS',
+}
 
 class PaynetInvoiceMessage(models.Model):
 
@@ -37,6 +48,20 @@ class PaynetInvoiceMessage(models.Model):
         self.generate_payload()
         # send it
 
+    @staticmethod
+    def format_date(date_string=0, fmt='%Y%m%d'):
+        """Reformat an ISO 8601 date and return 'dd.mm.yyyy'
+            This date format is "little-endian, dot-separated'
+            It is used in many countries, including Germany and Switzerland
+        """
+        # if isinstance(date_string, (int, long, float)):
+            # return today(date_string, fmt=fmt)
+        if date_string:
+            if hasattr(date_string, 'strftime'):
+                return date_string.strftime(fmt)
+            date_part = date_string.split()[0]
+            return datetime.strptime(date_part, '%Y-%m-%d').strftime(fmt)
+
     @api.multi
     def generate_payload(self):
         for message in self:
@@ -48,22 +73,24 @@ class PaynetInvoiceMessage(models.Model):
             # assert biller.paynet_billerid
             # assert pay_cont.ebill_account_number
 
-            with message.attachment_id._open() as fobj:
-                data = PdfFile.removeSignature(fobj)
-                b64data = base64.b64encode(data).rstrip()
+            # with message.attachment_id.datas as fobj:
+                # data = PdfFile.removeSignature(fobj)
+                # b64data = base64.b64encode(data).rstrip()
+            b64data = message.attachment_id.datas
 
             # ref: maximum 14 chars
             document_ref = 'SA%012d' % message.id
 
             bank = message.invoice_id.partner_bank_id
-            bank_account = self.pool['res.partner.bank'].acc_number_digits(cr, uid, bank.id)
+            # bank_account = self.pool['res.partner.bank'].acc_number_digits(cr, uid, bank.id)
+            bank_account = bank.sanitized_acc_number
 
-            if message.invoice_id.type != 'out_invoice' or message.invoice_id.abacus_residual == 0:
+            if message.invoice_id.type != 'out_invoice': # or message.invoice_id.abacus_residual == 0:
                 # No payment
                 payment_type = 'NPY'
-            elif message.invoice_id.abacus_residual == message.invoice_id.amount_total:
+            # elif message.invoice_id.abacus_residual == message.invoice_id.amount_total:
                 # ESR with fixed amount (no distinction fixed/variable in customer's e-banking)
-                payment_type = 'ESR'
+                # payment_type = 'ESR'
             else:
                 # ESR with variable amount
                 payment_type = 'ESP'
@@ -74,21 +101,24 @@ class PaynetInvoiceMessage(models.Model):
                                  future_imports=['unicode_literals'])
 
             payload = templ.render_unicode(
+                clien_account_number=message.ebill_account_number,
                 invoice=message.invoice_id,
-                invoice_esr=self.pool['account.invoice']._get_ref(message.invoice_id),
+                invoice_esr='ref esr', #self.pool['account.invoice']._get_ref(message.invoice_id),
                 invoice_esr_bank=bank_account,
                 biller=biller,
                 customer=customer,
                 document_ref=document_ref,
                 document_type=DOCUMENT_TYPE[message.invoice_id.type],
                 payment_type=payment_type,
-                ebill_account_number=pay_cont.ebill_account_number,
-                biller_address=biller.partner_id._get_address('invoice'),
-                customer_address=customer._get_address('invoice'),
+                ebill_account_number=message.ebill_account_number, #pay_cont.ebill_account_number,
+                biller_address=biller, #biller.address_get(['invoice'])['invoice'],
+                customer_address=customer, #customer.address_get(['invoice'])['invoice'],
                 pdf_data=b64data,
-                format_date=format_date,
+                format_date=self.format_date,
             )
 
+            import pdb;pdb.set_trace()
+            
             message.write({
                 'ic_ref': document_ref,
                 'reference_no': report.invoice_id.number,
