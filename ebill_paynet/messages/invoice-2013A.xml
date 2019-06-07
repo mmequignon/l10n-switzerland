@@ -76,6 +76,7 @@
             {% endif %}
           </STREET>
           <City>{{ customer_address.city }}</City>
+          <State>{{ customer_address.state_id.code }}</State>
           <Zip>{{ customer_address.zip }}</Zip>
           <Country>{{ customer_address.country_id.code or 'CH' }}</Country>
         </NAME-ADDRESS>
@@ -92,17 +93,14 @@
       <EXTENDED-AMOUNT Type="79">
         <Amount Currency="CHF">{{ invoice.amount_untaxed }}</Amount>
       </EXTENDED-AMOUNT>
-      {% if invoice.tax_line %}
-      {% for taxline in invoice.tax_line %}
+      {% if invoice.tax_line_ids %}
+      {% for taxline in invoice.tax_line_ids %}
       <TAX>
         <TAX-BASIS>
           <Amount Currency="CHF">{{ taxline.base }}</Amount>
         </TAX-BASIS>
-        {# Naive implementation. #}
-        {# Openerp groups lines by base code, tax code and account, so in #}
-        {# general we might have different tax rates per taxline. #}
       {% if taxline.base %}
-      <Rate Category="S">{{ round(taxline.amount / taxline.base * 100, 2) }}</Rate>
+      <Rate Category="S">{{ taxline.tax_id.amount }}</Rate>
       {% else %}
       <Rate Category="E">0</Rate>
       {% endif %}

@@ -15,6 +15,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.country = cls.env.ref('base.ch')
         cls.company = cls.env.user.company_id
         cls.company.vat = "CHE-012.345.678"
         cls.company.name = "TestCompany"
@@ -22,8 +23,14 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         cls.company.street2 = ""
         cls.company.zip = '8888'
         cls.company.city = 'TestCity'
-        cls.company.country_id = cls.env.ref('base.ch')
+        cls.company.country_id = cls.country
         cls.bank = cls.env.ref('base.res_bank_1')
+        cls.tax7 = cls.env['account.tax'].create({
+            'name': 'Test tax',
+            'type_tax_use': 'sale',
+            'amount_type': 'percent',
+            'amount': '7',
+        })
         cls.partner_bank = cls.env['res.partner.bank'].create({
             'bank_id': cls.bank.id,
             'acc_number': '300.300.300',
@@ -35,13 +42,19 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             'url': 'https://dws-test.paynet.ch/DWS/DWS',
             'client_pid': 'pid_bill_sender',
         })
+        cls.state = cls.env['res.country.state'].create({
+            'code': 'VD',
+            'name': 'Vaud',
+            'country_id': cls.country.id,
+        })
         cls.customer = cls.env['res.partner'].create({
             'name': 'Customer One', 'customer': True,
             'street': 'Rue des îles à rêves, 23',
             'street2': 'Passage des araignées',
             'city': 'Lausanne',
             'zip': '1202',
-            'country_id': cls.env.ref('base.ch').id,
+            'country_id': cls.country.id,
+            'state_id': cls.state.id,
         })
         cls.contract = cls.env['ebill.payment.contract'].create({
             'partner_id': cls.customer.id,
@@ -77,8 +90,9 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
                    'account_id': cls.account.id,
                    'product_id': cls.product.product_variant_ids[:1].id,
                    'name': 'Product 1',
-                   'quantity': 1.0,
-                   'price_unit': 100.00,
+                   'quantity': 4.0,
+                   'price_unit': 123.00,
+                   'invoice_line_tax_ids': [(4, cls.tax7.id, 0)],
                    }),
                ],
            })

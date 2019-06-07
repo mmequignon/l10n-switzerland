@@ -67,6 +67,7 @@
             <Line-35>Passage des araignées</Line-35>
           </STREET>
           <City>Lausanne</City>
+          <State>VD</State>
           <Zip>1202</Zip>
           <Country>CH</Country>
         </NAME-ADDRESS>
@@ -75,29 +76,20 @@
     <LINE-ITEM />
     <SUMMARY>
       <INVOICE-AMOUNT>
-        <Amount Currency="CHF">{{ invoice.amount_total }}</Amount>
+        <Amount Currency="CHF">526.44</Amount>
       </INVOICE-AMOUNT>
       <VAT-AMOUNT>
-        <Amount Currency="CHF">{{ invoice.amount_tax }}</Amount>
+        <Amount Currency="CHF">34.44</Amount>
       </VAT-AMOUNT>
       <EXTENDED-AMOUNT Type="79">
-        <Amount Currency="CHF">{{ invoice.amount_untaxed }}</Amount>
+        <Amount Currency="CHF">492.0</Amount>
       </EXTENDED-AMOUNT>
-      {% if invoice.tax_line %}
-      {% for taxline in invoice.tax_line %}
       <TAX>
         <TAX-BASIS>
-          <Amount Currency="CHF">{{ taxline.base }}</Amount>
+          <Amount Currency="CHF">492.0</Amount>
         </TAX-BASIS>
-        {# Naive implementation. #}
-        {# Openerp groups lines by base code, tax code and account, so in #}
-        {# general we might have different tax rates per taxline. #}
-      {% if taxline.base %}
-      <Rate Category="S">{{ round(taxline.amount / taxline.base * 100, 2) }}</Rate>
-      {% else %}
-      <Rate Category="E">0</Rate>
-      {% endif %}
-      <Amount Currency="CHF">{{ taxline.amount }}</Amount>
+        <Rate Category="S">7.0</Rate>
+        <Amount Currency="CHF">34.44</Amount>
     </TAX>
     {% endfor %}
     {% else %}
