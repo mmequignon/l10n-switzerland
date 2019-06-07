@@ -71,9 +71,9 @@
           </NAME>
           <STREET>
             <Line-35>{{ customer_address.street }}</Line-35>
-            %if customer_address.street2:
+            {% if customer_address.street2 %}
             <Line-35>{{ customer_address.street2 or '' }}</Line-35>
-            %endif
+            {% endif %}
           </STREET>
           <City>{{ customer_address.city }}</City>
           <Zip>{{ customer_address.zip }}</Zip>

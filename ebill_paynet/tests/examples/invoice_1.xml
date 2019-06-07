@@ -60,15 +60,15 @@
         </PARTY-ID>
         <NAME-ADDRESS Format="PRV">
           <NAME>
-            <Line-35>TestCompany</Line-35>
+            <Line-35>Customer One</Line-35>
           </NAME>
           <STREET>
-            <Line-35>StreetOne</Line-35>
-            <Line-35>StreetTwo</Line-35>
+            <Line-35>Rue des îles à rêves, 23</Line-35>
+            <Line-35>Passage des araignées</Line-35>
           </STREET>
-          <City>{{ customer_address.city }}</City>
-          <Zip>{{ customer_address.zip }}</Zip>
-          <Country>{{ customer_address.country_id.code or 'CH' }}</Country>
+          <City>Lausanne</City>
+          <Zip>1202</Zip>
+          <Country>CH</Country>
         </NAME-ADDRESS>
       </PAYER>
     </HEADER>

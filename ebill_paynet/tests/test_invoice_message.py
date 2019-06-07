@@ -36,7 +36,12 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             'client_pid': 'pid_bill_sender',
         })
         cls.customer = cls.env['res.partner'].create({
-            'name': 'Customer One', 'customer': True
+            'name': 'Customer One', 'customer': True,
+            'street': 'Rue des îles à rêves, 23',
+            'street2': 'Passage des araignées',
+            'city': 'Lausanne',
+            'zip': '1202',
+            'country_id': cls.env.ref('base.ch').id,
         })
         cls.contract = cls.env['ebill.payment.contract'].create({
             'partner_id': cls.customer.id,
