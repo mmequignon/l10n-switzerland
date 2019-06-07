@@ -17,60 +17,54 @@
       <MESSAGE-REFERENCE>
         <REFERENCE-DATE>
           <Reference-No>INV_TEST_01</Reference-No>
-          <Date>{{ format_date() }}</Date>
+          <Date>20190607</Date>
         </REFERENCE-DATE>
       </MESSAGE-REFERENCE>
       <PRINT-DATE>
-        <Date>{{ format_date(invoice.date_invoice) }}</Date>
+        <Date>20190607</Date>
       </PRINT-DATE>
       <REFERENCE>
         <INVOICE-REFERENCE>
           <REFERENCE-DATE>
-            <Reference-No>{{ invoice.number }}</Reference-No>
-            <Date>{{ format_date(invoice.date_invoice) }}</Date>
+            <Reference-No>INV_TEST_01</Reference-No>
+            <Date>20190607</Date>
           </REFERENCE-DATE>
         </INVOICE-REFERENCE>
       </REFERENCE>
       <BILLER>
-        {%- if biller.vat %}
-        <Tax-No>{{ biller.vat }}</Tax-No>
-        {% endif %}
-        <Doc-Reference>{{ invoice_esr }}</Doc-Reference>
+        <Tax-No>CHE-012.345.678</Tax-No>
+        <Doc-Reference>ref esr</Doc-Reference>
         <PARTY-ID>
-          <Pid>{{ biller.paynet_billerid }}</Pid>
+          <Pid>pid_bill_sender</Pid>
         </PARTY-ID>
         <NAME-ADDRESS Format="COM">
           <NAME>
-            <Line-35>{{ biller_address.name }}</Line-35>
+            <Line-35>TestCompany</Line-35>
           </NAME>
           <STREET>
-            <Line-35>{{ biller_address.street }}</Line-35>
-            biller_address.street2:
-            <Line-35>{{ biller_address.street2 or '' }}</Line-35>
-            %endif
+            <Line-35>StreetOne</Line-35>
           </STREET>
-          <City>{{ biller_address.city }}</City>
-          <Zip>{{ biller_address.zip }}</Zip>
-          <Country>{{ biller_address.country_id.code or 'CH' }}</Country>
+          <City>TestCity</City>
+          <Zip>8888</Zip>
+          <Country>CH</Country>
         </NAME-ADDRESS>
         <BANK-INFO>
-          <Acct-No>{{ invoice_esr_bank }}</Acct-No>
+          <Acct-No>300300300</Acct-No>
+          <Acct-Name>AccountHolderName</Acct-Name>
           <BankId Type="BCNr-int" Country="CH">001996</BankId>
         </BANK-INFO>
       </BILLER>
       <PAYER>
         <PARTY-ID>
-          <Pid>{{ ebill_account_number }}</Pid>
+          <Pid>123123123</Pid>
         </PARTY-ID>
         <NAME-ADDRESS Format="PRV">
           <NAME>
-            <Line-35>{{ customer.name }}</Line-35>
+            <Line-35>TestCompany</Line-35>
           </NAME>
           <STREET>
-            <Line-35>{{ customer_address.street }}</Line-35>
-            %if customer_address.street2:
-            <Line-35>{{ customer_address.street2 or '' }}</Line-35>
-            %endif
+            <Line-35>StreetOne</Line-35>
+            <Line-35>StreetTwo</Line-35>
           </STREET>
           <City>{{ customer_address.city }}</City>
           <Zip>{{ customer_address.zip }}</Zip>

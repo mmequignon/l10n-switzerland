@@ -32,29 +32,32 @@
         </INVOICE-REFERENCE>
       </REFERENCE>
       <BILLER>
-        {%- if biller.vat %}
-        <Tax-No>{{ biller.vat }}</Tax-No>
+        {# Doc says vat number or business identitfiaction number #}
+        {%- if invoice.company_id.vat %}
+        <Tax-No>{{ invoice.company_id.vat }}</Tax-No>
         {% endif %}
         <Doc-Reference>{{ invoice_esr }}</Doc-Reference>
         <PARTY-ID>
-          <Pid>{{ biller.paynet_billerid }}</Pid>
+          <Pid>{{ client_pid }}</Pid>
         </PARTY-ID>
         <NAME-ADDRESS Format="COM">
           <NAME>
-            <Line-35>{{ biller_address.name }}</Line-35>
+            <Line-35>{{ biller.name }}</Line-35>
           </NAME>
           <STREET>
-            <Line-35>{{ biller_address.street }}</Line-35>
-            biller_address.street2:
-            <Line-35>{{ biller_address.street2 or '' }}</Line-35>
-            %endif
+            <Line-35>{{ biller.street or ''}}</Line-35>
+            {%- if biller.street2 %}
+            <Line-35>{{ biller.street2 }}</Line-35>
+            {% endif %}
           </STREET>
-          <City>{{ biller_address.city }}</City>
-          <Zip>{{ biller_address.zip }}</Zip>
-          <Country>{{ biller_address.country_id.code or 'CH' }}</Country>
+          <City>{{ biller.city or ''}}</City>
+          <Zip>{{ biller.zip or '' }}</Zip>
+          <Country>{{ biller.country_id.code or 'CH' }}</Country>
         </NAME-ADDRESS>
         <BANK-INFO>
-          <Acct-No>{{ invoice_esr_bank }}</Acct-No>
+          <Acct-No>{{ bank.sanitized_acc_number }}</Acct-No>
+          <Acct-Name>{{ bank.acc_holder_name }}</Acct-Name>
+          {# Is this the default for e-banking customers ? #}
           <BankId Type="BCNr-int" Country="CH">001996</BankId>
         </BANK-INFO>
       </BILLER>

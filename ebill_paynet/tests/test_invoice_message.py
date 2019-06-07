@@ -1,6 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
+from freezegun import freeze_time
 
 from odoo.tests.common import SingleTransactionCase
 from odoo.tools import file_open
@@ -9,10 +10,27 @@ from string import Template
 from xmlunittest import XmlTestMixin
 
 
+@freeze_time("2019-06-07 09:06:00")
 class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.company = cls.env.user.company_id
+        cls.company.vat = "CHE-012.345.678"
+        cls.company.name = "TestCompany"
+        cls.company.street = "StreetOne"
+        cls.company.street2 = ""
+        cls.company.zip = '8888'
+        cls.company.city = 'TestCity'
+        cls.company.country_id = cls.env.ref('base.ch')
+        cls.bank = cls.env.ref('base.res_bank_1')
+        cls.partner_bank = cls.env['res.partner.bank'].create({
+            'bank_id': cls.bank.id,
+            'acc_number': '300.300.300',
+            'acc_holder_name': 'AccountHolderName',
+            'partner_id': cls.company.partner_id.id,
+
+        })
         cls.paynet = cls.env['paynet.service'].create({
             'url': 'https://dws-test.paynet.ch/DWS/DWS',
             'client_pid': 'pid_bill_sender',
@@ -45,6 +63,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         cls.invoice_1 = cls.env['account.invoice'].create({
            'partner_id': cls.customer.id,
            'account_id': cls.account.id,
+           'partner_bank_id': cls.partner_bank.id,
            'type': 'out_invoice',
            'transmit_method_id': cls.env.ref(
                'ebill_paynet.paynet_transmit_method').id,
@@ -75,8 +94,8 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
                 break
 
     def test_invoice(self):
-        self.invoice_1.action_invoice_sent()
         self.invoice_1.number = 'INV_TEST_01'
+        self.invoice_1.action_invoice_sent()
 
         m = self.env['paynet.invoice.message'].search([('invoice_id', '=', self.invoice_1.id)], limit=1)
 

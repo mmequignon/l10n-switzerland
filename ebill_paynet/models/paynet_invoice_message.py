@@ -80,6 +80,8 @@ class PaynetInvoiceMessage(models.Model):
         """
         # if isinstance(date_string, (int, long, float)):
             # return today(date_string, fmt=fmt)
+        if not date_string:
+            date_string = datetime.now()
         if date_string:
             if hasattr(date_string, 'strftime'):
                 return date_string.strftime(fmt)
@@ -89,7 +91,8 @@ class PaynetInvoiceMessage(models.Model):
     @api.multi
     def generate_payload(self):
         for message in self:
-            biller = message.invoice_id.commercial_partner_id
+            # biller = message.invoice_id.commercial_partner_id
+            biller = message.invoice_id.company_id
             customer = message.invoice_id.partner_id
             # pay_cont = self.env['ebill.payment.contract'].search(message.invoice_id.get_payment_contract()
 
@@ -124,8 +127,10 @@ class PaynetInvoiceMessage(models.Model):
             payload = template.render(
                 client_pid=message.service_id.client_pid,
                 invoice=message.invoice_id,
+                # TODO fix this one
                 invoice_esr='ref esr', #self.pool['account.invoice']._get_ref(message.invoice_id),
-                invoice_esr_bank=bank_account,
+                # invoice_esr_bank=bank_account,
+                bank=bank,
                 biller=biller,
                 customer=customer,
                 ic_ref=message.ic_ref,
