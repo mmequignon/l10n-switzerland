@@ -91,27 +91,15 @@
         <Rate Category="S">7.0</Rate>
         <Amount Currency="CHF">34.44</Amount>
     </TAX>
-    {% endfor %}
-    {% else %}
-    <TAX>
-      <TAX-BASIS>
-        <Amount Currency="CHF">{{ invoice.amount_untaxed }}</Amount>
-      </TAX-BASIS>
-      <Rate Category="E">0</Rate>
-      <Amount Currency="CHF">0</Amount>
-    </TAX>
-    {% endif %}
     <PAYMENT-TERMS>
-      <BASIC Payment-Type="{{ payment_type }}" Terms-Type="5">
+      <BASIC Payment-Type="ESR" Terms-Type="5">
         <TERMS>
-          <Date>{{ format_date(invoice.date_due or invoice.date_invoice) }}</Date>
+          <Date>20190607</Date>
         </TERMS>
       </BASIC>
     </PAYMENT-TERMS>
     <Back-Pack-Container Encode="Base64">
-      {{ pdf_data }}
     </Back-Pack-Container>
   </SUMMARY>
 </INVOICE>
 </XML-FSCM-INVOICE-2013A>
-

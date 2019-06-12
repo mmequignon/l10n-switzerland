@@ -109,15 +109,14 @@ class PaynetInvoiceMessage(models.Model):
             # bank_account = self.pool['res.partner.bank'].acc_number_digits(cr, uid, bank.id)
             bank_account = bank.sanitized_acc_number
 
-            if message.invoice_id.type != 'out_invoice': # or message.invoice_id.abacus_residual == 0:
+            if message.invoice_id.type == 'out_invoice':
+                # ESR with fixed amount (no distinction fixed/variable in customer's e-banking)
+                payment_type = 'ESR'
+                # ESP with variable amount
+                # payment_type = 'ESP'
+            else:
                 # No payment
                 payment_type = 'NPY'
-            # elif message.invoice_id.abacus_residual == message.invoice_id.amount_total:
-                # ESR with fixed amount (no distinction fixed/variable in customer's e-banking)
-                # payment_type = 'ESR'
-            else:
-                # ESR with variable amount
-                payment_type = 'ESP'
 
             # with open(INVOICE_TEMPLATE) as tpl:
             #     templ = Template(tpl.read(), input_encoding='utf-8',

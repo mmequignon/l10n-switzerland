@@ -7,6 +7,7 @@ from odoo.tests.common import SingleTransactionCase
 from odoo.tools import file_open
 
 from string import Template
+from xml.etree import ElementTree as ET
 from xmlunittest import XmlTestMixin
 
 
@@ -38,6 +39,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             'partner_id': cls.company.partner_id.id,
 
         })
+        cls.terms = cls.env.ref('account.account_payment_term_15days')
         cls.paynet = cls.env['paynet.service'].create({
             'url': 'https://dws-test.paynet.ch/DWS/DWS',
             'client_pid': 'pid_bill_sender',
@@ -82,6 +84,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
            'partner_id': cls.customer.id,
            'account_id': cls.account.id,
            'partner_bank_id': cls.partner_bank.id,
+           'payment_term_id': cls.terms.id,
            'type': 'out_invoice',
            'transmit_method_id': cls.env.ref(
                'ebill_paynet.paynet_transmit_method').id,
@@ -113,18 +116,29 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
                 break
 
     def test_invoice(self):
+        """ Check XML payload genetated for an invoice."""
         self.invoice_1.number = 'INV_TEST_01'
         self.invoice_1.action_invoice_sent()
-
-        m = self.env['paynet.invoice.message'].search([('invoice_id', '=', self.invoice_1.id)], limit=1)
-
-        payload = m.payload.encode('utf8')
+        # Should have a due date different to create date, but  this does not work
+        # self.invoice_1.date_due = '2019-07-01'
+        m = self.env['paynet.invoice.message'].search(
+            [('invoice_id', '=', self.invoice_1.id)],
+            limit=1,
+        )
+        # Remove the PDF file data from the XML to ease testing
+        lines = m.payload.splitlines()
+        for pos, line in enumerate(lines):
+            if line.find('Back-Pack') != -1:
+                lines.pop(pos + 1)
+                break
+        payload = '\n'.join(lines).encode('utf8')
         self.assertXmlDocument(payload)
-
-        expected_tmpl = Template(file_open('ebill_paynet/tests/examples/invoice_1.xml').read())
+        # Prepare the XML file that is expected
+        expected_tmpl = Template(
+            file_open('ebill_paynet/tests/examples/invoice_1.xml').read()
+        )
         expected = expected_tmpl.substitute(
             IC_REF=m.ic_ref
-        )
-        self.compare_xml_line_by_line(payload, expected.encode('utf8'))
-
-        # self.assertXmlEquivalentOutputs(payload, expected)
+        ).encode('utf8')
+        # self.compare_xml_line_by_line(payload, expected)
+        self.assertXmlEquivalentOutputs(payload, expected)
