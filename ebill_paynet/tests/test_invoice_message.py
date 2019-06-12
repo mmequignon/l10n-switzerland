@@ -42,7 +42,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         cls.terms = cls.env.ref('account.account_payment_term_15days')
         cls.paynet = cls.env['paynet.service'].create({
             'url': 'https://dws-test.paynet.ch/DWS/DWS',
-            'client_pid': 'pid_bill_sender',
+            'client_pid': '52110726772852593',
         })
         cls.state = cls.env['res.country.state'].create({
             'code': 'VD',
@@ -50,17 +50,17 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             'country_id': cls.country.id,
         })
         cls.customer = cls.env['res.partner'].create({
-            'name': 'Customer One', 'customer': True,
-            'street': 'Rue des îles à rêves, 23',
-            'street2': 'Passage des araignées',
-            'city': 'Lausanne',
-            'zip': '1202',
+            'name': 'Test RAD Customer XML', 'customer': True,
+            'street': 'Teststrasse 100',
+            # 'street2': 'Passage des araignées',
+            'city': 'Fribourg',
+            'zip': '1700',
             'country_id': cls.country.id,
             'state_id': cls.state.id,
         })
         cls.contract = cls.env['ebill.payment.contract'].create({
             'partner_id': cls.customer.id,
-            'paynet_account_number': '123123123',
+            'paynet_account_number': '41010198248040391',
         })
         cls.account = cls.env['account.account'].search(
                     [('user_type_id', '=', cls.env.ref(
@@ -140,5 +140,6 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         expected = expected_tmpl.substitute(
             IC_REF=m.ic_ref
         ).encode('utf8')
-        # self.compare_xml_line_by_line(payload, expected)
-        self.assertXmlEquivalentOutputs(payload, expected)
+        self.compare_xml_line_by_line(payload, expected)
+        print ('Shipment_id is {}'.format(m.shipment_id))
+        # self.assertXmlEquivalentOutputs(payload, expected)

@@ -65,23 +65,25 @@ class TestEbillPaynet(SingleTransactionCase):
 
     @recorder.use_cassette
     def test_takeShipment(self):
+        """Check sending a file to the service."""
         ch = self.env.ref('base.ch')
         attachment = self.env['ir.attachment'].search(
             [['res_model', '=', 'res.country'], ['res_id', '=', ch.id]]
         )
         attachment = self.env.ref('mail.msg_discus4_attach1')
-        shipment_id = self.paynet.take_shipment(attachment[0].datas)
+        shipment_id = self.paynet.take_shipment(attachment[0].datas.decode())
         self.assertTrue(shipment_id.startswith('SC'))
         # The shipment is not found on the server ?
         # self.paynet.get_shipment_content(shipment_id)
 
     @recorder.use_cassette
     def test_getShipmentList(self):
+        """Check getting a list of file on the service."""
         res = self.paynet.get_shipment_list()
+        self.assertTrue('entriesFound' in res)
 
-    def test_invoice(self):
-        self.invoice_1.action_invoice_sent()
-    # def test_generate_xml(self):
-    #     self.paynet_invoice_1.generate_payload()
-
-
+    # def test_getShipmentContent(self):
+    #     """Check getting the content of a file."""
+    #     res = self.paynet.get_shipment_content('SC2384234234')
+    #     print('Get shipment content')
+    #     print(res)

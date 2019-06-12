@@ -61,6 +61,7 @@ class PaynetInvoiceMessage(models.Model):
     ebill_account_number = fields.Char('Paynet Id', size=20)
     payload = fields.Text('Payload sent')
     response = fields.Text('Response recieved')
+    shipment_id = fields.Char(size=24, help='Shipment Id on Paynet service')
 
     @api.depends()
     def _compute_ic_ref(self):
@@ -69,8 +70,10 @@ class PaynetInvoiceMessage(models.Model):
 
     @api.multi
     def send_to_paynet(self):
-        self.generate_payload()
-        # send it
+        for message in self:
+            message.generate_payload()
+            shipment_id = message.service_id.take_shipment(message.payload)
+            message.shipment_id = shipment_id
 
     @staticmethod
     def format_date(date_string=0, fmt='%Y%m%d'):

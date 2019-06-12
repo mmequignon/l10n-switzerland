@@ -29,6 +29,7 @@ class PaynetService(models.Model):
         """
         self.ensure_one()
         dws = PayNetDWS(self.url)
+        content = content.encode('utf-8')
         res = dws.service.takeShipment(
             Authorization=dws.authorization(),
             # ProcessingDate  : Preferred processing date,
