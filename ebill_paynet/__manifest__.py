@@ -19,7 +19,9 @@
     },
     'data': [
         'data/transmit.method.xml',
+        'security/ir.model.access.csv',
         'views/ebill_payment_contract.xml',
+        'views/paynet_service.xml',
     ],
     'demo': [
     ],

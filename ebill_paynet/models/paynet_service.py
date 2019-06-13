@@ -4,6 +4,7 @@
 from odoo import api, fields, models
 
 from odoo.addons.ebill_paynet.components.api import PayNetDWS
+from odoo.exceptions import UserError
 
 from zeep.exceptions import Error, Fault
 
@@ -15,13 +16,14 @@ class PaynetService(models.Model):
     url = fields.Char()
     username = fields.Char()
     password = fields.Char()
-    client_pid = fields.Char(string="Paynet ID", size=20)
+    client_pid = fields.Char(string="Paynet ID", size=17)
     invoice_message_ids = fields.One2many(
         comodel_name='paynet.invoice.message',
         inverse_name='service_id',
         string='Invoice Messages',
         readonly=True,
     )
+    tested = fields.Char(compute='_compute_tested')
 
     @api.multi
     def take_shipment(self, content):
@@ -44,7 +46,7 @@ class PaynetService(models.Model):
     def get_shipment_list(self):
         self.ensure_one()
         dws = PayNetDWS(self.url)
-        res = dws.client.service.getShipmentList(
+        res = dws.service.getShipmentList(
             Authorization=dws.authorization(),
             # fromEntry     : Position number as of which shipments should be
             #                 retrieved (default is 1)
@@ -79,9 +81,34 @@ class PaynetService(models.Model):
     @api.multi
     def confirm_shipment(self, shipment_id):
         self.ensure_one()
-        dws = PayNetDWS()
+        dws = PayNetDWS(self.url)
         res = dws.client.service.confirmShipment(
             Authorization=dws.authorization(),
             ShipmentId=shipment_id,
         )
         return res
+
+    @api.multi
+    def ping_service(self):
+        dws = PayNetDWS(self.url)
+        res = dws.service.ping(
+            ClientData='hello',
+        )
+        return res
+
+    @api.multi
+    def test_ping(self):
+        """Test the service from the UI"""
+        self.ensure_one()
+        msg = ['Test connection to service : {}'.format(self.url)]
+        res = self.ping_service()
+        if 'ClientData' in res:
+            msg.append(' - Success pinging service')
+        else:
+            msg.append(' - Failed pinging service')
+        res = self.get_shipment_list()
+        if 'Shipment' in res:
+            msg.append(' - Success fetching shipment list')
+        else:
+            msg.append(' - Failed fetching shipment list')
+        raise UserError('\n'.join(msg))

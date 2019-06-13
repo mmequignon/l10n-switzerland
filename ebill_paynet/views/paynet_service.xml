@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+  <record model="ir.ui.view" id="paynet_service_form_view">
+    <field name="name">paynet.service.form (in ebill_paynet)</field>
+    <field name="model">paynet.service</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+        </header>
+        <sheet>
+          <group>
+            <field name="url"/>
+            <field name="client_pid"/>
+            <field name="username"/>
+            <field name="password"/>
+            <button type="object" name="test_ping">Test</button>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="paynet_service_search_view">
+    <field name="name">paynet.service.search (in ebill_paynet)</field>
+    <field name="model">paynet.service</field>
+    <field name="arch" type="xml">
+      <search>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="paynet_service_tree_view">
+    <field name="name">paynet.service.tree (in ebill_paynet)</field>
+    <field name="model">paynet.service</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="url"/>
+        <field name="client_pid"/>
+      </tree>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="paynet_service_act_window">
+    <field name="name">Paynet Service</field>
+    <field name="res_model">paynet.service</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+
+  <record model="ir.ui.menu" id="paynet_service_config_menu">
+    <field name="name">Paynet Service</field>
+    <field name="parent_id" ref="payment.root_payment_menu"/>
+    <field name="action" ref="paynet_service_act_window"/>
+    <field name="sequence" eval="16"/> 
+  </record>
+
+</odoo>
