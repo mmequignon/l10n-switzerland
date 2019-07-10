@@ -26,18 +26,22 @@ class EbillPaymentContract(models.Model):
                 == self.env.ref('ebill_paynet.paynet_transmit_method')
             )
 
-    @api.one
+    @api.multi
     @api.constrains('transmit_method_id', 'paynet_account_number')
     def _check_paynet_account_number(self):
-        if self.is_paynet_contract and not self.paynet_account_number:
-            raise ValidationError(
-                _("The Paynet ID is required for a Paynet contract.")
-            )
+        for contract in self:
+            if not contract.is_paynet_contract:
+                continue
+            if not contract.paynet_account_number:
+                raise ValidationError(
+                    _("The Paynet ID is required for a Paynet contract.")
+                )
 
-    @api.one
+    @api.multi
     @api.constrains('transmit_method_id', 'paynet_service_id')
     def _check_paynet_service_id(self):
-        if self.is_paynet_contract and not self.paynet_service_id:
-            raise ValidationError(
-                _("A Paynet service is required for a Paynet contract.")
-            )
+        for contract in self:
+            if contract.is_paynet_contract and not contract.paynet_service_id:
+                raise ValidationError(
+                    _("A Paynet service is required for a Paynet contract.")
+                )

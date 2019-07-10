@@ -11,6 +11,7 @@ from odoo.tools import file_open
 from string import Template
 from xmlunittest import XmlTestMixin
 
+from .common import compare_xml_line_by_line
 
 @freeze_time("2019-06-07 09:06:00")
 class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
@@ -126,23 +127,6 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             }
         )
 
-    @classmethod
-    def compare_xml_line_by_line(self, content, expected):
-        """This a quick way to check the diff line by line to ease debugging"""
-        generated_line = [
-            l.strip() for l in content.split(b'\n') if len(l.strip())
-        ]
-        expected_line = [
-            l.strip() for l in expected.split(b'\n') if len(l.strip())
-        ]
-        number_of_lines = len(expected_line)
-        for i in range(number_of_lines):
-            if generated_line[i].strip() != expected_line[i].strip():
-                print('Diff at {}/{}'.format(i, number_of_lines))
-                print('Expected {}'.format(expected_line[i]))
-                print('Generated {}'.format(generated_line[i]))
-                break
-
     def test_icref_generation(self):
         """ """
         message = self.invoice_1.create_paynet_message()
@@ -174,4 +158,4 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
             'utf8'
         )
         self.assertXmlEquivalentOutputs(payload, expected)
-        # self.compare_xml_line_by_line(payload, expected)
+        # self.assertFalse(compare_xml_line_by_line(payload, expected))
