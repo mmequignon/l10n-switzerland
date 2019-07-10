@@ -154,7 +154,7 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         """ Check XML payload genetated for an invoice."""
         self.invoice_1.number = 'INV_TEST_01'
         # self.invoice_1.action_invoice_sent()
-        # Should have a due date different to create date, but  this does not work
+        # TODO set a due date different to create date
         # self.invoice_1.date_due = '2019-07-01'
         self.invoice_1.state = 'open'
         message = self.invoice_1.create_paynet_message()

@@ -3,7 +3,7 @@
 
 import os
 
-from odoo.addons.ebill_paynet.components.api import PayNetDWS
+from ..components.api import PayNetDWS
 from odoo.tests.common import SingleTransactionCase
 
 from .common import recorder

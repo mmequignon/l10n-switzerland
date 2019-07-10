@@ -1,2 +1,4 @@
+# For ebill_paynet
+zeep==3.4.0
 # For tests
 vcrpy==2.0.1

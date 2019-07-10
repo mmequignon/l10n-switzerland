@@ -37,7 +37,7 @@ class AccountInvoice(models.Model):
         )
         if not contract:
             _logger.error(
-                'Paynet contract for {} not found while sending invoice {}'.format(
+                'Paynet contract for {} not found for invoice {}'.format(
                     self.parnter_id.name, self.id
                 )
             )

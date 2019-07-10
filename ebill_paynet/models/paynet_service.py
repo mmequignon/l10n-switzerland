@@ -6,7 +6,7 @@ import os
 
 from lxml import etree
 from odoo import api, fields, models
-from odoo.addons.ebill_paynet.components.api import PayNetDWS
+from ..components.api import PayNetDWS
 from odoo.exceptions import UserError
 from zeep.exceptions import Fault
 
@@ -98,7 +98,7 @@ class PaynetService(models.Model):
             # maxEntries    : Max number of shimpment listed (default is 100)
             # FromDate      :
             # ToDate        :
-            ShipmentStates= PENDING_STATES,
+            ShipmentStates=PENDING_STATES,
             # FromShipmentPriority:
             # ToShipmentPriority:
         )
@@ -135,7 +135,6 @@ class PaynetService(models.Model):
                 ic_ref = control.xpath('//CONTRL/IC-Ref/text()')[0]
                 state = 'done' if status == 'OK' else 'error'
             elif root.tag == 'XML-FSCM-CONFIRMATION-2003A':
-                confirmation = root[1]
                 conf_status = root[1]
                 ic_ref = conf_status.xpath('//ORIGINAL-MESSAGE/IC-Ref/text()')[
                     0

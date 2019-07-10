@@ -10,7 +10,7 @@ from odoo import api, fields, models
 from odoo.modules.module import get_module_root
 from zeep.exceptions import Fault
 
-from odoo.addons.ebill_paynet.components.api import PayNetDWS
+from ..components.api import PayNetDWS
 
 MODULE_PATH = get_module_root(os.path.dirname(__file__))
 INVOICE_TEMPLATE = 'invoice-2013A.xml'
@@ -96,10 +96,11 @@ class PaynetInvoiceMessage(models.Model):
             bank = message.invoice_id.partner_bank_id
             ic_ref = self._get_ic_ref()
             if message.invoice_id.type == 'out_invoice':
-                # ESR with fixed amount (no distinction fixed/variable in customer's e-banking)
+                # ESR with fixed amount
                 payment_type = 'ESR'
                 # ESP with variable amount
                 # payment_type = 'ESP'
+                # No distinction fixed/variable in customer's e-banking
             else:
                 payment_type = 'NPY'  # No payment
 
@@ -140,10 +141,11 @@ class PaynetInvoiceMessage(models.Model):
             ic_ref = self._get_ic_ref()
 
             if message.invoice_id.type == 'out_invoice':
-                # ESR with fixed amount (no distinction fixed/variable in customer's e-banking)
+                # ESR with fixed amount
                 payment_type = 'ESR'
                 # ESP with variable amount
                 # payment_type = 'ESP'
+                # No distinction fixed/variable in customer's e-banking
             else:
                 payment_type = 'NPY'  # No payment
 
