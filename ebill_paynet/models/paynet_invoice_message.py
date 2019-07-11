@@ -92,6 +92,11 @@ class PaynetInvoiceMessage(models.Model):
                 invoice_esr = message.invoice_id.isr_reference
             else:
                 invoice_esr = ''
+            # ESR fixed amount, ESP variable amount, NPY no payment
+            if message.invoice_id.type == 'out_invoice':
+                payment_type = 'ESR'
+            else:
+                payment_type = 'NPY'
             params = {
                 'client_pid': message.service_id.client_pid,
                 'invoice': message.invoice_id,
@@ -101,8 +106,7 @@ class PaynetInvoiceMessage(models.Model):
                 'pdf_data': message.attachment_id.datas.decode('ascii'),
                 'bank': message.invoice_id.partner_bank_id,
                 'ic_ref': message.ic_ref,
-                # ESR fixed amount, ESP variable amount, NPY no payment
-                'payment_type': 'ESR' if message.invoice_id.type == 'out_invoice' else 'NPY',
+                'payment_type': payment_type,
                 'document_type': DOCUMENT_TYPE[message.invoice_id.type],
                 'format_date': self.format_date,
                 'ebill_account_number': message.ebill_account_number,

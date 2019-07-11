@@ -165,5 +165,5 @@ class TestInvoiceMessage(SingleTransactionCase, XmlTestMixin):
         ]
         expected_nocomment = b'\n'.join(expected_nocomment)
         self.assertFalse(compare_xml_line_by_line(
-           payload, expected_nocomment))
+            payload, expected_nocomment))
         self.assertXmlEquivalentOutputs(payload, expected_nocomment)
