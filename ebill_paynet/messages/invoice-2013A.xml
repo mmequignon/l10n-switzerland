@@ -36,7 +36,9 @@
         {%- if invoice.company_id.vat %}
         <Tax-No>{{ invoice.company_id.vat }}</Tax-No>
         {%- endif %}
-        <Doc-Reference>{{ invoice_esr }}</Doc-Reference>
+        {%- if invoice_esr %}
+            <Doc-Reference Type="ESR-NEU">{{ invoice_esr }}</Doc-Reference>
+        {%- endif %}
         <PARTY-ID>
           <Pid>{{ client_pid }}</Pid>
         </PARTY-ID>

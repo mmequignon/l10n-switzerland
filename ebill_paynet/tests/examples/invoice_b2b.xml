@@ -63,7 +63,6 @@
       </REFERENCE>
       <BILLER>
         <Tax-No>CHE-012.345.678</Tax-No>
-        <Doc-Reference Type="ESR-NEU">110011215040432840940624207</Doc-Reference>
         <PARTY-ID>
           <Pid>52110726772852593</Pid>
         </PARTY-ID>
@@ -171,7 +170,6 @@
       <PAYMENT-TERMS>
         <BASIC Payment-Type="ESR" Terms-Type="5">
           <TERMS>
-            <!-- <Payment-Period Reference-Day="5" On-Or-After="3" Type="CD">30</Payment-Period> -->
             <Date>20190621</Date>
           </TERMS>
         </BASIC>

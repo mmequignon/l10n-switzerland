@@ -16,7 +16,6 @@ class AccountInvoice(models.Model):
     @api.multi
     def action_invoice_open(self):
         """Send the invoice to paynet if needed."""
-        # TODO: Should it be done on open, sent or manually ?
         res = super().action_invoice_open()
         paynet_method = self.env.ref('ebill_paynet.paynet_transmit_method')
         for invoice in self:

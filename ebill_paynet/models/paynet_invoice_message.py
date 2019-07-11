@@ -68,7 +68,7 @@ class PaynetInvoiceMessage(models.Model):
     @api.multi
     def send_to_paynet(self):
         for message in self:
-            message.generate_payload()
+            message._generate_payload()
             try:
                 shipment_id = message.service_id.take_shipment(message.payload)
                 message.shipment_id = shipment_id
@@ -86,13 +86,16 @@ class PaynetInvoiceMessage(models.Model):
     @api.multi
     def _generate_payload(self):
         for message in self:
-            # assert message.state == 'draft'
+            assert message.state == 'draft'
             message.ic_ref = self._get_ic_ref()
+            if 'isr_reference' in message.invoice_id._fields:
+                invoice_esr = message.invoice_id.isr_reference
+            else:
+                invoice_esr = ''
             params = {
                 'client_pid': message.service_id.client_pid,
                 'invoice': message.invoice_id,
-                # TODO fix this one
-                'invoice_esr': '110011215040432840940624207',
+                'invoice_esr': invoice_esr,
                 'biller': message.invoice_id.company_id,
                 'customer': message.invoice_id.partner_id,
                 'pdf_data': message.attachment_id.datas.decode('ascii'),
