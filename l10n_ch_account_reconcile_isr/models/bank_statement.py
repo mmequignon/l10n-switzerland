@@ -73,7 +73,7 @@ class AccountBankStatement(models.Model):
         }
 
     def _prepare_query(self):
-        """Replase ref on transaction_ref to match aml"""
+        """Replace ref on transaction_ref to match aml"""
         sql_query = """SELECT aml.partner_id, aml.transaction_ref, stl.id
                 FROM account_move_line aml
                     JOIN account_account acc ON acc.id = aml.account_id
