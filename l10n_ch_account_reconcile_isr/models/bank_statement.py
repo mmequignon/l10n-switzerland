@@ -22,12 +22,14 @@ class AccountBankStatement(models.Model):
                             select 1 from account_move m
                             where m.statement_line_id = stl.id
                             )
-                            AND company_id = %s
+                            AND company_id = %(company)s
                 """
-        params = (self.env.user.company_id.id,)
+        params = {
+            'company': self.env.user.company_id.id,
+        }
         if statements:
-            sql_query += ' AND stl.statement_id IN %s'
-            params += (tuple(statements.ids),)
+            sql_query += ' AND stl.statement_id IN %(statement)s'
+            params['statement'] = (tuple(statements.ids),)
         sql_query += ' ORDER BY stl.id'
         self.env.cr.execute(sql_query, params)
         st_lines_left = self.env[
@@ -47,15 +49,14 @@ class AccountBankStatement(models.Model):
            and acc_cr and acc_dt:
 
             sql_query = self._prepare_query()
-            params = (
-                self.env.user.company_id.id,
-                (acc_cr.id, acc_dt.id),
-                tuple(refs)
-            )
+            params.update({
+                'accounts': (acc_cr.id, acc_dt.id),
+                'refs': tuple(refs)
+            })
 
             if statements:
-                sql_query += 'AND stl.id IN %s'
-                params += (tuple(stl_to_assign_partner),)
+                sql_query += 'AND stl.id IN %(statement)s'
+                params['statement'] = tuple(stl_to_assign_partner)
             self.env.cr.execute(sql_query, params)
             results = self.env.cr.dictfetchall()
             st_line = self.env['account.bank.statement.line']
@@ -79,14 +80,16 @@ class AccountBankStatement(models.Model):
                     JOIN account_account acc ON acc.id = aml.account_id
                     JOIN account_bank_statement_line stl
                     ON aml.transaction_ref = stl.name
-                WHERE (aml.company_id = %s
+                WHERE (aml.company_id = %(company)s
                     AND aml.partner_id IS NOT NULL)
                     AND (
-                        (aml.statement_id IS NULL AND aml.account_id IN %s)
+                        (aml.statement_id IS NULL
+                            AND aml.account_id IN %(accounts)s)
                         OR
                         (acc.internal_type IN ('payable', 'receivable')
-                         AND aml.reconciled = false)
+                            AND aml.reconciled = false)
                         )
-                    AND aml.transaction_ref IN %s
+                    AND aml.transaction_ref IN %(refs)s
+                    OR  aml.ref IN %(refs)s
                     """
         return sql_query
