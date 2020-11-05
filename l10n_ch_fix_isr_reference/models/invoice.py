@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import re
 
-from odoo import models, api, _
+from odoo import api, models
 from odoo.tools import mod10r
 
 
@@ -19,7 +19,7 @@ class AccountInvoice(models.Model):
         self.ensure_one()
         partner_bank = self.partner_bank_id
         return (
-            partner_bank.hasattr("l10n_ch_isrb_id_number") and
+            hasattr(partner_bank, "l10n_ch_isrb_id_number") and
             partner_bank.l10n_ch_isrb_id_number or ""
         )
 
@@ -28,7 +28,7 @@ class AccountInvoice(models.Model):
 
     @api.depends('name', 'partner_bank_id.l10n_ch_postal')
     def _compute_l10n_ch_isr_number(self):
-        """Generates the ISR or QRR reference
+        r"""Generates the ISR or QRR reference
 
         An ISR references are 27 characters long.
         QRR is a recycling of ISR for QR-bills. Thus works the same.
@@ -78,7 +78,7 @@ class AccountInvoice(models.Model):
                 id_number = record._get_isrb_id_number()
                 if id_number:
                     id_number = id_number.zfill(l10n_ch_ISR_ID_NUM_LENGTH)
-                invoice_ref = re.sub('[^\d]', '', record.number)
+                invoice_ref = re.sub(r'[^\d]', '', record.number)
                 # keep only the last digits if it exceed boundaries
                 full_len = len(id_number) + len(invoice_ref)
                 ref_payload_len = l10n_ch_ISR_NUMBER_LENGTH - 1
