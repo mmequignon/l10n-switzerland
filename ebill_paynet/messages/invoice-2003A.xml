@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE XML-FSCM-INVOICE-2003A SYSTEM "XML-FSCM-INVOICE-2003A.DTD">
+<XML-FSCM-INVOICE-2003A>
+  <INTERCHANGE>
+    <IC-SENDER>
+      <Pid>{{ client_pid }}</Pid>
+    </IC-SENDER>
+    <IC-RECEIVER>
+      <Pid>41010106799303734</Pid>
+    </IC-RECEIVER>
+    <IC-Ref>{{ ic_ref }}</IC-Ref>
+  </INTERCHANGE>
+  <INVOICE Type="{{ document_type }}">
+    <HEADER>
+      <FUNCTION-FLAGS>
+        <Confirmation-Flag/>
+      </FUNCTION-FLAGS>
+      <MESSAGE-REFERENCE>
+        <REFERENCE-DATE>
+          <Reference-No>{{ invoice.name }}</Reference-No>
+          <Date Format="CCYYMMDD">{{ format_date() }}</Date>
+        </REFERENCE-DATE>
+      </MESSAGE-REFERENCE>
+      <PRINT-DATE>
+        <Date Format="CCYYMMDD">{{ format_date(invoice.date_invoice) }}</Date>
+      </PRINT-DATE>
+      <DELIVERY-DATE>
+        <Date Format="CCYYMMDD">{{ format_date(invoice.date_invoice) }}</Date>
+      </DELIVERY-DATE>
+      <REFERENCE>
+        <INVOICE-REFERENCE>
+          <REFERENCE-DATE>
+            <Reference-No>{{ invoice.name }}</Reference-No>
+            <Date Format="CCYYMMDD">{{ format_date(invoice.date_invoice) }}</Date>
+          </REFERENCE-DATE>
+        </INVOICE-REFERENCE>
+        {% for order in invoice.invoice_line_ids.sale_line_ids.mapped('order_id') %}
+        <ORDER>
+          <REFERENCE-DATE>
+            <Reference-No>{{ order.name }}</Reference-No>
+            <Date Format="CCYYMMDD">{{ format_date(order.date_order) }}</Date>
+          </REFERENCE-DATE>
+        </ORDER>
+        {% endfor %}
+      </REFERENCE>
+      <BILLER>
+        {#- Doc says vat number or business identitfiaction number #}
+        {%- if invoice.company_id.vat %}
+        <Tax-No>{{ invoice.company_id.vat }}</Tax-No>
+        {%- endif %}
+        {%- if invoice.invoice_payment_ref %}
+        <Doc-Reference Type="{{ 'QRR' if payment_type == 'qr' else 'ESR-NEU' }}">{{ invoice.invoice_payment_ref }}</Doc-Reference>
+        {%- endif %}
+        <PARTY-ID>
+          <Pid>{{ client_pid }}</Pid>
+        </PARTY-ID>
+        <NAME-ADDRESS Format="COM">
+          <NAME>
+            <Line-35>{{ biller.name }}</Line-35>
+            {%- if biller.partner_id.company_name_suffix1 %}
+            <Line-35>{{ biller.partner_id.company_name_suffix1 }}</Line-35>
+            {% endif %}
+          </NAME>
+          <STREET>
+            <Line-35>{{ (biller.street or '')|truncate(35, True, "") }}</Line-35>
+            {%- if biller.street2 %}
+            <Line-35>{{ biller.street2|truncate(5, True, "") }}</Line-35>
+            {% endif %}
+          </STREET>
+          <City>{{ biller.city or ''}}</City>
+          <Zip>{{ biller.zip or '' }}</Zip>
+          <Country>{{ biller.country_id.code or 'CH' }}</Country>
+        </NAME-ADDRESS>
+        <BANK-INFO>
+          {%- if payment_type in ['esr', 'esp'] %}
+          <Acct-No>{{ bank_account }}</Acct-No>
+          <BankId Type="BCNr-int" Country="CH">{{ bank.bank_id.clearing }}</BankId>
+          {%- elif payment_type == 'qr' %}
+          <Acct-No>{{ bank_account }}</Acct-No>
+          <BankId Type="IID" Country="CH">{{ bank_account[4:9] if bank_account else ''}}</BankId>
+          {%- endif %}
+        </BANK-INFO>
+      </BILLER>
+      <PAYER>
+        <PARTY-ID>
+          <Pid>{{ ebill_account_number }}</Pid>
+        </PARTY-ID>
+        <NAME-ADDRESS Format="COM">
+          <NAME>
+            <Line-35>{{ customer.name }}</Line-35>
+          </NAME>
+          <STREET>
+            <Line-35>{{ customer.street|truncate(35, True, "")  }}</Line-35>
+            {%- if customer.street2 %}
+            <Line-35>{{ customer.street2 or ''|truncate(35, True, "")  }}</Line-35>
+            {%- endif %}
+          </STREET>
+          <City>{{ customer.city }}</City>
+          <Zip>{{ customer.zip }}</Zip>
+          <Country>{{ customer.country_id.code or 'CH' }}</Country>
+        </NAME-ADDRESS>
+      </PAYER>
+      <DELIVERY-PARTY>
+        <NAME-ADDRESS Format="COM">
+          <NAME>
+            <Line-35>{{ customer.name }}</Line-35>
+          </NAME>
+          <STREET>
+            <Line-35>{{ customer.street|truncate(35, True, "")   }}</Line-35>
+            {%- if customer.street2 %}
+            <Line-35>{{ customer.street2|truncate(35, True, "") }}</Line-35>
+            {%- endif %}
+          </STREET>
+          <City>{{ customer.city }}</City>
+          <Zip>{{ customer.zip }}</Zip>
+          <Country>{{ customer.country_id.code or 'CH' }}</Country>
+        </NAME-ADDRESS>
+      </DELIVERY-PARTY>
+    </HEADER>
+    {% for line in invoice.invoice_line_ids %}
+    <LINE-ITEM Line-Number="{{ loop.index }}">
+      <ITEM-ID>
+        <Item-Id Type="VN">{{ line.product_id.default_code or ''}}</Item-Id>
+        <Item-Id Type="SA">{{ line.product_id.default_code or ''}}</Item-Id>
+      </ITEM-ID>
+      <ITEM-DESCRIPTION>
+        <Item-Type-Code>1011</Item-Type-Code>
+        <Line-35>{{ line.product_id.name[:35] }}</Line-35>
+        {%- if line.product_id.name|length > 35 %}
+        <Line-35>{{ line.product_id.name[35:]|truncate(34, True) }}</Line-35>
+        {%- endif %}
+      </ITEM-DESCRIPTION>
+      {% for order in invoice.invoice_line_ids.sale_line_ids.mapped('order_id') %}
+      {%- if order.client_order_ref %}
+      <ITEM-REFERENCE Type="ON">
+          <REFERENCE-DATE>
+            <Reference-No>{{ order.client_order_ref }}</Reference-No>
+            <Date Format="CCYYMMDD">{{ format_date(order.date_order) }}</Date>
+          </REFERENCE-DATE>
+      </ITEM-REFERENCE>
+      {%- endif %}
+      {% endfor %}
+      <Quantity Type="47" Units="PCE">{{ line.quantity }}</Quantity>
+      <Price Type="YYY">{{ line.price_subtotal|round(2) }}</Price>
+      <Price Type="AAA">{{ line.price_subtotal|round(2) }}</Price>
+      <Price Type="XXX">{{ line.price_total|round(2) }}</Price>
+      <ITEM-AMOUNT Type="66">
+        <Amount Currency="CHF">{{ line.price_total|round(2) }}</Amount>
+      </ITEM-AMOUNT>
+      {% for tax in line.tax_ids %}
+      {%- if loop.index == 1 %}
+      <TAX>
+        <Rate>{{ tax.amount}}</Rate>
+        <Amount Currency="CHF">{{ tax._compute_amount(line.price_subtotal, line.price_unit)|round(2) }}</Amount>
+      </TAX>
+      {%- endif %}
+      {% else %}
+      <TAX>
+        <Rate>0</Rate>
+      </TAX>
+      {% endfor %}
+    </LINE-ITEM>
+    {% endfor %}
+    <SUMMARY>
+      <INVOICE-AMOUNT Print-Status="25">
+        <Amount Currency="CHF">{{ invoice.amount_total|round(2) }}</Amount>
+      </INVOICE-AMOUNT>
+      <VAT-AMOUNT Print-Status="25">
+        <Amount Currency="CHF">{{ invoice.amount_tax|round(2) }}</Amount>
+      </VAT-AMOUNT>
+      {% if amount_by_group %}
+      {% for taxgroup in amount_by_group %}
+      <TAX>
+        <TAX-BASIS>
+          <Amount Currency="CHF">{{ taxgroup[2] }}</Amount>
+        </TAX-BASIS>
+      {%- if taxgroup[0] %}
+      <Rate Category="S">{{ taxgroup[0] }}</Rate>
+      {%- else %}
+      <Rate Category="E">0</Rate>
+      {%- endif %}
+      <Amount Currency="CHF">{{ taxgroup[1] }}</Amount>
+    </TAX>
+    {% endfor %}
+    {%- else %}
+    <TAX>
+      <TAX-BASIS>
+        <Amount Currency="CHF">{{ invoice.amount_untaxed|round(2) }}</Amount>
+      </TAX-BASIS>
+      <Rate Category="E">0</Rate>
+      <Amount Currency="CHF">0</Amount>
+    </TAX>
+    {% endif -%}
+    <PAYMENT-TERMS>
+      <BASIC Payment-Type="{{ payment_type|upper }}" Terms-Type="5">
+        <TERMS>
+          <Date>{{ format_date(invoice.date_due or invoice.date_invoice) }}</Date>
+        </TERMS>
+      </BASIC>
+    </PAYMENT-TERMS>
+    <Back-Pack-Container Encode="Base64">
+      {{- pdf_data | safe -}}
+    </Back-Pack-Container>
+  </SUMMARY>
+</INVOICE>
+</XML-FSCM-INVOICE-2003A>
