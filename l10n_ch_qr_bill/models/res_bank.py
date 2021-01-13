@@ -24,6 +24,18 @@ class ResPartnerBank(models.Model):
         )
     )
 
+    @api.multi
+    @api.constrains('l10n_ch_qr_iban')
+    def _check_ch_li_l10n_ch_qr_iban(self):
+        """Check if field is populated with Swiss / Liechtenstein qr iban"""
+        for record in self:
+            if (
+                record.l10n_ch_qrr
+                and not record.l10n_ch_qrr.startswith(('CH', 'LI'))
+            ):
+                raise ValidationError(_(
+                    "Not valid Switzerland or Liechtenstein QR IBAN."))
+
     def _check_qr_iban_range(self, iban):
         if not iban or len(iban) < 9:
             return False
@@ -69,6 +81,11 @@ class ResPartnerBank(models.Model):
         """
         return (
             self.acc_type == "iban"
-            and self._check_qr_iban_range(self.sanitized_acc_number)
-            or self.l10n_ch_qr_iban
+            and (
+                self.l10n_ch_qr_iban and
+                self.l10n_ch_qr_iban.startswith(('CH', 'LI'))
+            ) or (
+                self._check_qr_iban_range(self.sanitized_acc_number) and
+                self.sanitized_acc_number.startswith(('CH', 'LI'))
+            )
         )
