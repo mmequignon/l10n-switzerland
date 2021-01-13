@@ -30,8 +30,8 @@ class ResPartnerBank(models.Model):
         """Check if field is populated with Swiss / Liechtenstein qr iban"""
         for record in self:
             if (
-                record.l10n_ch_qrr
-                and not record.l10n_ch_qrr.startswith(('CH', 'LI'))
+                record.l10n_ch_qr_iban
+                and not record.l10n_ch_qr_iban.startswith(('CH', 'LI'))
             ):
                 raise ValidationError(_(
                     "Not valid Switzerland or Liechtenstein QR IBAN."))
