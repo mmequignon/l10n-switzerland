@@ -44,14 +44,15 @@ class ResPartnerBank(models.Model):
         if qr_iban and not qr_iban.startswith(('CH', 'LI')):
             raise ValidationError(_(
                 "Not a valid Switzerland or Liechtenstein QR-IBAN."))
-        # Check first if it's a valid IBAN.
-        validate_iban(qr_iban)
-        # We sanitize first so that _check_qr_iban_range()
-        # can extract correct IID from IBAN to validate it.
-        sanitized_qr_iban = sanitize_account_number(qr_iban)
-        # Now, check if it's valid QR-IBAN (based on its IID).
-        if not self._check_qr_iban_range(sanitized_qr_iban):
-            raise ValidationError(_("QR-IBAN '%s' is invalid.") % qr_iban)
+        if qr_iban:
+            # Check first if it's a valid IBAN.
+            validate_iban(qr_iban)
+            # We sanitize first so that _check_qr_iban_range()
+            # can extract correct IID from IBAN to validate it.
+            sanitized_qr_iban = sanitize_account_number(qr_iban)
+            # Now, check if it's valid QR-IBAN (based on its IID).
+            if not self._check_qr_iban_range(sanitized_qr_iban):
+                raise ValidationError(_("QR-IBAN '%s' is invalid.") % qr_iban)
         return True
 
     @api.model
