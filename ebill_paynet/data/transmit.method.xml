@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="paynet_transmit_method" model="transmit.method">
+        <field name="name">Paynet</field>
+        <field name="code">paynet</field>
+        <field name="customer_ok" eval="True" />
+        <!-- There is a bug on transmit_method module, needs to be set -->
+        <!-- to True so it is available for customer -->
+        <field name="supplier_ok" eval="True" />
+    </record>
+</odoo>
