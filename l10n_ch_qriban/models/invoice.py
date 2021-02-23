@@ -1,6 +1,12 @@
 # Copyright 2020 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import models
+import re
+
+from odoo import api, models
+from odoo.tools.misc import mod10r
+
+l10n_ch_ISR_NUMBER_LENGTH = 27
+l10n_ch_ISR_ID_NUM_LENGTH = 6
 
 
 class AccountInvoice(models.Model):
