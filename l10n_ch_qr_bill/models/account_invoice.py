@@ -140,7 +140,7 @@ class AccountInvoice(models.Model):
             record.l10n_ch_qrr_spaced = spaced_qrr
 
     def _get_communications(self):
-        is_qrr = self.has_qrr() or self.partner_bank_id._is_qr_iban()
+        is_qrr = self.partner_bank_id._is_qr_iban()
         if is_qrr:
             structured_communication = self.l10n_ch_qrr
             free_communication = ''
