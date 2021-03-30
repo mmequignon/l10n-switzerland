@@ -220,7 +220,7 @@
     </TAX>
     {% endif -%}
     <PAYMENT-TERMS>
-      <BASIC Payment-Type="{{ payment_type|upper }}" Terms-Type="5">
+      <BASIC Payment-Type="{{ 'ESR' if payment_type == 'isr' else payment_type|upper }}" Terms-Type="5">
         <TERMS>
           <Date>{{ date_due }}</Date>
         </TERMS>
