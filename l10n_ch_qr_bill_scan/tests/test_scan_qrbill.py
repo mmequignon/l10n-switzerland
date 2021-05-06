@@ -107,8 +107,8 @@ class TestScanQRBill(common.SavepointCase):
         """
         wiz = self.wiz_import_invoice_file(file_path, file_name)
         res = wiz.import_invoice()
-        if res.get("res_model") == "account.move":
-            invoice = self.env["account.move"].browse(res["res_id"])
+        if res.get("res_model") == "account.invoice":
+            invoice = self.env["account.invoice"].browse(res["res_id"])
             return invoice
         return None
 
@@ -125,8 +125,8 @@ class TestScanQRBill(common.SavepointCase):
         """
         wiz = self.wiz_import_invoice_scan(invoice_scan)
         res = wiz.import_invoice()
-        if res.get("res_model") == "account.move":
-            invoice = self.env["account.move"].browse(res["res_id"])
+        if res.get("res_model") == "account.invoice":
+            invoice = self.env["account.invoice"].browse(res["res_id"])
             return invoice
         return None
 
