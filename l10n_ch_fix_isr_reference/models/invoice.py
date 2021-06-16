@@ -10,6 +10,7 @@ from odoo.addons.l10n_ch_base_bank.models.bank import pretty_l10n_ch_postal
 l10n_ch_ISR_NUMBER_LENGTH = 27
 l10n_ch_ISR_ID_NUM_LENGTH = 6
 
+
 class FutureAccountInvoice(models.Model):
     """Rewrite field l10n_ch_isr_subscription to get the right field"""
     _inherit = 'account.invoice'  # pylint:disable=R7980
