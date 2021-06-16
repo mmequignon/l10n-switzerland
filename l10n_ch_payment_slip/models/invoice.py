@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import _, api, exceptions, fields, models
 
-from odoo.addons.l10n_ch_base_bank.models.bank import pretty_l10n_ch_postal
-
 
 class AccountMoveLine(models.Model):
 
