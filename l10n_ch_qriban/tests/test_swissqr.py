@@ -2,9 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import time
 
-from odoo import tools
 from odoo.addons.account.tests.account_test_no_chart import TestAccountNoChartCommon
-from odoo.modules.module import get_resource_path
 
 CH_IBAN = 'CH15 3881 5158 3845 3843 7'
 QR_IBAN = 'CH21 3080 8001 2345 6782 7'
